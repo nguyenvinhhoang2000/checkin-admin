@@ -31,6 +31,8 @@ export default {
           1: "#556EE6",
           2: "#00CE9D",
           3: "#0386FF",
+          4: "#BFBFBF",
+          5: "#D9D9D9",
         },
       },
       tableShadow: {

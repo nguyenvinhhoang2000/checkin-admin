@@ -26,6 +26,7 @@ export default {
           2: "#FF8B2B",
           3: "#FFF4E6",
           4: "#FFFFFF",
+          5: "#856B54",
         },
         secondary: {
           1: "#556EE6",
@@ -36,7 +37,7 @@ export default {
         },
       },
       tableShadow: {
-        dropShadow: "0rem 0.625rem 1.25rem 0rem rgba(18, 38, 63, 0.03)",
+        dropShadow: "0px 0.625rem 1.25rem 0px rgba(18, 38, 63, 0.03)",
       },
       antdTable: {
         cellPaddingInline: "0.75rem",

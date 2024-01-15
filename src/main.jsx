@@ -44,8 +44,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           Menu: {
             subMenuItemBg: fullConfig.theme.colors.sideBar,
             itemSelectedBg: null,
-            itemHoverColor: fullConfig.theme.colors.secondary[4],
-            itemHoverBg: fullConfig.theme.colors.primary[1],
+            itemHoverColor: fullConfig.theme.colors.primary[2],
+            itemHoverBg: fullConfig.theme.colors.primary[5],
             itemActiveBg: fullConfig.theme.colors.primary[2],
             itemColor: fullConfig.theme.colors.secondary[4],
             itemSelectedColor: fullConfig.theme.colors.primary[1],

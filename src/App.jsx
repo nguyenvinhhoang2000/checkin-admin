@@ -5,8 +5,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div>
-      <Button type="primary">Button</Button>
+    <div className="flex justify-center py-10">
+      <Button type="link">Button</Button>
       <span className="text-red-200">text</span>
     </div>
   );

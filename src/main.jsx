@@ -41,6 +41,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             paddingXXS: fullConfig.theme.padding.dropdownOverlay,
             borderRadiusSM: fullConfig.theme.borderRadius.dropdownOverlay,
           },
+          Menu: {
+            subMenuItemBg: fullConfig.theme.colors.sideBar,
+          },
         },
       }}
     >

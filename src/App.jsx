@@ -1,15 +1,35 @@
 import React from "react";
-import { Button } from "antd";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import AppLayout from "@/components/layouts/layout";
+
+import { LOCATIONS } from "@/constants/locations";
+import { Dashboard, Login, MemberOverview } from "@/routes";
 
 import "./App.css";
 
 function App() {
-  return (
-    <div className="flex justify-center py-10">
-      <Button type="primary">Button</Button>
-      <span className="text-red-200">text</span>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: LOCATIONS.LOGIN,
+      element: <Login />,
+    },
+    {
+      path: LOCATIONS.DASHBOARD,
+      element: <AppLayout />,
+      children: [
+        {
+          path: LOCATIONS.DASHBOARD,
+          element: <Dashboard />,
+        },
+        {
+          path: LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW,
+          element: <MemberOverview />,
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
 export default App;

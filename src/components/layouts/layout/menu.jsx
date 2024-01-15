@@ -1,6 +1,8 @@
 import React from "react";
 import { Menu } from "antd";
 
+import { LOCATIONS } from "@/constants/locations";
+
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -11,7 +13,17 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem("Option 1", "1", null),
+  getItem(
+    LOCATIONS.CHECK_IN_MANAGEMENT.label,
+    LOCATIONS.CHECK_IN_MANAGEMENT.path,
+    <img src="/icons/check-in-management-icon.svg" alt="check-in-management" />,
+    [
+      getItem("Option 5", "5"),
+      getItem("Option 6", "6"),
+      getItem("Option 7", "7"),
+      getItem("Option 8", "8"),
+    ],
+  ),
   getItem("Option 2", "2", null),
   getItem("Option 3", "3", null),
 
@@ -35,7 +47,7 @@ const items = [
 function MenuSideBar() {
   return (
     <Menu
-      className="bg-sideBar px-3 text-white"
+      className="bg-sideBar text-white"
       mode="inline"
       theme="light"
       defaultSelectedKeys={["1"]}

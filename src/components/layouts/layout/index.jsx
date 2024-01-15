@@ -27,6 +27,7 @@ function AppLayout() {
       <Layout.Sider
         trigger={null}
         className="hidden bg-sideBar sm:block"
+        width={220}
         collapsed={isCollapsed}
       >
         <div className="hidden bg-sideBar sm:block sm:h-full">

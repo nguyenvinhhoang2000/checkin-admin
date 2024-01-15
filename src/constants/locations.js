@@ -3,7 +3,10 @@ export const LOCATIONS = {
 
   DASHBOARD: "/dashboard",
 
-  CHECK_IN_MANAGEMENT: "check-in-management",
+  CHECK_IN_MANAGEMENT: {
+    label: "Check-in Management",
+    path: "check-in-management",
+  },
 
   CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW: "check-in-management/member-overview",
 };

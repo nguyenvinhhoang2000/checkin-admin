@@ -16,9 +16,8 @@ function AppLayout() {
         Side Bar
       </Layout.Sider>
       <Layout>
-        <div className="bg-white">
-          <Header />
-        </div>
+        <Header />
+
         <Layout.Content className="px-6">
           <Outlet />
         </Layout.Content>

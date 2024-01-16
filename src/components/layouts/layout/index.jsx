@@ -39,9 +39,7 @@ function AppLayout() {
         />
       </Layout.Sider>
       <Layout>
-        <div className="bg-white">
-          <Header onOpenDrawSideBar={onOpenDrawSideBar} />
-        </div>
+        <Header onOpenDrawSideBar={onOpenDrawSideBar} />
         <Layout.Content className="px-6">
           <Outlet />
         </Layout.Content>

@@ -19,7 +19,7 @@ function DrawSideBar({ isOpenDrawSidebar, onCloseDrawSideBar }) {
       width={270}
       placement="left"
     >
-      <div className="flex flex-row justify-between p-6">
+      <div className="flex flex-row justify-between p-[1.125rem]">
         <div className="flex flex-row items-center gap-2">
           <AppIcon
             width={46.574}

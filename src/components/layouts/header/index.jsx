@@ -8,7 +8,7 @@ import UserDropdown from "./user-dropdown";
 
 function Header({ onOpenDrawSideBar }) {
   return (
-    <header className="flex flex-row items-center justify-between bg-white sm:flex sm:flex-row sm:items-center sm:justify-end">
+    <header className="flex flex-row items-center justify-between bg-white p-[1.125rem] sm:flex sm:flex-row sm:items-center sm:justify-end">
       <Button
         type="text"
         className="block p-0 sm:hidden"

@@ -10,7 +10,7 @@ function SideBarHeader({ onToggleCollapsed, isCollapsed }) {
     <div
       className={classNames(
         !isCollapsed ? "justify-between" : "justify-center",
-        "flex flex-row bg-sideBar px-3 py-6",
+        "flex flex-row bg-sideBar px-3 py-[1.125rem]",
       )}
     >
       {!isCollapsed && (

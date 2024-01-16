@@ -74,7 +74,7 @@ const items = [
 function MenuSideBar() {
   return (
     <Menu
-      className="bg-sideBar text-white"
+      className="bg-sideBar text-[0.875rem] text-white"
       mode="inline"
       theme="light"
       items={items}

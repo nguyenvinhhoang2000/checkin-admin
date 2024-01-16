@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 
 import AppIcon from "@/components/apps/app-icon";
 
-import UserInfo from "./user-info";
+import UserDropdown from "./user-dropdown";
 
 function Header({ onOpenDrawSideBar }) {
   return (
-    <div className="flex flex-row items-center justify-between p-6 sm:flex sm:flex-row sm:items-center sm:justify-end">
+    <header className="flex flex-row items-center justify-between p-6 sm:flex sm:flex-row sm:items-center sm:justify-end">
       {" "}
       <Button
         type="text"
@@ -22,8 +22,8 @@ function Header({ onOpenDrawSideBar }) {
           alt="wiicamp-logo"
         />
       </Button>
-      <UserInfo />
-    </div>
+      <UserDropdown />
+    </header>
   );
 }
 

@@ -1,47 +1,28 @@
 import React from "react";
 import { Avatar, Button, Dropdown } from "antd";
-import { useBoolean } from "usehooks-ts";
 
 import AppIcon from "@/components/apps/app-icon";
 
 import { USER_DROPDOWN_KEY } from "@/constants/user-dropdown-key";
 
-import EditAvatarDraw from "../edit-avatar";
-
 function UserDropdown() {
-  const {
-    value: isOpenEditAvatar,
-    setTrue: setOpenEditAvatar,
-    setFalse: setCloseEditAvatar,
-  } = useBoolean(false);
-
-  const onMenuClick = React.useCallback(
-    ({ key }) => {
-      if (key === USER_DROPDOWN_KEY.EDIT_AVATAR) {
-        setOpenEditAvatar();
-      } else if (key === USER_DROPDOWN_KEY.LOG_OUT) {
-        console.log(`🎶🎶🎶.. Log-out`);
-      }
-    },
-    [setOpenEditAvatar],
-  );
+  const onMenuClick = React.useCallback(() => {
+    console.log(`🎶🎶🎶.. logout`);
+  }, []);
 
   const menu = React.useMemo(() => {
     const items = [
       {
-        key: USER_DROPDOWN_KEY.EDIT_AVATAR,
-        label: (
-          <div className="flex flex-row items-center justify-start gap-2">
-            <img src="/assets/icons/user-icon.svg" alt="Edit user" />
-            <span>Edit Avatar</span>
-          </div>
-        ),
-      },
-      {
         key: USER_DROPDOWN_KEY.LOG_OUT,
         label: (
           <div className="flex flex-row items-center justify-start gap-2">
-            <img src="/assets/icons/logout-icon.svg" alt="Edit user" />
+            <AppIcon
+              width={12}
+              height={12}
+              className="text-danger"
+              src="/icons/logout-icon.svg#id"
+              alt="Edit user"
+            />
             <span className="text-danger">Log-out</span>
           </div>
         ),
@@ -86,10 +67,6 @@ function UserDropdown() {
           />
         </Button>
       </Dropdown>
-      <EditAvatarDraw
-        openDraw={isOpenEditAvatar}
-        onCloseDraw={setCloseEditAvatar}
-      />
     </div>
   );
 }

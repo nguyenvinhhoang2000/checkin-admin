@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
 
-import AppIcon from "@/components/apps/AppIcon";
+import AppIcon from "@/components/apps/app-icon";
 
 import { LOCATIONS } from "@/constants/locations";
 import onGetMenuItem from "@/utils/get-menu-item";

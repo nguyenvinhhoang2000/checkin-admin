@@ -3,7 +3,7 @@ import { Button } from "antd";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-import AppIcon from "@/components/apps/AppIcon";
+import AppIcon from "@/components/apps/app-icon";
 
 function SideBarHeader({ onToggleCollapsed, isCollapsed }) {
   return (

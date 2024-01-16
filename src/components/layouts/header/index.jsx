@@ -2,7 +2,9 @@ import React from "react";
 import { Button } from "antd";
 import PropTypes from "prop-types";
 
-import AppIcon from "@/components/apps/AppIcon";
+import AppIcon from "@/components/apps/app-icon";
+
+import UserInfo from "./user-info";
 
 function Header({ onOpenDrawSideBar }) {
   return (
@@ -20,7 +22,7 @@ function Header({ onOpenDrawSideBar }) {
           alt="wiicamp-logo"
         />
       </Button>
-      <div>Vinh Thai</div>
+      <UserInfo />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Drawer } from "antd";
 import PropTypes from "prop-types";
 
-import AppIcon from "@/components/apps/AppIcon";
+import AppIcon from "@/components/apps/app-icon";
 
 import MenuSideBar from "./menu";
 

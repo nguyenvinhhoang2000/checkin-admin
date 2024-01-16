@@ -3,8 +3,6 @@ import { Avatar, Button, Dropdown } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
-import { USER_DROPDOWN_KEY } from "@/constants/user-dropdown-key";
-
 function UserDropdown() {
   const onMenuClick = React.useCallback(() => {
     console.log(`🎶🎶🎶.. logout`);
@@ -13,7 +11,7 @@ function UserDropdown() {
   const menu = React.useMemo(() => {
     const items = [
       {
-        key: USER_DROPDOWN_KEY.LOG_OUT,
+        key: "log-out",
         label: (
           <div className="flex flex-row items-center justify-start gap-2">
             <AppIcon

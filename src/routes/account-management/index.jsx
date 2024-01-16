@@ -4,4 +4,4 @@ function AccountManagement() {
   return <section>AccountManagement</section>;
 }
 
-export default AccountManagement;
+export default React.memo(AccountManagement);

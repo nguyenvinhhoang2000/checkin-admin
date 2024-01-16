@@ -4,4 +4,4 @@ function Dashboard() {
   return <section>Dashboard</section>;
 }
 
-export default Dashboard;
+export default React.memo(Dashboard);

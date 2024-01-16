@@ -4,4 +4,4 @@ function TableCheckin() {
   return <section>TableCheckin</section>;
 }
 
-export default TableCheckin;
+export default React.memo(TableCheckin);

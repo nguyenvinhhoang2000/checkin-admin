@@ -4,4 +4,4 @@ function Absent() {
   return <section>Absent</section>;
 }
 
-export default Absent;
+export default React.memo(Absent);

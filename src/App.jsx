@@ -4,27 +4,41 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "@/components/layouts/layout";
 
 import { LOCATIONS } from "@/constants/locations";
-import { Dashboard, Login, MemberOverview } from "@/routes";
+import {
+  Absent,
+  Dashboard,
+  Login,
+  MemberOverview,
+  TableCheckin,
+} from "@/routes";
 
 import "./App.css";
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: LOCATIONS.LOGIN,
+      path: LOCATIONS.LOGIN.path,
       element: <Login />,
     },
     {
-      path: LOCATIONS.DASHBOARD,
+      path: LOCATIONS.HOME.path,
       element: <AppLayout />,
       children: [
         {
-          path: LOCATIONS.DASHBOARD,
+          path: LOCATIONS.DASHBOARD.path,
           element: <Dashboard />,
         },
         {
-          path: LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW,
+          path: LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW.path,
           element: <MemberOverview />,
+        },
+        {
+          path: LOCATIONS.CHECK_IN_MANAGEMENT_TABLE_CHECK_IN.path,
+          element: <TableCheckin />,
+        },
+        {
+          path: LOCATIONS.CHECK_IN_MANAGEMENT_ABSENT.path,
+          element: <Absent />,
         },
       ],
     },

@@ -1,12 +1,34 @@
 export const LOCATIONS = {
-  LOGIN: "/",
+  LOGIN: {
+    label: "Login",
+    path: "/",
+  },
 
-  DASHBOARD: "/dashboard",
+  HOME: {
+    label: "Home",
+    path: "/home",
+  },
+
+  DASHBOARD: {
+    label: "Dashboard",
+    path: "/home/dashboard",
+  },
 
   CHECK_IN_MANAGEMENT: {
     label: "Check-in Management",
     path: "check-in-management",
   },
 
-  CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW: "check-in-management/member-overview",
+  CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW: {
+    label: "Member Overview",
+    path: "/home/check-in-management/member-overview",
+  },
+  CHECK_IN_MANAGEMENT_TABLE_CHECK_IN: {
+    label: "Table Check-in",
+    path: "/home/check-in-management/table-check-in",
+  },
+  CHECK_IN_MANAGEMENT_ABSENT: {
+    label: "Absent",
+    path: "/home/check-in-management/absent",
+  },
 };

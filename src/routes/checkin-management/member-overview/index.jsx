@@ -4,4 +4,4 @@ function MemberOverview() {
   return <section>Member overview</section>;
 }
 
-export default MemberOverview;
+export default React.memo(MemberOverview);

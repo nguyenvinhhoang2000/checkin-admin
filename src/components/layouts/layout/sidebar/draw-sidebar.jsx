@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import AppIcon from "@/components/apps/app-icon";
 
-import MenuSideBar from "./menu";
+import MenuSideBar from "../menu";
 
 function DrawSideBar({ isOpenDrawSidebar, onCloseDrawSideBar }) {
   return (

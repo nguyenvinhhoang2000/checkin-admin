@@ -6,8 +6,8 @@ import { useBoolean } from "usehooks-ts";
 import Footer from "../footer";
 import Header from "../header";
 
-import ModalSideBar from "./draw-sidebar";
-import SideBarHeader from "./header-sidebar";
+import ModalSideBar from "./sidebar/draw-sidebar";
+import SideBarHeader from "./sidebar/header-sidebar";
 import MenuSideBar from "./menu";
 
 function AppLayout() {

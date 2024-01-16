@@ -82,4 +82,4 @@ function MenuSideBar() {
   );
 }
 
-export default MenuSideBar;
+export default React.memo(MenuSideBar);

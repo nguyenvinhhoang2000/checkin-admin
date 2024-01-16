@@ -69,4 +69,4 @@ function UserDropdown() {
   );
 }
 
-export default UserDropdown;
+export default React.memo(UserDropdown);

@@ -55,7 +55,7 @@ function DrawSideBar({ isOpenDrawSidebar, onCloseDrawSideBar }) {
   );
 }
 
-export default DrawSideBar;
+export default React.memo(DrawSideBar);
 
 DrawSideBar.propTypes = {
   isOpenDrawSidebar: PropTypes.bool.isRequired,

@@ -44,7 +44,7 @@ function SideBarHeader({ onToggleCollapsed, isCollapsed }) {
   );
 }
 
-export default SideBarHeader;
+export default React.memo(SideBarHeader);
 
 SideBarHeader.propTypes = {
   onToggleCollapsed: PropTypes.func.isRequired,

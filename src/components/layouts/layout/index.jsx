@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
-import { useBoolean, useMediaQuery } from "usehooks-ts";
+import { useBoolean } from "usehooks-ts";
 
 import Footer from "../footer";
 import Header from "../header";
@@ -19,9 +19,6 @@ function AppLayout() {
     setFalse: onCloseDrawSideBar,
   } = useBoolean();
 
-  const isPhone = useMediaQuery("480px");
-
-  React.useEffect(() => {}, [isPhone]);
   return (
     <Layout className="min-h-screen">
       <Layout.Sider

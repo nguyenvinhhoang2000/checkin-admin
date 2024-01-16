@@ -8,6 +8,7 @@ import {
   Absent,
   AccountManagement,
   Dashboard,
+  Information,
   Login,
   MemberOverview,
   TableCheckin,
@@ -44,6 +45,10 @@ function App() {
         {
           path: LOCATIONS.ACCOUNT_MANAGEMENT.path,
           element: <AccountManagement />,
+        },
+        {
+          path: LOCATIONS.BUSINESS_SETTING_INFORMATION.path,
+          element: <Information />,
         },
       ],
     },

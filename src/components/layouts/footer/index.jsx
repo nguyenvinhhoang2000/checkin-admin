@@ -4,4 +4,4 @@ function Footer() {
   return <div className="p-6">Footer</div>;
 }
 
-export default Footer;
+export default React.memo(Footer);

@@ -27,4 +27,4 @@ function AppLayout() {
     </Layout>
   );
 }
-export default AppLayout;
+export default React.memo(AppLayout);

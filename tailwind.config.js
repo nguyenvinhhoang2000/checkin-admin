@@ -38,6 +38,7 @@ export default {
         volcano: {
           1: "#FFD8BF",
           2: "#FA541C",
+          3: "#818181",
         },
       },
       tableShadow: {

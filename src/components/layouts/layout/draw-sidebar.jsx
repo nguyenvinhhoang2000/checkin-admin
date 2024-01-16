@@ -42,7 +42,7 @@ function DrawSideBar({ isOpenDrawSidebar, onCloseDrawSideBar }) {
           onClick={onCloseDrawSideBar}
         >
           <AppIcon
-            className="text-[#818181]"
+            className="text-volcano-3"
             width={16}
             height={16}
             src="/icons/menu-button-icon.svg#id"

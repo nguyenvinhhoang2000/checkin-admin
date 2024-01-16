@@ -1,17 +1,32 @@
 import React from "react";
+import { Button } from "antd";
+import PropTypes from "prop-types";
 
 import AppIcon from "@/components/apps/AppIcon";
 
-function Header() {
+function Header({ onOpenDrawSideBar }) {
   return (
-    <header className="flex flex-row justify-between bg-white sm:flex sm:flex-row sm:items-center sm:justify-end">
-      <div className="p-6">Vinh Thai</div>
-      <AppIcon
-        className="text-red-600 hover:text-blue-500"
-        src="/icons/id-card-icon.svg#id"
-      />
-    </header>
+    <div className="flex flex-row items-center justify-between p-6 sm:flex sm:flex-row sm:items-center sm:justify-end">
+      {" "}
+      <Button
+        type="text"
+        className="block p-0 sm:hidden"
+        onClick={onOpenDrawSideBar}
+      >
+        <AppIcon
+          src="/icons/menu-button-icon.svg#id"
+          width={16}
+          height={16}
+          alt="wiicamp-logo"
+        />
+      </Button>
+      <div>Vinh Thai</div>
+    </div>
   );
 }
 
-export default React.memo(Header);
+export default Header;
+
+Header.propTypes = {
+  onOpenDrawSideBar: PropTypes.func.isRequired,
+};

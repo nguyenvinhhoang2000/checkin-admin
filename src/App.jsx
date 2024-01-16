@@ -4,12 +4,12 @@ import { Button } from "antd";
 import "./App.css";
 
 function App() {
-    return (
-        <div className="flex justify-center py-10">
-            <Button type="link">Button</Button>
-            <span className="text-red-200">text</span>
-        </div>
-    );
+  return (
+    <div className="flex justify-center py-10">
+      <Button type="link">Button</Button>
+      <span className="text-red-200">text</span>
+    </div>
+  );
 }
 
 export default App;

@@ -31,4 +31,19 @@ export const LOCATIONS = {
     label: "Absent",
     path: "/home/check-in-management/absent",
   },
+
+  ACCOUNT_MANAGEMENT: {
+    label: "Account Management",
+    path: "/home/account-management",
+  },
+
+  BUSINESS_SETTING: {
+    label: "Business Setting",
+    path: "/home/business-setting",
+  },
+
+  BUSINESS_SETTING_INFORMATION: {
+    label: "Information",
+    path: "/home/business-setting/information",
+  },
 };

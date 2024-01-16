@@ -6,6 +6,7 @@ import AppLayout from "@/components/layouts/layout";
 import { LOCATIONS } from "@/constants/locations";
 import {
   Absent,
+  AccountManagement,
   Dashboard,
   Login,
   MemberOverview,
@@ -39,6 +40,10 @@ function App() {
         {
           path: LOCATIONS.CHECK_IN_MANAGEMENT_ABSENT.path,
           element: <Absent />,
+        },
+        {
+          path: LOCATIONS.ACCOUNT_MANAGEMENT.path,
+          element: <AccountManagement />,
         },
       ],
     },

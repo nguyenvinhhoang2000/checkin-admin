@@ -8,6 +8,7 @@ import Header from "../header";
 
 import ModalSideBar from "./sidebar/draw-sidebar";
 import SideBarHeader from "./sidebar/header-sidebar";
+import BreadcrumbPages from "./breadcrumbs";
 import MenuSideBar from "./menu";
 
 function AppLayout() {
@@ -41,6 +42,7 @@ function AppLayout() {
       <Layout>
         <Header onOpenDrawSideBar={onOpenDrawSideBar} />
         <Layout.Content className="px-6">
+          <BreadcrumbPages />
           <Outlet />
         </Layout.Content>
         <Footer />

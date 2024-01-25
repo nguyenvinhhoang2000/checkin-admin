@@ -14,6 +14,7 @@ import {
   Dashboard,
   Information,
   Login,
+  MemberDetail,
   MemberOverview,
   TableCheckin,
 } from "@/routes";
@@ -37,6 +38,10 @@ function App() {
         {
           path: LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW.path,
           element: <MemberOverview />,
+        },
+        {
+          path: LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW_DETAIL.path,
+          element: <MemberDetail />,
         },
         {
           path: LOCATIONS.CHECK_IN_MANAGEMENT_TABLE_CHECK_IN.path,

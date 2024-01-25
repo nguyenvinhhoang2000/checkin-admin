@@ -21,8 +21,14 @@ export const LOCATIONS = {
 
   CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW: {
     label: "Member Overview",
-    path: "/home/check-in-management/member-overview",
+    path: "/home/check-in-management/members",
   },
+
+  CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW_DETAIL: {
+    label: "Member Overview",
+    path: "/home/check-in-management/members/:id",
+  },
+
   CHECK_IN_MANAGEMENT_TABLE_CHECK_IN: {
     label: "Table Check-in",
     path: "/home/check-in-management/table-check-in",

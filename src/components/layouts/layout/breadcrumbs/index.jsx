@@ -12,7 +12,16 @@ function BreadcrumbPages() {
   const breadCrumbs = crumbPath.map((item) => {
     const result = LOCATIONS[item.replace(/-/g, "_").toUpperCase()];
     return {
-      title: <Link to={result?.path}>{result?.label}</Link>,
+      title: (
+        <Link
+          to={result?.routeActive ? result?.path : "#"}
+          onClick={() => {
+            console.log(`🚀🚀🚀!..result?.path:`, result?.path);
+          }}
+        >
+          {result?.crumb || item}
+        </Link>
+      ),
       path: result?.path,
     };
   });

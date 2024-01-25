@@ -19,20 +19,18 @@ const items = [
     />,
     [
       onGetMenuItem(
-        <Link to={LOCATIONS.MEMBER.path}>{LOCATIONS.MEMBER.label}</Link>,
-        LOCATIONS.MEMBER.path,
+        <Link to={LOCATIONS.MEMBERS.path}>{LOCATIONS.MEMBERS.label}</Link>,
+        LOCATIONS.MEMBERS.path,
       ),
       onGetMenuItem(
-        <Link to={LOCATIONS.CHECK_IN_MANAGEMENT_TABLE_CHECK_IN.path}>
-          {LOCATIONS.CHECK_IN_MANAGEMENT_TABLE_CHECK_IN.label}
+        <Link to={LOCATIONS.TABLE_CHECK_IN.path}>
+          {LOCATIONS.TABLE_CHECK_IN.label}
         </Link>,
-        LOCATIONS.CHECK_IN_MANAGEMENT_TABLE_CHECK_IN.path,
+        LOCATIONS.TABLE_CHECK_IN.path,
       ),
       onGetMenuItem(
-        <Link to={LOCATIONS.CHECK_IN_MANAGEMENT_ABSENT.path}>
-          {LOCATIONS.CHECK_IN_MANAGEMENT_ABSENT.label}
-        </Link>,
-        LOCATIONS.CHECK_IN_MANAGEMENT_ABSENT.path,
+        <Link to={LOCATIONS.ABSENT.path}>{LOCATIONS.ABSENT.label}</Link>,
+        LOCATIONS.ABSENT.path,
       ),
     ],
   ),
@@ -61,10 +59,10 @@ const items = [
     />,
     [
       onGetMenuItem(
-        <Link to={LOCATIONS.BUSINESS_SETTING_INFORMATION.path}>
-          {LOCATIONS.BUSINESS_SETTING_INFORMATION.label}
+        <Link to={LOCATIONS.INFORMATION.path}>
+          {LOCATIONS.INFORMATION.label}
         </Link>,
-        LOCATIONS.BUSINESS_SETTING_INFORMATION.path,
+        LOCATIONS.INFORMATION.path,
       ),
     ],
   ),

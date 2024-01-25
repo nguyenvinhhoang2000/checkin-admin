@@ -36,7 +36,7 @@ function App() {
           element: <Dashboard />,
         },
         {
-          path: LOCATIONS.MEMBER.path,
+          path: LOCATIONS.MEMBERS.path,
           element: <MemberOverview />,
         },
         {
@@ -44,11 +44,11 @@ function App() {
           element: <MemberDetail />,
         },
         {
-          path: LOCATIONS.CHECK_IN_MANAGEMENT_TABLE_CHECK_IN.path,
+          path: LOCATIONS.TABLE_CHECK_IN.path,
           element: <TableCheckin />,
         },
         {
-          path: LOCATIONS.CHECK_IN_MANAGEMENT_ABSENT.path,
+          path: LOCATIONS.ABSENT.path,
           element: <Absent />,
         },
         {
@@ -56,7 +56,7 @@ function App() {
           element: <AccountManagement />,
         },
         {
-          path: LOCATIONS.BUSINESS_SETTING_INFORMATION.path,
+          path: LOCATIONS.INFORMATION.path,
           element: <Information />,
         },
       ],

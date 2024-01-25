@@ -31,7 +31,7 @@ function SideBarHeader({ onToggleCollapsed, isCollapsed }) {
           />
         </div>
       )}
-      <Button type="text" className="p-0" onClick={onToggleCollapsed}>
+      <Button type="link" className="p-0" onClick={onToggleCollapsed}>
         <AppIcon
           className="text-volcano-3"
           width={16}

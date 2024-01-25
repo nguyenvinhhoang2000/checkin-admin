@@ -78,6 +78,7 @@ function MenuSideBar() {
       mode="inline"
       theme="light"
       items={items}
+      inlineIndent={9}
     />
   );
 }

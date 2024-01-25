@@ -13,16 +13,10 @@ function BreadcrumbPages() {
     const result = LOCATIONS[item.replace(/-/g, "_").toUpperCase()];
     return {
       title: (
-        <Link
-          to={result?.routeActive ? result?.path : "#"}
-          onClick={() => {
-            console.log(`🚀🚀🚀!..result?.path:`, result?.path);
-          }}
-        >
-          {result?.crumb || item}
+        <Link to={result.routeActive ? result.path : "#"}>
+          {result.crumb || item}
         </Link>
       ),
-      path: result?.path,
     };
   });
 

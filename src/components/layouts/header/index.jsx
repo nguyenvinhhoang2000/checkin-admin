@@ -10,7 +10,7 @@ function Header({ onOpenDrawSideBar }) {
   return (
     <header className="flex flex-row items-center justify-between bg-white p-[1.125rem] sm:flex sm:flex-row sm:items-center sm:justify-end">
       <Button
-        type="text"
+        type="link"
         className="block p-0 sm:hidden"
         onClick={onOpenDrawSideBar}
       >
@@ -18,6 +18,7 @@ function Header({ onOpenDrawSideBar }) {
           src="/icons/menu-button-icon.svg#id"
           width={16}
           height={16}
+          className="text-volcano-3"
           alt="wiicamp-logo"
         />
       </Button>

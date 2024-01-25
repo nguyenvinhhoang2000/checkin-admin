@@ -37,7 +37,7 @@ function DrawSideBar({ isOpenDrawSidebar, onCloseDrawSideBar }) {
           />
         </div>
         <Button
-          type="text"
+          type="link"
           className="block p-0 sm:hidden"
           onClick={onCloseDrawSideBar}
         >

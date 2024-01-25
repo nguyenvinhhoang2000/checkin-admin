@@ -19,10 +19,8 @@ const items = [
     />,
     [
       onGetMenuItem(
-        <Link to={LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW.path}>
-          {LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW.label}
-        </Link>,
-        LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW.path,
+        <Link to={LOCATIONS.MEMBER.path}>{LOCATIONS.MEMBER.label}</Link>,
+        LOCATIONS.MEMBER.path,
       ),
       onGetMenuItem(
         <Link to={LOCATIONS.CHECK_IN_MANAGEMENT_TABLE_CHECK_IN.path}>

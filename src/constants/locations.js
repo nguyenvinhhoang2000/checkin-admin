@@ -19,13 +19,13 @@ export const LOCATIONS = {
     path: "check-in-management",
   },
 
-  CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW: {
+  MEMBER: {
     label: "Member Overview",
     path: "/home/check-in-management/members",
   },
 
-  CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW_DETAIL: {
-    label: "Member Overview",
+  MEMBER_DETAIL: {
+    label: "Member Detail",
     path: "/home/check-in-management/members/:id",
   },
 

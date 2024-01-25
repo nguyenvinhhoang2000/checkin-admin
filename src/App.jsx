@@ -36,11 +36,11 @@ function App() {
           element: <Dashboard />,
         },
         {
-          path: LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW.path,
+          path: LOCATIONS.MEMBER.path,
           element: <MemberOverview />,
         },
         {
-          path: LOCATIONS.CHECK_IN_MANAGEMENT_MEMBER_OVERVIEW_DETAIL.path,
+          path: LOCATIONS.MEMBER_DETAIL.path,
           element: <MemberDetail />,
         },
         {

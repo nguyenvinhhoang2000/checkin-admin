@@ -1,5 +1,9 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 import AppLayout from "@/components/layouts/layout";
 
@@ -51,6 +55,10 @@ function App() {
           element: <Information />,
         },
       ],
+    },
+    {
+      path: LOCATIONS.INVALID,
+      element: <Navigate to={LOCATIONS.DASHBOARD.path} />,
     },
   ]);
   return <RouterProvider router={router} />;

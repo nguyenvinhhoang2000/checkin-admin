@@ -46,4 +46,6 @@ export const LOCATIONS = {
     label: "Information",
     path: "/home/business-setting/information",
   },
+
+  INVALID: "*",
 };

@@ -47,6 +47,7 @@ export const LOCATIONS = {
     path: "/home/check-in-management/table-check-in",
     routeActive: true,
   },
+
   ABSENT: {
     label: "Absent",
     crumb: "Absent",

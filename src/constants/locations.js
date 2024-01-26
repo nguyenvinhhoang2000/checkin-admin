@@ -1,4 +1,5 @@
 export const LOCATIONS = {
+  // LOGIN PAGE
   LOGIN: {
     label: "Login",
     crumb: "Login",
@@ -6,6 +7,7 @@ export const LOCATIONS = {
     routeActive: true,
   },
 
+  // HOME PAGE
   HOME: {
     label: "Home",
     crumb: "Home",
@@ -13,6 +15,7 @@ export const LOCATIONS = {
     routeActive: true,
   },
 
+  // DASHBOARD PAGE
   DASHBOARD: {
     label: "Dashboard",
     crumb: "Dashboard",
@@ -20,6 +23,7 @@ export const LOCATIONS = {
     routeActive: true,
   },
 
+  // CHECK_IN MANAGEMENT PAGE
   CHECK_IN_MANAGEMENT: {
     label: "Check-in Management",
     crumb: "Check-in Management",
@@ -55,6 +59,7 @@ export const LOCATIONS = {
     routeActive: true,
   },
 
+  // ACCOUNT MANAGEMENT
   ACCOUNT_MANAGEMENT: {
     label: "Account Management",
     crumb: "Account Management",
@@ -62,6 +67,21 @@ export const LOCATIONS = {
     routeActive: true,
   },
 
+  CREATE_ACCOUNT: {
+    label: "Create Account",
+    crumb: "Create Account",
+    path: "/home/account-management/create-account",
+    routeActive: true,
+  },
+
+  EDIT_ACCOUNT: {
+    label: "Edit Account",
+    crumb: "Edit Account",
+    path: "/home/account-management/edit-account",
+    routeActive: true,
+  },
+
+  // BUSINESS SETTING
   BUSINESS_SETTING: {
     label: "Business Setting",
     crumb: "Business Setting",
@@ -76,5 +96,6 @@ export const LOCATIONS = {
     routeActive: true,
   },
 
+  // INVALID PAGE
   INVALID: "*",
 };

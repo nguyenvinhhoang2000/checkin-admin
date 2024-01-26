@@ -1,7 +1,7 @@
 import React from "react";
 
-import HeaderAccountManagement from "./header";
-import TablerAccountManagement from "./table";
+import HeaderAccountManagement from "./components/header";
+import TablerAccountManagement from "./components/table";
 
 function AccountManagement() {
   return (

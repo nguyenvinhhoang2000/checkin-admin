@@ -4,7 +4,7 @@ import { Button } from "antd";
 import AppIcon from "@/components/apps/app-icon";
 import SearchBarForm from "@/components/form/search-bar-form";
 
-import TabActive from "./tab-active";
+import TabActive from "../tab-active";
 
 function HeaderAccountManagement() {
   return (

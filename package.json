@@ -13,11 +13,14 @@
   },
   "dependencies": {
     "antd": "^5.13.1",
+    "axios": "^1.6.7",
     "postcss-antd-fixes": "^0.2.0",
     "react": "^18.2.0",
+    "react-cookies": "^0.1.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.2",
-    "usehooks-ts": "^2.9.4"
+    "usehooks-ts": "^2.9.4",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

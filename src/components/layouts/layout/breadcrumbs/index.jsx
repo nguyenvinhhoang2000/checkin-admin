@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Breadcrumb, Button } from "antd";
+import { Breadcrumb } from "antd";
 
 import { LOCATIONS } from "@/constants/locations";
 
@@ -14,13 +14,9 @@ function BreadcrumbPages() {
     const result = LOCATIONS[item.replace(/-/g, "_").toUpperCase()];
     return {
       title: (
-        <Button
-          type="text"
-          className="h-fit p-0"
-          to={result.routeActive ? result.path : "#"}
-        >
+        <span className="cursor-pointer hover:bg-primary-3">
           {result.crumb || item}
-        </Button>
+        </span>
       ),
       onClick: () => navigate(result.routeActive ? result.path : "#"),
     };

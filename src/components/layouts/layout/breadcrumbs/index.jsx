@@ -14,13 +14,9 @@ function BreadcrumbPages() {
     const result = LOCATIONS[item.replace(/-/g, "_").toUpperCase()];
     return {
       title: (
-        <Button
-          type="text"
-          className="h-fit p-0"
-          to={result.routeActive ? result.path : "#"}
-        >
+        <span className="cursor-pointer hover:bg-primary-3">
           {result.crumb || item}
-        </Button>
+        </span>
       ),
       onClick: () => navigate(result.routeActive ? result.path : "#"),
     };

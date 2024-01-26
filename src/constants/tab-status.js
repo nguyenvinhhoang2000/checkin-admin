@@ -1,4 +1,4 @@
-export const TAB_ACTIVE = [
+export const TAB_STATUS = [
   {
     value: 1,
     label: "Active",

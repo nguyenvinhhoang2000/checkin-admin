@@ -1,27 +1,34 @@
 import React from "react";
+import {
+  createSearchParams,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { Button, message, Table } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
 import ACCOUNT_MANAGEMENT_COLUMNS from "@/constants/account-management-table";
+import useAccountManagementStore from "@/store/use-account-management-store";
+
+import { paginationConfig } from "./config";
 
 function TablerAccountManagement() {
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      email: "duchoang123@gmail.com",
-      branch: "Head office, Da Nang",
-      address: "10 Downing Street",
-    },
-    {
-      key: "2",
-      name: "John",
-      email: "duchoang456@gmail.com",
-      branch: "Head office, Da Nang",
-      address: "10 Downing Street",
-    },
-  ];
+  const onGetListAccount = useAccountManagementStore().onGetListAccount;
+  const listAccount = useAccountManagementStore().listAccount;
+  const totalAccount = useAccountManagementStore().totalAccount;
+  const pageAccount = useAccountManagementStore().pageAccount;
+  const onSetPage = useAccountManagementStore().onSetPage;
+  const onSetStatus = useAccountManagementStore().onSetStatus;
+  const isLoadingTable = useAccountManagementStore().isLoadingTable;
+  const onResetAccountManagement =
+    useAccountManagementStore().onResetAccountManagement;
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [searchParams] = useSearchParams();
 
   const columns = [
     {
@@ -87,7 +94,53 @@ function TablerAccountManagement() {
     },
   ];
 
-  return <Table dataSource={dataSource} columns={columns} />;
+  const onChangePage = React.useCallback(
+    (page) => {
+      navigate({
+        pathname: location.pathname,
+        search: createSearchParams({
+          ...Object.fromEntries(searchParams),
+          page: page.current,
+        }).toString(),
+      });
+      onSetPage(page.current);
+    },
+    [location.pathname, navigate, onSetPage, searchParams],
+  );
+
+  const pagination = React.useMemo(() => {
+    return {
+      ...paginationConfig,
+      total: totalAccount,
+      current: pageAccount,
+    };
+  }, [totalAccount, pageAccount]);
+
+  const onGetAccounts = React.useCallback(async () => {
+    await onSetStatus(searchParams.get("status") || 1);
+    await onSetPage(searchParams.get("page") || 1);
+
+    await onGetListAccount();
+  }, []);
+
+  React.useEffect(() => {
+    onGetAccounts();
+
+    return () => {
+      onResetAccountManagement();
+    };
+  }, []);
+
+  return (
+    <Table
+      loading={isLoadingTable}
+      onChange={onChangePage}
+      rowKey="_id"
+      pagination={pagination}
+      dataSource={listAccount}
+      columns={columns}
+    />
+  );
 }
 
 export default React.memo(TablerAccountManagement);

@@ -7,18 +7,25 @@ import {
 } from "react-router-dom";
 import { ConfigProvider, Tabs } from "antd";
 
-import { TAB_ACTIVE } from "@/constants/tab-active";
+import { TAB_STATUS } from "@/constants/tab-status";
+import useAccountManagementStore from "@/store/use-account-management-store";
 import { fullConfig } from "@/theme";
 
 function TabActive() {
+  const onSetStatus = useAccountManagementStore().onSetStatus;
+
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const location = useLocation();
 
+  const initialValue = React.useMemo(() => {
+    return searchParams.get("status");
+  }, [searchParams]);
+
   const items = React.useMemo(() => {
-    return TAB_ACTIVE.map((item) => {
+    return TAB_STATUS.map((item) => {
       return {
-        key: item.value,
+        key: `${item.value}`,
         label: item.label,
       };
     });
@@ -29,9 +36,10 @@ function TabActive() {
       pathname: location.pathname,
       search: createSearchParams({
         ...Object.fromEntries(searchParams),
-        active: value,
+        status: value,
       }).toString(),
     });
+    onSetStatus(value);
   }, []);
 
   return (
@@ -47,7 +55,11 @@ function TabActive() {
         },
       }}
     >
-      <Tabs items={items} onChange={onGetActiveValue} />
+      <Tabs
+        defaultActiveKey={initialValue}
+        items={items}
+        onChange={onGetActiveValue}
+      />
     </ConfigProvider>
   );
 }

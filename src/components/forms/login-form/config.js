@@ -22,7 +22,7 @@ const rulesEmail = [
 const rulesPassword = [
   SCHEMAS.RULE_REQUIRED_SELECT(LOGIN_FORM.PASSWORD.label),
   SCHEMAS.RULE_MIN("Password", 6),
-  SCHEMAS.RULE_MIN("Password", 12),
+  SCHEMAS.RULE_MAX("Password", 12),
 ];
 
 const errorLoginFailMessage = [

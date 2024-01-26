@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Breadcrumb, Button } from "antd";
+import { Breadcrumb } from "antd";
 
 import { LOCATIONS } from "@/constants/locations";
 

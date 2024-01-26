@@ -11,7 +11,9 @@ import { LOCATIONS } from "@/constants/locations";
 import {
   Absent,
   AccountManagement,
+  CreateAccount,
   Dashboard,
+  EditAccount,
   Information,
   Login,
   MemberDetail,
@@ -31,10 +33,13 @@ function App() {
       path: LOCATIONS.HOME.path,
       element: <AppLayout />,
       children: [
+        // DASHBOARD PAGE
         {
           path: LOCATIONS.DASHBOARD.path,
           element: <Dashboard />,
         },
+
+        // CHECK-IN MANAGEMENTT PAGE
         {
           path: LOCATIONS.MEMBERS.path,
           element: <MemberOverview />,
@@ -51,10 +56,22 @@ function App() {
           path: LOCATIONS.ABSENT.path,
           element: <Absent />,
         },
+
+        // ACCOUNT MANAGEMENT
         {
           path: LOCATIONS.ACCOUNT_MANAGEMENT.path,
           element: <AccountManagement />,
         },
+        {
+          path: LOCATIONS.CREATE_ACCOUNT.path,
+          element: <CreateAccount />,
+        },
+        {
+          path: LOCATIONS.EDIT_ACCOUNT.path,
+          element: <EditAccount />,
+        },
+
+        // BUSINESS SETTING
         {
           path: LOCATIONS.INFORMATION.path,
           element: <Information />,

@@ -5,7 +5,7 @@ import TablerAccountManagement from "./table";
 
 function AccountManagement() {
   return (
-    <section className="p-5">
+    <section className="shadow-dropShadow flex flex-col gap-[1.25rem] rounded-xl bg-white p-5">
       <HeaderAccountManagement />
       <TablerAccountManagement />
     </section>

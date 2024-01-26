@@ -40,6 +40,11 @@ function TabActive() {
         token: {
           colorPrimary: fullConfig.theme.colors.secondary[3],
         },
+        components: {
+          Tabs: {
+            margin: "0 0",
+          },
+        },
       }}
     >
       <Tabs items={items} onChange={onGetActiveValue} />

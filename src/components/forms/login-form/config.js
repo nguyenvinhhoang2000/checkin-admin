@@ -1,17 +1,9 @@
-import { SCHEMAS } from "@/components/schemas";
+import { RULE_MESSAGE, SCHEMAS } from "@/components/schemas";
 
 const LOGIN_FORM = {
-  EMAIL: {
-    name: "email",
-    label: "Email",
-    placeholder: "Enter your email",
-  },
+  EMAIL: RULE_MESSAGE.EMAIL,
 
-  PASSWORD: {
-    name: "password",
-    label: "Password",
-    placeholder: "Enter your password",
-  },
+  PASSWORD: RULE_MESSAGE.PASSWORD,
 };
 
 const rulesEmail = [

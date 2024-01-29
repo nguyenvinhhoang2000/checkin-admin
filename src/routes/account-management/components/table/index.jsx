@@ -1,10 +1,11 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, message, Table } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
 import ACCOUNT_MANAGEMENT_COLUMNS from "@/constants/account-management-table";
+import { LOCATIONS } from "@/constants/locations";
 import useAccountManagementStore from "@/store/use-account-management-store";
 
 import { paginationConfig } from "./config";
@@ -17,6 +18,8 @@ function TablerAccountManagement() {
   const isLoadingTable = useAccountManagementStore().isLoadingTable;
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
 
   const columns = [
     {
@@ -59,12 +62,19 @@ function TablerAccountManagement() {
       ...ACCOUNT_MANAGEMENT_COLUMNS.ACTIONS,
       width: "12%",
       render: () => {
+        const onClickButtonEdit = () => {
+          navigate(LOCATIONS.EDIT_ACCOUNT.path);
+        };
         return (
           <div className="flex flex-row gap-[1.25rem]">
             <Button className="m-0 h-fit p-0" type="text">
               <AppIcon className="text-black/45" src="/icons/eye-icon.svg#id" />
             </Button>
-            <Button className="m-0 h-fit p-0" type="text">
+            <Button
+              onClick={onClickButtonEdit}
+              className="m-0 h-fit p-0"
+              type="text"
+            >
               <AppIcon
                 className="text-black/45"
                 src="/icons/edit-icon.svg#id"

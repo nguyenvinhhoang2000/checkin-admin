@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
-import SearchBarForm from "@/components/form/search-bar-form";
+import SearchBarForm from "@/components/forms/search-bar-form";
 
 import { LOCATIONS } from "@/constants/locations";
 

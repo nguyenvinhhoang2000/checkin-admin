@@ -43,7 +43,11 @@ function UserDropdown() {
       arrow
       overlayClassName="w-[11.9375rem]"
     >
-      <Button type="text" className="flex flex-row items-center gap-2 p-0">
+      <Button
+        type="text"
+        onClick={(e) => e.preventDefault()}
+        className="flex flex-row items-center gap-2 p-0"
+      >
         <Avatar
           size="small"
           shape="icon"

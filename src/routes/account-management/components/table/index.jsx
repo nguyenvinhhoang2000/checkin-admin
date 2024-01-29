@@ -8,7 +8,7 @@ import ACCOUNT_MANAGEMENT_COLUMNS from "@/constants/account-management-table";
 import { LOCATIONS } from "@/constants/locations";
 import useAccountManagementStore from "@/store/use-account-management-store";
 
-import { paginationConfig } from "./config";
+import { paginationConfig, scroll } from "./config";
 
 function TablerAccountManagement() {
   const listAccount = useAccountManagementStore().listAccount;
@@ -117,6 +117,7 @@ function TablerAccountManagement() {
       loading={isLoadingTable}
       onChange={onChangePage}
       rowKey="_id"
+      scroll={scroll}
       pagination={pagination}
       dataSource={listAccount}
       columns={columns}

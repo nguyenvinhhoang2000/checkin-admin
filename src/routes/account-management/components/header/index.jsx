@@ -17,7 +17,7 @@ function HeaderAccountManagement() {
   }, [navigate]);
 
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-col gap-6 xl:flex xl:flex-row xl:items-center xl:justify-between">
       <TabActive />
       <div className="flex flex-row items-center gap-6">
         <SearchBarForm />

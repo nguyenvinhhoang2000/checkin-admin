@@ -41,11 +41,11 @@ function SearchBarForm() {
       <Form
         initialValues={initialValues}
         onFinish={onSearch}
-        className="flex h-fit items-center justify-center"
+        className="flex h-fit w-[31.25rem] items-center justify-center"
       >
-        <Form.Item name="search">
+        <Form.Item name="search" className="w-full">
           <Input
-            className="w-[31.25rem] rounded-[3.5625rem]"
+            className="rounded-[3.5625rem]"
             title="input search"
             placeholder="Search by name, phone number, email..."
             prefix={

@@ -41,11 +41,13 @@ function TabActive() {
         components: {
           Tabs: {
             margin: "0 0",
+            // colorBorderSecondary: "rgba(0,0,0,0)",
           },
         },
       }}
     >
       <Tabs
+        className="min-w-[8.125rem]"
         defaultActiveKey={initialValue}
         items={items}
         onChange={onGetActiveValue}

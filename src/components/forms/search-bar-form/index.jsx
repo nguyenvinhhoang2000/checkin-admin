@@ -19,7 +19,7 @@ function SearchBarForm() {
       pathname: location.pathname,
       search: createSearchParams({
         ...Object.fromEntries(searchParams),
-        search,
+        search: search || "",
       }).toString(),
     });
   }, []);
@@ -45,8 +45,8 @@ function SearchBarForm() {
       >
         <Form.Item name="search">
           <Input
-            className="h-[2.5rem] w-[31.25rem] rounded-[3.5625rem]"
-            title="Hello"
+            className="w-[31.25rem] rounded-[3.5625rem]"
+            title="input search"
             placeholder="Search by name, phone number, email..."
             prefix={
               <Form.Item>

@@ -23,7 +23,7 @@ function AppLayout() {
   return (
     <Layout className="min-h-screen">
       <Layout.Sider
-        className="hidden bg-sideBar sm:block"
+        className="hidden bg-sideBar sm:fixed sm:block sm:h-screen sm:overflow-auto"
         width={220}
         collapsed={isCollapsed}
       >
@@ -39,9 +39,9 @@ function AppLayout() {
           onCloseDrawSideBar={onCloseDrawSideBar}
         />
       </Layout.Sider>
-      <Layout>
+      <Layout className="flex h-screen flex-col justify-between">
         <Header onOpenDrawSideBar={onOpenDrawSideBar} />
-        <Layout.Content className="px-6">
+        <Layout.Content className="mb-auto overflow-y-auto px-6">
           <BreadcrumbPages />
           <Outlet />
         </Layout.Content>

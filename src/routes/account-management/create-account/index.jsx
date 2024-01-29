@@ -12,7 +12,7 @@ function CreateAccount() {
       <AppFooterForm
         cancelText="Cancel"
         deleteText="Delete"
-        classNames="flex flex-row justify-between bg-white p-5 rounded-md"
+        classNames="flex flex-row justify-between bg-white px-5 py-3 rounded-md"
       />
     </section>
   );

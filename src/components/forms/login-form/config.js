@@ -36,23 +36,11 @@ const errorLoginFailMessage = [
   },
 ];
 
-const errorLoginNullMessage = [
-  {
-    name: "email",
-    errors: [],
-  },
-  {
-    name: "password",
-    errors: [],
-  },
-];
-
 const loadingLoginMessage = "Login";
 
 const errorCode = { UNAUTHORIZED: 40100 };
 
 export {
-  errorLoginNullMessage,
   loadingLoginMessage,
   rulesEmail,
   rulesPassword,

@@ -1,56 +1,33 @@
 import React from "react";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
-import { Button, Form, Input, message } from "antd";
-import { useBoolean } from "usehooks-ts";
+import { Button, Form, Input } from "antd";
 
 import useAuthStore from "@/store/use-auth-store";
 
 import {
   errorCode,
   errorLoginFailMessage,
-  loadingLoginMessage,
   rulesEmail,
   rulesPassword,
 } from "./config";
 
 function LoginForm() {
   const onLogin = useAuthStore().onLogin;
+  const isLoadingLogin = useAuthStore().isLoadingLogin;
 
   const [loginForm] = Form.useForm();
 
-  const {
-    value: isDisabledLoginForm,
-    setTrue: onDisabledLoginForm,
-    setFalse: onEnabledLoginForm,
-  } = useBoolean(false);
-
   const onSubmitForm = async (record) => {
-    const onCancelLoadingMessage = message.loading(loadingLoginMessage);
+    const result = await onLogin(record);
 
-    onDisabledLoginForm();
-
-    const { message: messResult, status, messArr } = await onLogin(record);
-
-    if (messArr && messArr.code === errorCode.UNAUTHORIZED) {
+    if (result && result.code === errorCode.UNAUTHORIZED) {
       loginForm.setFields(errorLoginFailMessage);
-
-      onEnabledLoginForm();
-
-      onCancelLoadingMessage();
-
-      return;
     }
-
-    onCancelLoadingMessage();
-
-    onEnabledLoginForm();
-
-    message[status](messResult, 1);
   };
 
   return (
     <Form
-      disabled={isDisabledLoginForm}
+      disabled={isLoadingLogin}
       form={loginForm}
       onFinish={onSubmitForm}
       name="normal_login"
@@ -77,7 +54,12 @@ function LoginForm() {
         />
       </Form.Item>
       <Form.Item className="mb-0">
-        <Button type="primary" htmlType="submit" className="h-[2.5rem] w-full">
+        <Button
+          loading={isLoadingLogin}
+          type="primary"
+          htmlType="submit"
+          className="h-[2.5rem] w-full"
+        >
           Sign in
         </Button>
       </Form.Item>

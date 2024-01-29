@@ -10,9 +10,12 @@ import { storeResult } from "@/utils/store-result";
 import useAdminProfileStore from "./use-admin-profile-store";
 import useAppMounted from "./use-app-mounted";
 
-const useAuthStore = create(() => ({
+const useAuthStore = create((set) => ({
+  isLoadingLogin: false,
+
   onLogin: async (data) => {
     try {
+      set({ isLoadingLogin: true });
       const {
         data: { payload: token, message },
       } = await adminApi.login(data);
@@ -23,7 +26,9 @@ const useAuthStore = create(() => ({
 
       return storeResult.onSuccess(message);
     } catch (error) {
-      return storeResult.onFail(error.response?.data);
+      return storeResult.onError(error.response?.data);
+    } finally {
+      set({ isLoadingLogin: false });
     }
   },
 

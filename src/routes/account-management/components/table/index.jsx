@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  createSearchParams,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Button, message, Table } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
@@ -15,20 +10,13 @@ import useAccountManagementStore from "@/store/use-account-management-store";
 import { paginationConfig } from "./config";
 
 function TablerAccountManagement() {
-  const onGetListAccount = useAccountManagementStore().onGetListAccount;
   const listAccount = useAccountManagementStore().listAccount;
   const totalAccount = useAccountManagementStore().totalAccount;
   const pageAccount = useAccountManagementStore().pageAccount;
   const onSetPage = useAccountManagementStore().onSetPage;
-  const onSetStatus = useAccountManagementStore().onSetStatus;
   const isLoadingTable = useAccountManagementStore().isLoadingTable;
-  const onResetAccountManagement =
-    useAccountManagementStore().onResetAccountManagement;
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const columns = [
     {
@@ -96,16 +84,14 @@ function TablerAccountManagement() {
 
   const onChangePage = React.useCallback(
     (page) => {
-      navigate({
-        pathname: location.pathname,
-        search: createSearchParams({
-          ...Object.fromEntries(searchParams),
-          page: page.current,
-        }).toString(),
+      setSearchParams({
+        ...Object.fromEntries(searchParams),
+        page: page.current,
       });
+
       onSetPage(page.current);
     },
-    [location.pathname, navigate, onSetPage, searchParams],
+    [onSetPage, searchParams, setSearchParams],
   );
 
   const pagination = React.useMemo(() => {
@@ -115,21 +101,6 @@ function TablerAccountManagement() {
       current: pageAccount,
     };
   }, [totalAccount, pageAccount]);
-
-  const onGetAccounts = React.useCallback(async () => {
-    await onSetStatus(searchParams.get("status") || 1);
-    await onSetPage(searchParams.get("page") || 1);
-
-    await onGetListAccount();
-  }, []);
-
-  React.useEffect(() => {
-    onGetAccounts();
-
-    return () => {
-      onResetAccountManagement();
-    };
-  }, []);
 
   return (
     <Table

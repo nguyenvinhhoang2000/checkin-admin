@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  createSearchParams,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { ConfigProvider, Tabs } from "antd";
 
 import { TAB_STATUS } from "@/constants/tab-status";
@@ -14,12 +9,10 @@ import { fullConfig } from "@/theme";
 function TabActive() {
   const onSetStatus = useAccountManagementStore().onSetStatus;
 
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const initialValue = React.useMemo(() => {
-    return searchParams.get("status");
+    return searchParams.get("status") || 1;
   }, [searchParams]);
 
   const items = React.useMemo(() => {
@@ -32,12 +25,9 @@ function TabActive() {
   }, []);
 
   const onGetActiveValue = React.useCallback((value) => {
-    navigate({
-      pathname: location.pathname,
-      search: createSearchParams({
-        ...Object.fromEntries(searchParams),
-        status: value,
-      }).toString(),
+    setSearchParams({
+      ...Object.fromEntries(searchParams),
+      status: value,
     });
     onSetStatus(value);
   }, []);

@@ -1,11 +1,28 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
+
+import useAccountManagementStore from "@/store/use-account-management-store";
 
 import HeaderAccountManagement from "./components/header";
 import TablerAccountManagement from "./components/table";
 
 function AccountManagement() {
+  const onGetDataFirstRender = useAccountManagementStore().onGetDataFirstRender;
+  const onResetAccountManagement =
+    useAccountManagementStore().onResetAccountManagement;
+
+  const [searchParams] = useSearchParams();
+
+  React.useEffect(() => {
+    onGetDataFirstRender(searchParams.get("status"), searchParams.get("page"));
+
+    return () => {
+      onResetAccountManagement();
+    };
+  }, []);
+
   return (
-    <section className="flex flex-col gap-[1.25rem] rounded-xl bg-white p-5 shadow-dropShadow">
+    <section className="shadow-dropShadow flex flex-col gap-[1.25rem] rounded-xl bg-white p-5">
       <HeaderAccountManagement />
       <TablerAccountManagement />
     </section>

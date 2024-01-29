@@ -83,6 +83,7 @@ function App() {
       element: <Navigate to={LOCATIONS.DASHBOARD.path} />,
     },
   ]);
+
   return <RouterProvider router={router} />;
 }
 

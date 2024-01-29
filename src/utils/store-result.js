@@ -1,21 +1,19 @@
+import { message as messageAnt } from "antd";
+
 import { TYPE_MESSAGE } from "@/constants/types-message";
 
 export const storeResult = {
-  onSuccess(message, payload) {
-    return {
-      ok: true,
-      status: TYPE_MESSAGE.SUCCESS,
-      message,
-      payload,
-    };
+  onSuccess(message) {
+    messageAnt.success(message, 1.5);
   },
 
-  onFail(message, payload) {
-    return {
-      ok: false,
-      status: TYPE_MESSAGE.ERROR,
-      message: message || TYPE_MESSAGE.SYSTEM_ERROR,
-      payload,
-    };
+  onError({ message, errors, code }) {
+    messageAnt.error(message, 1.5);
+
+    return { errors, message: message || TYPE_MESSAGE.SYSTEM_ERROR, code };
+  },
+
+  onInfo(message) {
+    messageAnt.info(message, 1.5);
   },
 };

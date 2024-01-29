@@ -41,7 +41,7 @@ function AppLayout() {
       </Layout.Sider>
       <Layout className="flex h-screen flex-col justify-between">
         <Header onOpenDrawSideBar={onOpenDrawSideBar} />
-        <Layout.Content className="px-6">
+        <Layout.Content className="mb-auto h-full overflow-auto px-6">
           <BreadcrumbPages />
           <Outlet />
         </Layout.Content>

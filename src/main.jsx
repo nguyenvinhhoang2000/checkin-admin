@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             primaryColor: fullConfig.theme.colors.primary[4],
             paddingInline: fullConfig.theme.padding.primary.x,
             borderRadius: fullConfig.theme.borderRadius.button,
-            textHoverBg: fullConfig.theme.colors.primary[2],
+            textHoverBg: fullConfig.theme.colors.primary[3],
             colorLinkActive: fullConfig.theme.colors.primary[3],
             colorLink: fullConfig.theme.colors.primary[1],
             colorLinkHover: fullConfig.theme.colors.primary[2],
@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             headerSplitColor: fullConfig.theme.antdTable.headerSplitColor,
           },
           Dropdown: {
-            controlItemBgHover: fullConfig.theme.colors.primary[2],
+            controlItemBgHover: fullConfig.theme.colors.primary[3],
             paddingXXS: fullConfig.theme.padding.dropdownOverlay,
             borderRadiusSM: fullConfig.theme.borderRadius.dropdownOverlay,
           },

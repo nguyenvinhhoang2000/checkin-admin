@@ -35,6 +35,11 @@ export default {
           4: "#BFBFBF",
           5: "#D9D9D9",
         },
+        volcano: {
+          1: "#FFD8BF",
+          2: "#FA541C",
+          3: "#818181",
+        },
       },
       tableShadow: {
         dropShadow: "0px 0.625rem 1.25rem 0px rgba(18, 38, 63, 0.03)",

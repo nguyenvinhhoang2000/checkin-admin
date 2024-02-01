@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Col, Form, Input, Row, Select } from "antd";
 
 import CustomizeFormLabel from "@/components/forms/customize-form-label";
@@ -7,8 +8,23 @@ import { RULE_MESSAGE, SCHEMAS } from "@/components/schemas";
 import { GENER_TYPES } from "@/constants/gender";
 
 function CreateAndEditAccount() {
+  const { state: currentData } = useLocation();
+
+  const [createAndEditForm] = Form.useForm();
+
+  React.useEffect(() => {
+    if (currentData) {
+      createAndEditForm.setFieldsValue(currentData);
+    }
+
+    return () => {
+      createAndEditForm.resetFields();
+    };
+  }, [createAndEditForm, currentData]);
+
   return (
     <Form
+      form={createAndEditForm}
       requiredMark={CustomizeFormLabel}
       className="w-[51.875rem] rounded-md border-b border-t border-b-black/5 border-t-black/5 bg-white px-6 pb-1 pt-4"
       layout="vertical"
@@ -102,4 +118,4 @@ function CreateAndEditAccount() {
   );
 }
 
-export default CreateAndEditAccount;
+export default React.memo(CreateAndEditAccount);

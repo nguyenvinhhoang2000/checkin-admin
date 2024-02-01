@@ -61,9 +61,9 @@ function TablerAccountManagement() {
     {
       ...ACCOUNT_MANAGEMENT_COLUMNS.ACTIONS,
       width: "12%",
-      render: () => {
+      render: (_, record) => {
         const onClickButtonEdit = () => {
-          navigate(LOCATIONS.EDIT_ACCOUNT.path);
+          navigate(LOCATIONS.EDIT_ACCOUNT.path, { state: record });
         };
         return (
           <div className="flex flex-row gap-[1.25rem]">

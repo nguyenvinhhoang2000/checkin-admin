@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Layout } from "antd";
 import { useBoolean } from "usehooks-ts";
 
@@ -12,6 +12,8 @@ import BreadcrumbPages from "./breadcrumbs";
 import MenuSideBar from "./menu";
 
 function AppLayout() {
+  const location = useLocation();
+
   const { value: isCollapsed, toggle: onToggleCollapsed } = useBoolean();
 
   const {
@@ -42,7 +44,7 @@ function AppLayout() {
       <Layout className="flex h-screen flex-col justify-between">
         <Header onOpenDrawSideBar={onOpenDrawSideBar} />
         <Layout.Content className="mb-auto h-full overflow-auto px-6">
-          <BreadcrumbPages />
+          <BreadcrumbPages location={location} />
           <Outlet />
         </Layout.Content>
         <Footer />

@@ -7,6 +7,5 @@ export function upperCasePathName(location, item) {
 }
 
 export function activeLink(crumbPath, currenPath) {
-  const check = crumbPath === currenPath;
-  return check ? "!text-black" : "!text-black/45";
+  return crumbPath === currenPath ? "!text-black" : "!text-black/45";
 }

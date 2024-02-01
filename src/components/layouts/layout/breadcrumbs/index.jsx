@@ -24,6 +24,7 @@ function BreadcrumbPages({ location }) {
         onClick: () => navigate(result.routeActive ? result.path : "#"),
       };
     });
+
     return breads;
   }, [location.pathname, navigate]);
 

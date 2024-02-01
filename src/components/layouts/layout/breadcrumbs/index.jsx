@@ -8,7 +8,7 @@ import { activeLink, upperCasePathName } from "@/utils/format-breadcrumbs";
 
 function BreadcrumbPages({ listItems, location }) {
   const items = React.useMemo(() => {
-    const breads = listItems.map((item) => {
+    return listItems.map((item) => {
       const { crumb, routeActive, path } = upperCasePathName(LOCATIONS, item);
 
       return {
@@ -22,8 +22,6 @@ function BreadcrumbPages({ listItems, location }) {
         ),
       };
     });
-
-    return breads;
   }, [listItems, location.pathname]);
 
   return <Breadcrumb className="py-4" items={items} />;

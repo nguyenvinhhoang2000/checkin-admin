@@ -88,6 +88,12 @@ export const RULE_MESSAGE = {
     label: "Password",
     placeholder: "Enter your password",
   },
+
+  NOTE: {
+    name: "note",
+    label: "Note",
+    placeholder: "Enter your note",
+  },
 };
 
 export const SCHEMAS = {

@@ -1,38 +1,103 @@
 import React from "react";
 import { Col, Form, Input, Row, Select } from "antd";
 
-import { ACCOUNT_FORM, RULES } from "./config";
+import CustomizeFormLabel from "@/components/forms/customize-form-label";
+import { RULE_MESSAGE, SCHEMAS } from "@/components/schemas";
+
+import { GENER_TYPES } from "@/constants/gender";
 
 function CreateAndEditAccount() {
   return (
     <Form
+      requiredMark={CustomizeFormLabel}
       className="w-[51.875rem] rounded-md border-b border-t border-b-black/5 border-t-black/5 bg-white px-6 pb-1 pt-4"
       layout="vertical"
     >
       <Row gutter={24}>
         <Col span={12}>
           <Form.Item
-            name={ACCOUNT_FORM.NAME.name}
-            label={ACCOUNT_FORM.NAME.label}
-            rules={RULES.RULE_NAME}
+            name={RULE_MESSAGE.NAME.name}
+            label={RULE_MESSAGE.NAME.label}
+            rules={[SCHEMAS.RULE_REQUIRED_INPUT(RULE_MESSAGE.NAME.label)]}
           >
-            <Input placeholder={ACCOUNT_FORM.NAME.placeholder} allowClear />
+            <Input placeholder={RULE_MESSAGE.NAME.placeholder} allowClear />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item
-            name={ACCOUNT_FORM.BRANCH.name}
-            label={ACCOUNT_FORM.BRANCH.label}
+            name={RULE_MESSAGE.BRANCH.name}
+            label={RULE_MESSAGE.BRANCH.label}
             required
-            rules={RULES.RULE_BRANCH}
+            rules={[[SCHEMAS.RULE_REQUIRED_SELECT(RULE_MESSAGE.BRANCH.label)]]}
           >
-            <Select placeholder={ACCOUNT_FORM.BRANCH.placeholder} allowClear>
+            <Select placeholder={RULE_MESSAGE.BRANCH.placeholder} allowClear>
               <Select.Option key={1}>1</Select.Option>
               <Select.Option key={2}>2</Select.Option>
             </Select>
           </Form.Item>
         </Col>
       </Row>
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item
+            name={RULE_MESSAGE.EMAIL.name}
+            label={RULE_MESSAGE.EMAIL.label}
+            rules={[SCHEMAS.RULE_REQUIRED_INPUT(RULE_MESSAGE.EMAIL.label)]}
+          >
+            <Input placeholder={RULE_MESSAGE.EMAIL.placeholder} allowClear />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            name={RULE_MESSAGE.PASSWORD.name}
+            label={RULE_MESSAGE.PASSWORD.label}
+            required
+          >
+            <Input placeholder={RULE_MESSAGE.PASSWORD.placeholder} allowClear />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item
+            name={RULE_MESSAGE.GENDER.name}
+            label={RULE_MESSAGE.GENDER.label}
+            rules={[SCHEMAS.RULE_REQUIRED_INPUT(RULE_MESSAGE.GENDER.label)]}
+          >
+            <Select placeholder={RULE_MESSAGE.GENDER.placeholder} allowClear>
+              {GENER_TYPES.map((item) => (
+                <Select.Option key={item.value}>{item.label}</Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            name={RULE_MESSAGE.POSITION.name}
+            label={RULE_MESSAGE.POSITION.label}
+            required
+            rules={[
+              [SCHEMAS.RULE_REQUIRED_SELECT(RULE_MESSAGE.POSITION.label)],
+            ]}
+          >
+            <Input placeholder={RULE_MESSAGE.POSITION.placeholder} allowClear />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Form.Item
+        name={RULE_MESSAGE.NOTE.name}
+        label={RULE_MESSAGE.NOTE.label}
+        required
+        rules={[[SCHEMAS.RULE_REQUIRED_SELECT(RULE_MESSAGE.NOTE.label)]]}
+      >
+        <Input.TextArea
+          rows={4}
+          maxLength={100}
+          showCount
+          placeholder={RULE_MESSAGE.NOTE.placeholder}
+          allowClear
+        />
+      </Form.Item>
     </Form>
   );
 }

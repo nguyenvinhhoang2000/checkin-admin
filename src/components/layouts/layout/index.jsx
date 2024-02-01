@@ -24,8 +24,10 @@ function AppLayout() {
 
   const breadCrumbs = React.useMemo(() => {
     const crumbPath = formatSlashPathName(location.pathname);
+
     const breads = crumbPath.map((item) => {
       const { crumb, routeActive, path } = upperCasePathName(LOCATIONS, item);
+
       return {
         title: (
           <Link

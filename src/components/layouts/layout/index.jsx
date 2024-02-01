@@ -32,7 +32,7 @@ function AppLayout() {
         title: (
           <Link
             to={routeActive ? path : "#"}
-            className={classNames(activeLink(path, location.pathname))}
+            className={activeLink(path, location.pathname)}
           >
             {crumb || item}
           </Link>

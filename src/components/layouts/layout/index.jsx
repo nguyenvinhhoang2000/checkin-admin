@@ -1,7 +1,9 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Layout } from "antd";
 import { useBoolean } from "usehooks-ts";
+
+import { formatSlashPathName } from "@/utils/format-breadcrumbs";
 
 import Footer from "../footer";
 import Header from "../header";
@@ -12,6 +14,12 @@ import BreadcrumbPages from "./breadcrumbs";
 import MenuSideBar from "./menu";
 
 function AppLayout() {
+  const location = useLocation();
+
+  const breadCrumbs = React.useMemo(() => {
+    return formatSlashPathName(location.pathname);
+  }, [location.pathname]);
+
   const { value: isCollapsed, toggle: onToggleCollapsed } = useBoolean();
 
   const {
@@ -41,8 +49,8 @@ function AppLayout() {
       </Layout.Sider>
       <Layout className="flex h-screen flex-col justify-between">
         <Header onOpenDrawSideBar={onOpenDrawSideBar} />
-        <Layout.Content className="mb-auto overflow-y-auto px-6">
-          <BreadcrumbPages />
+        <Layout.Content className="mb-auto h-full overflow-auto px-6">
+          <BreadcrumbPages listItems={breadCrumbs} location={location} />
           <Outlet />
         </Layout.Content>
         <Footer />

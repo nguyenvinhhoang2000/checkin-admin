@@ -1,28 +1,35 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Breadcrumb } from "antd";
+import PropTypes from "prop-types";
 
 import { LOCATIONS } from "@/constants/locations";
+import { activeLink, upperCasePathName } from "@/utils/format-breadcrumbs";
 
-function BreadcrumbPages() {
-  const location = useLocation();
-  const navigate = useNavigate();
+function BreadcrumbPages({ listItems, location }) {
+  const items = React.useMemo(() => {
+    return listItems.map((item) => {
+      const { crumb, routeActive, path } = upperCasePathName(LOCATIONS, item);
 
-  const crumbPath = location.pathname.split("/").filter((path) => path !== "");
+      return {
+        title: (
+          <Link
+            to={routeActive ? path : "#"}
+            className={activeLink(path, location.pathname)}
+          >
+            {crumb || item}
+          </Link>
+        ),
+      };
+    });
+  }, [listItems, location.pathname]);
 
-  const breadCrumbs = crumbPath.map((item) => {
-    const result = LOCATIONS[item.replace(/-/g, "_").toUpperCase()];
-    return {
-      title: (
-        <span className="cursor-pointer hover:bg-primary-3">
-          {result.crumb || item}
-        </span>
-      ),
-      onClick: () => navigate(result.routeActive ? result.path : "#"),
-    };
-  });
-
-  return <Breadcrumb className="py-4" items={breadCrumbs} />;
+  return <Breadcrumb className="py-4" items={items} />;
 }
 
 export default React.memo(BreadcrumbPages);
+
+BreadcrumbPages.propTypes = {
+  listItems: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+};

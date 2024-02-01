@@ -1,7 +1,9 @@
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Layout } from "antd";
 import { useBoolean } from "usehooks-ts";
+
+import { LOCATIONS } from "@/constants/locations";
 
 import Footer from "../footer";
 import Header from "../header";
@@ -13,6 +15,28 @@ import MenuSideBar from "./menu";
 
 function AppLayout() {
   const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const breadCrumbs = React.useMemo(() => {
+    const crumbPath = location.pathname
+      .split("/")
+      .filter((path) => path !== "");
+
+    const breads = crumbPath.map((item) => {
+      const result = LOCATIONS[item.replace(/-/g, "_").toUpperCase()];
+      return {
+        title: (
+          <span className="cursor-pointer hover:bg-primary-3">
+            {result.crumb || item}
+          </span>
+        ),
+        onClick: () => navigate(result.routeActive ? result.path : "#"),
+      };
+    });
+
+    return breads;
+  }, [location.pathname, navigate]);
 
   const { value: isCollapsed, toggle: onToggleCollapsed } = useBoolean();
 
@@ -44,7 +68,7 @@ function AppLayout() {
       <Layout className="flex h-screen flex-col justify-between">
         <Header onOpenDrawSideBar={onOpenDrawSideBar} />
         <Layout.Content className="mb-auto h-full overflow-auto px-6">
-          <BreadcrumbPages location={location} />
+          <BreadcrumbPages items={breadCrumbs} />
           <Outlet />
         </Layout.Content>
         <Footer />

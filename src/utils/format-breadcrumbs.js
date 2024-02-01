@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 export function formatSlashPathName(pathname) {
   return pathname.split("/").filter((path) => path !== "");
 }
@@ -7,5 +9,8 @@ export function upperCasePathName(location, item) {
 }
 
 export function activeLink(crumbPath, currenPath) {
-  return crumbPath === currenPath ? "!text-black" : "!text-black/45";
+  return classNames(
+    crumbPath === currenPath ? "!text-black" : "!text-black/45",
+    "cursor-pointer font-roboto hover:rounded-md hover:bg-primary-3",
+  );
 }

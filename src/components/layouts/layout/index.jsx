@@ -32,10 +32,7 @@ function AppLayout() {
         title: (
           <Link
             to={routeActive ? path : "#"}
-            className={classNames(
-              activeLink(path, location.pathname),
-              "cursor-pointer font-roboto hover:rounded-md hover:bg-primary-3",
-            )}
+            className={classNames(activeLink(path, location.pathname))}
           >
             {crumb || item}
           </Link>

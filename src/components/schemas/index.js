@@ -8,61 +8,61 @@ export const RULE_MESSAGE = {
   NAME: {
     name: "name",
     label: "Name",
-    placeholder: "Enter your name",
+    placeholder: "Enter name",
   },
 
   EMAIL: {
     name: "email",
     label: "Email",
-    placeholder: "Enter your email",
+    placeholder: "Enter email",
   },
 
   BRANCH: {
     name: "branch",
     label: "Branch",
-    placeholder: "Enter your branch",
+    placeholder: "Enter branch",
   },
 
   ADDRESS: {
     name: "address",
     label: "Address",
-    placeholder: "Enter your address",
+    placeholder: "Enter address",
   },
 
   GENDER: {
     name: "gender",
     label: "Gender",
-    placeholder: "Enter your gender",
+    placeholder: "Enter gender",
   },
 
   POSITION: {
     name: "position",
     label: "Position",
-    placeholder: "Enter your position",
+    placeholder: "Enter position",
   },
 
   WORK_TIME: {
     name: "workTime",
     label: "Work Time",
-    placeholder: "Enter your work time",
+    placeholder: "Enter work time",
   },
 
   WORK_TIME_START: {
     name: "workTimeStart",
     label: "Work time start",
-    placeholder: "Enter your work time start",
+    placeholder: "Enter work time start",
   },
 
   WORK_TIME_END: {
     name: "workTimeEnd",
     label: "Work time end",
-    placeholder: "Enter your work time end",
+    placeholder: "Enter work time end",
   },
 
   NUMBER_OF_WORKING_DAYS: {
     name: "numberOfWorkingDays",
     label: "Number of working days in a month",
-    placeholder: "Enter your number of working days",
+    placeholder: "Enter number of working days",
   },
 
   IPS: {
@@ -74,19 +74,25 @@ export const RULE_MESSAGE = {
   BUSINESS_NAME: {
     name: "businessName",
     label: "Business Name",
-    placeholder: "Enter your businessName",
+    placeholder: "Enter businessName",
   },
 
   PHONE_NUMBER: {
     name: "phoneNumber",
     label: "Phone Number",
-    placeholder: "Enter your phone number",
+    placeholder: "Enter phone number",
   },
 
   PASSWORD: {
     name: "password",
     label: "Password",
-    placeholder: "Enter your password",
+    placeholder: "Enter password",
+  },
+
+  NOTE: {
+    name: "note",
+    label: "Note",
+    placeholder: "Enter your note",
   },
 };
 

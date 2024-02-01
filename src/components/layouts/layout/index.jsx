@@ -1,14 +1,9 @@
 import React from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Layout } from "antd";
 import { useBoolean } from "usehooks-ts";
 
-import { LOCATIONS } from "@/constants/locations";
-import {
-  activeLink,
-  formatSlashPathName,
-  upperCasePathName,
-} from "@/utils/format-breadcrumbs";
+import { formatSlashPathName } from "@/utils/format-breadcrumbs";
 
 import Footer from "../footer";
 import Header from "../header";
@@ -22,24 +17,7 @@ function AppLayout() {
   const location = useLocation();
 
   const breadCrumbs = React.useMemo(() => {
-    const crumbPath = formatSlashPathName(location.pathname);
-
-    const breads = crumbPath.map((item) => {
-      const { crumb, routeActive, path } = upperCasePathName(LOCATIONS, item);
-
-      return {
-        title: (
-          <Link
-            to={routeActive ? path : "#"}
-            className={activeLink(path, location.pathname)}
-          >
-            {crumb || item}
-          </Link>
-        ),
-      };
-    });
-
-    return breads;
+    return formatSlashPathName(location.pathname);
   }, [location.pathname]);
 
   const { value: isCollapsed, toggle: onToggleCollapsed } = useBoolean();
@@ -72,7 +50,7 @@ function AppLayout() {
       <Layout className="flex h-screen flex-col justify-between">
         <Header onOpenDrawSideBar={onOpenDrawSideBar} />
         <Layout.Content className="mb-auto h-full overflow-auto px-6">
-          <BreadcrumbPages items={breadCrumbs} />
+          <BreadcrumbPages listItems={breadCrumbs} location={location} />
           <Outlet />
         </Layout.Content>
         <Footer />

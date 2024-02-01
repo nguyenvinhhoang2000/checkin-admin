@@ -4,6 +4,10 @@ import { Layout } from "antd";
 import { useBoolean } from "usehooks-ts";
 
 import { LOCATIONS } from "@/constants/locations";
+import {
+  formatSlashPathName,
+  upperCasePathName,
+} from "@/utils/format-breadcrumbs";
 
 import Footer from "../footer";
 import Header from "../header";
@@ -19,12 +23,10 @@ function AppLayout() {
   const navigate = useNavigate();
 
   const breadCrumbs = React.useMemo(() => {
-    const crumbPath = location.pathname
-      .split("/")
-      .filter((path) => path !== "");
+    const crumbPath = formatSlashPathName(location.pathname);
 
     const breads = crumbPath.map((item) => {
-      const result = LOCATIONS[item.replace(/-/g, "_").toUpperCase()];
+      const result = LOCATIONS[upperCasePathName(item)];
       return {
         title: (
           <span className="cursor-pointer hover:bg-primary-3">

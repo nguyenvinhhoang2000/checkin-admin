@@ -1,10 +1,12 @@
 import React from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { Layout } from "antd";
+import classNames from "classnames";
 import { useBoolean } from "usehooks-ts";
 
 import { LOCATIONS } from "@/constants/locations";
 import {
+  activeLink,
   formatSlashPathName,
   upperCasePathName,
 } from "@/utils/format-breadcrumbs";
@@ -20,25 +22,27 @@ import MenuSideBar from "./menu";
 function AppLayout() {
   const location = useLocation();
 
-  const navigate = useNavigate();
-
   const breadCrumbs = React.useMemo(() => {
     const crumbPath = formatSlashPathName(location.pathname);
-
     const breads = crumbPath.map((item) => {
-      const result = LOCATIONS[upperCasePathName(item)];
+      const { crumb, routeActive, path } = upperCasePathName(LOCATIONS, item);
       return {
         title: (
-          <span className="cursor-pointer hover:bg-primary-3">
-            {result.crumb || item}
-          </span>
+          <Link
+            to={routeActive ? path : "#"}
+            className={classNames(
+              activeLink(path, location.pathname),
+              "cursor-pointer font-roboto hover:bg-primary-3",
+            )}
+          >
+            {crumb || item}
+          </Link>
         ),
-        onClick: () => navigate(result.routeActive ? result.path : "#"),
       };
     });
 
     return breads;
-  }, [location.pathname, navigate]);
+  }, [location.pathname]);
 
   const { value: isCollapsed, toggle: onToggleCollapsed } = useBoolean();
 

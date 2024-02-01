@@ -28,7 +28,7 @@ function AppFooterForm({
           type="text"
           onClick={onDelete}
         >
-          {deleteText}
+          <span className="underline underline-offset-2">{deleteText}</span>
         </Button>
       )}
       <div className="flex flex-row items-center gap-2">

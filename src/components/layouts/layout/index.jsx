@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Layout } from "antd";
-import classNames from "classnames";
 import { useBoolean } from "usehooks-ts";
 
 import { LOCATIONS } from "@/constants/locations";

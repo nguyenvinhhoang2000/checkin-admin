@@ -16,6 +16,7 @@ function TablerAccountManagement() {
   const pageAccount = useAccountManagementStore().pageAccount;
   const onSetPage = useAccountManagementStore().onSetPage;
   const isLoadingTable = useAccountManagementStore().isLoadingTable;
+  const onShowModalDeleted = useAccountManagementStore().onShowModalDeleted;
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -62,9 +63,14 @@ function TablerAccountManagement() {
       ...ACCOUNT_MANAGEMENT_COLUMNS.ACTIONS,
       width: "12%",
       render: (_, record) => {
+        const onClickButtonTrash = () => {
+          onShowModalDeleted(record);
+        };
+
         const onClickButtonEdit = () => {
           navigate(LOCATIONS.EDIT_ACCOUNT.path, { state: record });
         };
+
         return (
           <div className="flex flex-row gap-[1.25rem]">
             <Button className="m-0 h-fit p-0" type="text">
@@ -80,7 +86,11 @@ function TablerAccountManagement() {
                 src="/icons/edit-icon.svg#id"
               />
             </Button>
-            <Button className="m-0 h-fit p-0" type="text">
+            <Button
+              onClick={onClickButtonTrash}
+              className="m-0 h-fit p-0"
+              type="text"
+            >
               <AppIcon
                 className="text-black/45"
                 src="/icons/trash-icon.svg#id"

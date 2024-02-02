@@ -11,6 +11,8 @@ const useAccountManagementStore = create((set, get) => ({
 
   isLoadingTable: false,
 
+  infoMemberPicked: null,
+
   onGetListAccount: async () => {
     try {
       const { statusAccount, limit, pageAccount } = get();
@@ -63,6 +65,23 @@ const useAccountManagementStore = create((set, get) => ({
       limit: 10,
       pageAccount: 1,
     }),
+
+  onShowModalDeleted: async (record) => {
+    set({ isShowModalDeleted: true, infoMemberPicked: record });
+  },
+
+  onHideModalDeleted: async () => {
+    set({ isShowModalDeleted: false, infoMemberPicked: null });
+  },
+
+  onDeleteMemberAccount: async () => {
+    const { onGetListAccount, infoMemberPicked } = get();
+
+    console.log(`🚀🚀🚀!..infoMemberPicked:`, infoMemberPicked);
+    // const data = adminApi.deleteMember(record._id);
+
+    await onGetListAccount();
+  },
 }));
 
 export default useAccountManagementStore;

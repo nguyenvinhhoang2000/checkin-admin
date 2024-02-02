@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import useAccountManagementStore from "@/store/use-account-management-store";
 
 import HeaderAccountManagement from "./components/header";
+import ModalDeleteMember from "./components/modal-delete-member";
 import TablerAccountManagement from "./components/table";
 
 function AccountManagement() {
@@ -25,6 +26,7 @@ function AccountManagement() {
     <section className="shadow-dropShadow flex flex-col gap-[1.25rem] rounded-xl bg-white p-5">
       <HeaderAccountManagement />
       <TablerAccountManagement />
+      <ModalDeleteMember />
     </section>
   );
 }

@@ -9,12 +9,12 @@ function ModalDeleteMember() {
 
   return (
     <Modal
-      title={null}
+      title="Do you want to delete this account?"
       closable={false}
       onCancel={onHideModalDeleted}
       open={isShowModalDeleted}
     >
-      ModalDeleteMember
+      This account will be disabled and cannot log in
     </Modal>
   );
 }

@@ -3,9 +3,13 @@ import { Avatar, Button, Dropdown } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
+import useAuthStore from "@/store/use-auth-store";
+
 function UserDropdown() {
-  const onMenuClick = React.useCallback(() => {
-    console.log(`🎶🎶🎶.. logout`);
+  const onLogout = useAuthStore().onLogout;
+
+  const onMenuClick = React.useCallback(async () => {
+    await onLogout();
   }, []);
 
   const menu = React.useMemo(() => {

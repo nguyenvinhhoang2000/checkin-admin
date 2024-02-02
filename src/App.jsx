@@ -1,11 +1,14 @@
 import React from "react";
+import cookie from "react-cookies";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
 
+import AuthRoute from "@/components/auth-layout";
 import AppLayout from "@/components/layouts/layout";
+import PrivateRoute from "@/components/private-route-layout";
 
 import { LOCATIONS } from "@/constants/locations";
 import {
@@ -21,17 +24,34 @@ import {
   TableCheckin,
 } from "@/routes";
 
+import { COOKIES_KEYS } from "./constants/cookies-keys";
+import { setAppAccessToken } from "./services/axios-config";
+import useAdminProfileStore from "./store/use-admin-profile-store";
+import useAppMounted from "./store/use-app-mounted";
+
 import "./App.css";
 
 function App() {
+  const onSetAppMounted = useAppMounted().onSetAppMounted;
+
+  const onGetAdminInfo = useAdminProfileStore().onGetAdminInfo;
+
   const router = createBrowserRouter([
     {
       path: LOCATIONS.LOGIN.path,
-      element: <Login />,
+      element: (
+        <AuthRoute>
+          <Login />
+        </AuthRoute>
+      ),
     },
     {
       path: LOCATIONS.HOME.path,
-      element: <AppLayout />,
+      element: (
+        <PrivateRoute>
+          <AppLayout />
+        </PrivateRoute>
+      ),
       children: [
         // DASHBOARD PAGE
         {
@@ -83,6 +103,27 @@ function App() {
       element: <Navigate to={LOCATIONS.DASHBOARD.path} />,
     },
   ]);
+  const onInitialize = React.useCallback(async () => {
+    const token = cookie.load(COOKIES_KEYS.TOKEN);
+    if (token) {
+      /** Get user info
+       * @api {get} /client/user Get user info
+       * @action set user to zustand
+       * */
+      setAppAccessToken(token);
+      await onGetAdminInfo(token);
+    }
+    setTimeout(
+      () => {
+        onSetAppMounted();
+      },
+      token ? 500 : 0,
+    );
+  }, []); // eslint-disable-line
+
+  React.useEffect(() => {
+    onInitialize();
+  }, []); // eslint-disable-line
 
   return <RouterProvider router={router} />;
 }

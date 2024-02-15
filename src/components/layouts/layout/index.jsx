@@ -28,8 +28,8 @@ function AppLayout() {
     setFalse: onCloseDrawSideBar,
   } = useBoolean();
 
-  const onBreakpoint = React.useCallback((broken) => {
-    console.log(broken);
+  const onBreakpoint = React.useCallback(() => {
+    // todo: fix bug when collapsed on desktop then resize to mobile and open draw
   }, []);
 
   return (

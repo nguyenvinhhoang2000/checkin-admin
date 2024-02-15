@@ -7,13 +7,6 @@ import { fullConfig } from "./theme.js";
 
 import "./index.css";
 
-const screenXS = 0;
-const screenSM = 640;
-const screenMD = 768;
-const screenLG = 1024;
-const screenXL = 1280;
-const screenXXL = 1536;
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ConfigProvider
@@ -21,23 +14,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         token: {
           fontFamily: fullConfig.theme.fontFamily.roboto[0],
           colorPrimary: fullConfig.theme.colors.primary[1],
-          screenXS,
-          screenXSMin: screenXS,
-          screenXSMax: screenSM - 1,
-          screenSM,
-          screenSMMin: screenSM,
-          screenSMMax: screenMD - 1,
-          screenMD,
-          screenMDMin: screenMD,
-          screenMDMax: screenLG - 1,
-          screenLG,
-          screenLGMin: screenLG,
-          screenLGMax: screenXL - 1,
-          screenXL,
-          screenXLMin: screenXL,
-          screenXLMax: screenXXL - 1,
-          screenXXL,
-          screenXXLMin: screenXXL,
         },
         components: {
           Button: {

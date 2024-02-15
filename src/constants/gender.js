@@ -1,4 +1,4 @@
-export const GENER_TYPES = [
+export const GENDER_TYPES = [
   {
     value: 1,
     label: "Male",
@@ -6,5 +6,9 @@ export const GENER_TYPES = [
   {
     value: 2,
     label: "Female",
+  },
+  {
+    value: 3,
+    label: "Other",
   },
 ];

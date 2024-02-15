@@ -11,8 +11,8 @@ const ACCOUNT_MANAGEMENT_COLUMNS = {
   },
   BRANCH: {
     title: "Branch",
-    dataIndex: "branch",
-    key: "branch",
+    dataIndex: ["branch", "address"],
+    key: ["branch", "_id"],
   },
   ACTIONS: {
     title: "Actions",

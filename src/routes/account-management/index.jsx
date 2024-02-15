@@ -20,10 +20,10 @@ function AccountManagement() {
     return () => {
       onResetAccountManagement();
     };
-  }, []);
+  }, [onGetDataFirstRender, onResetAccountManagement, searchParams]);
 
   return (
-    <section className="shadow-dropShadow flex flex-col gap-[1.25rem] rounded-xl bg-white p-5">
+    <section className="flex flex-col gap-[1.25rem] rounded-xl bg-white p-5 shadow-dropShadow">
       <HeaderAccountManagement />
       <TablerAccountManagement />
       <ModalDeleteMember />

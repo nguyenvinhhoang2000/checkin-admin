@@ -33,7 +33,7 @@ function TablerAccountManagement() {
       render: (text) => {
         const onClickClipboard = () => {
           navigator.clipboard.writeText(text);
-          message.success("Coppy to clipboard");
+          message.success("Copy to clipboard");
         };
         return (
           <div>
@@ -68,7 +68,7 @@ function TablerAccountManagement() {
         };
 
         const onClickButtonEdit = () => {
-          navigate(LOCATIONS.EDIT_ACCOUNT.path, { state: record });
+          navigate(`${LOCATIONS.EDIT_ACCOUNT.path}?id=${record._id}`);
         };
 
         return (

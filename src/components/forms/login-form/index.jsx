@@ -31,7 +31,7 @@ function LoginForm() {
       form={loginForm}
       onFinish={onSubmitForm}
       name="normal_login"
-      className="shadow-dropShadow flex max-w-[29rem] flex-col justify-center rounded-xl bg-white p-[2rem]"
+      className="flex max-w-[29rem] flex-col justify-center rounded-xl bg-white p-[2rem] shadow-dropShadow"
     >
       <div className="mb-[1.5rem]">
         <h2 className="text-character-1 mb-[0.25rem] px-[2.37rem] text-center font-roboto text-3xl font-medium leading-10">

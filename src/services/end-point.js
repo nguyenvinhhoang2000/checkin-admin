@@ -4,6 +4,7 @@ const ENDPOINT = {
 
   // ORGANIZATION
   CREATE_ORGANIZATION: "/admin/organizations",
+  GET_ORGANIZATION: "/admin/organizations",
 
   // MEMBERS
 

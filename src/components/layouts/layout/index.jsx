@@ -28,12 +28,18 @@ function AppLayout() {
     setFalse: onCloseDrawSideBar,
   } = useBoolean();
 
+  const onBreakpoint = React.useCallback(() => {
+    // todo: fix bug when collapsed on desktop then resize to mobile and open draw
+  }, []);
+
   return (
     <Layout className="min-h-screen">
       <Layout.Sider
         className="hidden bg-sideBar sm:fixed sm:block sm:h-screen sm:overflow-auto"
         width={220}
+        onBreakpoint={onBreakpoint}
         collapsed={isCollapsed}
+        breakpoint="sm"
       >
         <div className="hidden bg-sideBar sm:block sm:h-full">
           <SideBarHeader

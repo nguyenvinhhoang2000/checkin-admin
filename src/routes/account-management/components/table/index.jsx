@@ -58,6 +58,7 @@ function TablerAccountManagement() {
     {
       ...ACCOUNT_MANAGEMENT_COLUMNS.BRANCH,
       width: "29.3%",
+      style: { whiteSpace: "nowrap" },
     },
     {
       ...ACCOUNT_MANAGEMENT_COLUMNS.ACTIONS,
@@ -127,7 +128,7 @@ function TablerAccountManagement() {
       loading={isLoadingTable}
       onChange={onChangePage}
       rowKey="_id"
-      scroll={scroll}
+      {...(listAccount.length !== 0 ? { scroll } : {})}
       pagination={pagination}
       dataSource={listAccount}
       columns={columns}

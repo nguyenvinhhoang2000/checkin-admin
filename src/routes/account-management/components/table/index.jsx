@@ -68,7 +68,7 @@ function TablerAccountManagement() {
         };
 
         const onClickButtonEdit = () => {
-          navigate(`${LOCATIONS.EDIT_ACCOUNT.path}?id=${record._id}`);
+          navigate(`${LOCATIONS.EDIT_ACCOUNT.path}/${record._id}`);
         };
 
         return (

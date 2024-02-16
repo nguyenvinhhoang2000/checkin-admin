@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Col, Form, Input, Row, Select, Spin } from "antd";
 
 import AppFooterForm from "@/components/apps/app-footer-form";
@@ -7,7 +7,6 @@ import CustomizeFormLabel from "@/components/forms/customize-form-label";
 import { RULE_MESSAGE, SCHEMAS } from "@/components/schemas";
 
 import { GENDER_TYPES } from "@/constants/gender";
-import { LOCATIONS } from "@/constants/locations";
 import useAccountManagementStore from "@/store/use-account-management-store";
 
 function CreateAndEditAccount() {
@@ -17,19 +16,24 @@ function CreateAndEditAccount() {
   const branches = useAccountManagementStore().branches;
   const isLoadingForm = useAccountManagementStore().isLoadingForm;
   const onShowModalDeleted = useAccountManagementStore().onShowModalDeleted;
+  const onShowModalCancel = useAccountManagementStore().onShowModalCancel;
   const onEditMemberAccount = useAccountManagementStore().onEditMemberAccount;
+  const onCreateMemberAccount =
+    useAccountManagementStore().onCreateMemberAccount;
 
   const onClickDeleteButton = () => {
     onShowModalDeleted(infoMemberPicked);
   };
 
-  const [searchParams] = useSearchParams();
+  const onClickCancelButton = () => {
+    onShowModalCancel();
+  };
 
   const navigate = useNavigate();
 
   const [createAndEditForm] = Form.useForm();
 
-  const memberId = searchParams.get("id");
+  const { id: memberId } = useParams();
 
   React.useEffect(() => {
     if (memberId) {
@@ -43,7 +47,10 @@ function CreateAndEditAccount() {
 
   React.useEffect(() => {
     if (memberId) {
-      createAndEditForm.setFieldsValue(infoMemberPicked);
+      createAndEditForm.setFieldsValue({
+        ...infoMemberPicked,
+        password: "",
+      });
     }
 
     return () => {
@@ -62,6 +69,10 @@ function CreateAndEditAccount() {
   const onSubmit = () => {
     const data = createAndEditForm.getFieldsValue();
 
+    if (data.phoneNumber && data.phoneNumber.startsWith("0")) {
+      data.phoneNumber = `+84${data.phoneNumber.slice(1)}`;
+    }
+
     const branchId = findBranchIdByAddress(data.branch.address);
 
     if (branchId) {
@@ -70,11 +81,11 @@ function CreateAndEditAccount() {
         branch: branchId,
       };
 
-      onEditMemberAccount(memberId, editedData);
-
-      console.log(memberId, editedData);
-    } else {
-      console.error(`Branch with address ${data.branch.address} not found.`);
+      if (memberId) {
+        onEditMemberAccount(memberId, editedData, navigate);
+      } else {
+        onCreateMemberAccount(editedData, navigate);
+      }
     }
   };
 
@@ -102,9 +113,8 @@ function CreateAndEditAccount() {
               <Form.Item
                 name={RULE_MESSAGE.BRANCH.name}
                 label={RULE_MESSAGE.BRANCH.label}
-                required
                 rules={[
-                  [SCHEMAS.RULE_REQUIRED_SELECT(RULE_MESSAGE.BRANCH.label)],
+                  SCHEMAS.RULE_REQUIRED_SELECT(RULE_MESSAGE.BRANCH.label),
                 ]}
               >
                 <Select placeholder={RULE_MESSAGE.BRANCH.placeholder}>
@@ -155,7 +165,9 @@ function CreateAndEditAccount() {
               <Form.Item
                 name={RULE_MESSAGE.GENDER.name}
                 label={RULE_MESSAGE.GENDER.label}
-                rules={[SCHEMAS.RULE_REQUIRED_INPUT(RULE_MESSAGE.GENDER.label)]}
+                rules={[
+                  SCHEMAS.RULE_REQUIRED_SELECT(RULE_MESSAGE.GENDER.label),
+                ]}
               >
                 <Select placeholder={RULE_MESSAGE.GENDER.placeholder}>
                   {GENDER_TYPES.map((item) => (
@@ -214,9 +226,11 @@ function CreateAndEditAccount() {
 
       <AppFooterForm
         cancelText="Cancel"
-        deleteText="Delete"
-        classNames="mt-[6rem] w-full min-h-[3.75rem] flex flex-row justify-between bg-white px-5 py-3 rounded-md"
-        onCancel={() => navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path)}
+        deleteText={memberId ? "Delete" : null}
+        classNames={`mt-[6rem] w-full min-h-[3.75rem] flex flex-row ${
+          memberId ? "justify-between" : ""
+        } bg-white px-5 py-3 rounded-md`}
+        onCancel={onClickCancelButton}
         onDelete={onClickDeleteButton}
       />
     </Form>

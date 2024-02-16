@@ -23,26 +23,8 @@ const adminApi = {
   },
 
   // MEMBER DETAIL ACTION
-  createMember({
-    name,
-    branch,
-    email,
-    gender,
-    password,
-    position,
-    phoneNumber,
-    note,
-  }) {
-    return axiosClient.get(ENDPOINT.CREATE_MEMBER, {
-      name,
-      branch,
-      email,
-      gender,
-      password,
-      position,
-      phoneNumber,
-      note,
-    });
+  createMember(data) {
+    return axiosClient.post(ENDPOINT.CREATE_MEMBER, data);
   },
 
   getMember(id) {

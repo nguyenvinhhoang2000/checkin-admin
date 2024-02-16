@@ -1,6 +1,7 @@
 import { message } from "antd";
 import { create } from "zustand";
 
+import { LOCATIONS } from "@/constants/locations";
 import adminApi from "@/services/admin-api";
 
 const useAccountManagementStore = create((set, get) => ({
@@ -78,6 +79,14 @@ const useAccountManagementStore = create((set, get) => ({
     set({ isShowModalDeleted: false, infoMemberPicked: null });
   },
 
+  onShowModalCancel: async () => {
+    set({ isShowModalCancel: true });
+  },
+
+  onHideModalCancel: async () => {
+    set({ isShowModalCancel: false });
+  },
+
   onDeleteMemberAccount: async () => {
     const { onGetListAccount, infoMemberPicked } = get();
 
@@ -114,16 +123,36 @@ const useAccountManagementStore = create((set, get) => ({
     }
   },
 
-  onEditMemberAccount: async (id, data) => {
-    const { onGetListAccount } = get();
+  onEditMemberAccount: async (id, data, navigate) => {
+    try {
+      const { onGetListAccount } = get();
 
-    await adminApi.editMember(id, data);
+      await adminApi.editMember(id, data);
 
-    console.log("editedData", data);
+      message.success("Edit saved successfully");
 
-    message.success("Edit saved successfully");
+      await onGetListAccount();
 
-    await onGetListAccount();
+      navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path);
+    } catch (error) {
+      message.error(error.response.data.errors[0].msg);
+    }
+  },
+
+  onCreateMemberAccount: async (data, navigate) => {
+    try {
+      const { onGetListAccount } = get();
+
+      await adminApi.createMember(data);
+
+      message.success("Account created successfully");
+
+      await onGetListAccount();
+
+      navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path);
+    } catch (error) {
+      message.error(error.response.data.errors[0].msg);
+    }
   },
 }));
 

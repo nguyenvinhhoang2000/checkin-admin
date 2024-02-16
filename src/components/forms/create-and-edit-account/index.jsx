@@ -100,7 +100,7 @@ function CreateAndEditAccount() {
       <Spin spinning={isLoadingForm}>
         <div className="rounded-md border-b border-t border-b-black/5 border-t-black/5 bg-white px-6 pb-1 pt-4 xl:min-w-[51.875rem]">
           <Row gutter={24}>
-            <Col span={12}>
+            <Col xs={24} xl={12}>
               <Form.Item
                 name={RULE_MESSAGE.NAME.name}
                 label={RULE_MESSAGE.NAME.label}
@@ -109,7 +109,7 @@ function CreateAndEditAccount() {
                 <Input placeholder={RULE_MESSAGE.NAME.placeholder} allowClear />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} xl={12}>
               <Form.Item
                 name={RULE_MESSAGE.BRANCH.name}
                 label={RULE_MESSAGE.BRANCH.label}
@@ -128,7 +128,7 @@ function CreateAndEditAccount() {
             </Col>
           </Row>
           <Row gutter={24}>
-            <Col span={12}>
+            <Col xs={24} xl={12}>
               <Form.Item
                 name={RULE_MESSAGE.EMAIL.name}
                 label={RULE_MESSAGE.EMAIL.label}
@@ -144,7 +144,7 @@ function CreateAndEditAccount() {
                 />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} xl={12}>
               <Form.Item
                 name={RULE_MESSAGE.PASSWORD.name}
                 label={RULE_MESSAGE.PASSWORD.label}
@@ -161,7 +161,7 @@ function CreateAndEditAccount() {
             </Col>
           </Row>
           <Row gutter={24}>
-            <Col span={12}>
+            <Col xs={24} xl={12}>
               <Form.Item
                 name={RULE_MESSAGE.GENDER.name}
                 label={RULE_MESSAGE.GENDER.label}
@@ -178,7 +178,7 @@ function CreateAndEditAccount() {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} xl={12}>
               <Form.Item
                 name={RULE_MESSAGE.POSITION.name}
                 label={RULE_MESSAGE.POSITION.label}

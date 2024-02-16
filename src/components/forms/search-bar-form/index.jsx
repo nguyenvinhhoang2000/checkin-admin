@@ -9,6 +9,8 @@ import { Button, ConfigProvider, Form, Input } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
+import { theme } from "./config";
+
 function SearchBarForm() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -31,13 +33,7 @@ function SearchBarForm() {
   }, [searchParams]);
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Form: { marginLG: "0" },
-        },
-      }}
-    >
+    <ConfigProvider theme={theme}>
       <Form
         initialValues={initialValues}
         onFinish={onSearch}

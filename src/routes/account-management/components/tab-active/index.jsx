@@ -4,7 +4,8 @@ import { ConfigProvider, Tabs } from "antd";
 
 import { TAB_STATUS } from "@/constants/tab-status";
 import useAccountManagementStore from "@/store/use-account-management-store";
-import { fullConfig } from "@/theme";
+
+import { theme } from "./config";
 
 function TabActive() {
   const onSetStatus = useAccountManagementStore().onSetStatus;
@@ -33,19 +34,7 @@ function TabActive() {
   }, []);
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: fullConfig.theme.colors.secondary[3],
-        },
-        components: {
-          Tabs: {
-            margin: "0 0",
-            // colorBorderSecondary: "rgba(0,0,0,0)",
-          },
-        },
-      }}
-    >
+    <ConfigProvider theme={theme}>
       <Tabs
         className="min-w-[8.125rem]"
         defaultActiveKey={initialValue}

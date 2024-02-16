@@ -11,6 +11,7 @@ import useAccountManagementStore from "@/store/use-account-management-store";
 
 function CreateAndEditAccount() {
   const onGetMemberDetail = useAccountManagementStore().onGetMemberDetail;
+  const onClearMemberDetail = useAccountManagementStore().onClearMemberDetail;
   const onGetBranches = useAccountManagementStore().onGetBranches;
   const infoMemberPicked = useAccountManagementStore().infoMemberPicked;
   const branches = useAccountManagementStore().branches;
@@ -33,20 +34,24 @@ function CreateAndEditAccount() {
 
   const [createAndEditForm] = Form.useForm();
 
-  const { id: memberId } = useParams();
+  const params = useParams();
 
   React.useEffect(() => {
-    if (memberId) {
-      onGetMemberDetail(memberId);
+    if (params.id) {
+      onGetMemberDetail(params.id);
     }
-  }, [memberId, onGetMemberDetail]);
+
+    return () => {
+      onClearMemberDetail();
+    };
+  }, []);
 
   React.useEffect(() => {
     onGetBranches();
   }, [onGetBranches]);
 
   React.useEffect(() => {
-    if (memberId) {
+    if (params.id) {
       createAndEditForm.setFieldsValue({
         ...infoMemberPicked,
         password: "",
@@ -56,7 +61,7 @@ function CreateAndEditAccount() {
     return () => {
       createAndEditForm.resetFields();
     };
-  }, [createAndEditForm, infoMemberPicked, memberId]);
+  }, [createAndEditForm, infoMemberPicked, params.id]);
 
   const findBranchIdByAddress = (branchAddress) => {
     const matchingBranch = branches
@@ -81,8 +86,8 @@ function CreateAndEditAccount() {
         branch: branchId,
       };
 
-      if (memberId) {
-        onEditMemberAccount(memberId, editedData, navigate);
+      if (params.id) {
+        onEditMemberAccount(params.id, editedData, navigate);
       } else {
         onCreateMemberAccount(editedData, navigate);
       }
@@ -226,9 +231,9 @@ function CreateAndEditAccount() {
 
       <AppFooterForm
         cancelText="Cancel"
-        deleteText={memberId ? "Delete" : null}
+        deleteText={params.id ? "Delete" : null}
         classNames={`mt-[6rem] w-full min-h-[3.75rem] flex flex-row ${
-          memberId ? "justify-between" : ""
+          params.id ? "justify-between" : ""
         } bg-white px-5 py-3 rounded-md`}
         onCancel={onClickCancelButton}
         onDelete={onClickDeleteButton}

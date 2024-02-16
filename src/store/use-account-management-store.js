@@ -114,6 +114,10 @@ const useAccountManagementStore = create((set, get) => ({
     }
   },
 
+  onClearMemberDetail: async () => {
+    set({ infoMemberPicked: null });
+  },
+
   onGetBranches: async () => {
     try {
       const { data } = await adminApi.getOrganizations();

@@ -14,6 +14,7 @@ function AppFooterForm({
   deleteText,
   isLoadingButtonOk,
   isDisabledButtonOk,
+  htmlType,
 }) {
   return (
     <div className={classnames(classNames, "flex flex-row justify-end gap-2")}>
@@ -42,7 +43,7 @@ function AppFooterForm({
           className="flex items-center justify-center px-9 py-[0.4rem] leading-[1.375rem]"
           loading={isLoadingButtonOk}
           type="primary"
-          htmlType="submit"
+          htmlType={htmlType}
         >
           {okText}
         </Button>
@@ -62,6 +63,7 @@ AppFooterForm.propTypes = {
   onDelete: PropTypes.func,
   isLoadingButtonOk: PropTypes.bool.isRequired,
   isDisabledButtonOk: PropTypes.bool,
+  htmlType: PropTypes.string,
 };
 
 AppFooterForm.defaultProps = {
@@ -71,4 +73,5 @@ AppFooterForm.defaultProps = {
   classNames: "",
   onDelete: emptyFn,
   isDisabledButtonOk: false,
+  htmlType: "submit",
 };

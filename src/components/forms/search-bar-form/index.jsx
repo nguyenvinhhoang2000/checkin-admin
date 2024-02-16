@@ -22,7 +22,7 @@ function SearchBarForm() {
         search: search || "",
       }).toString(),
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const initialValues = React.useMemo(() => {
     return {

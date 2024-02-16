@@ -75,10 +75,7 @@ const useAccountManagementStore = create((set, get) => ({
   },
 
   onDeleteMemberAccount: async () => {
-    const { onGetListAccount, infoMemberPicked } = get();
-
-    console.log(`🚀🚀🚀!..infoMemberPicked:`, infoMemberPicked);
-    // const data = adminApi.deleteMember(record._id);
+    const { onGetListAccount } = get();
 
     await onGetListAccount();
   },

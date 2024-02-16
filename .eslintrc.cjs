@@ -57,5 +57,6 @@ module.exports = {
     "default-param-last": ["error"],
     "import/prefer-default-export": 0,
     "prefer-destructuring": 0,
+    "react-refresh/only-export-components": 0,
   },
 };

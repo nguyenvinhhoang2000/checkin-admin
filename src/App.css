@@ -1,3 +1,24 @@
-.ant-table-cell{
+.ant-table-cell {
     white-space: nowrap;
+}
+
+.ant-collapse-header {
+    border-radius: 6px 6px 0 0 !important;
+    padding: 16px 24px !important;
+    flex-direction: row-reverse;
+    background-color: white;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    min-width: 100%;
+}
+.ant-collapse-expand-icon {
+    margin-right: 0px;
+}
+
+.ant-collapse-content-box {
+    padding: 0 !important;
 }

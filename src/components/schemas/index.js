@@ -23,10 +23,16 @@ export const RULE_MESSAGE = {
     placeholder: "Select branch",
   },
 
+  BRANCH_ADDRESS: {
+    name: ["branch", "name"],
+    label: "Address",
+    placeholder: "Enter Address",
+  },
+
   ADDRESS: {
     name: "address",
     label: "Address",
-    placeholder: "Enter address",
+    placeholder: "Enter Address",
   },
 
   GENDER: {
@@ -68,13 +74,13 @@ export const RULE_MESSAGE = {
   IPS: {
     name: "ips",
     label: "IPs",
-    placeholder: "ips",
+    placeholder: "Enter IPs",
   },
 
   BUSINESS_NAME: {
     name: "businessName",
     label: "Business Name",
-    placeholder: "Enter businessName",
+    placeholder: "Enter business name",
   },
 
   PHONE_NUMBER: {

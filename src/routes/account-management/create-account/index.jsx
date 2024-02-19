@@ -8,7 +8,10 @@ function CreateAccount() {
   return (
     <section className="flex h-full flex-col overflow-auto">
       <CreateAndEditAccount />
-      <ModalCancel />
+      <ModalCancel
+        title="Do you want to cancel?"
+        description="The action has not been saved"
+      />
     </section>
   );
 }

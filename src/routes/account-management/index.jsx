@@ -26,7 +26,10 @@ function AccountManagement() {
     <section className="flex flex-col gap-[1.25rem] rounded-xl bg-white p-5 shadow-dropShadow">
       <HeaderAccountManagement />
       <TablerAccountManagement />
-      <ModalDeleteMember />
+      <ModalDeleteMember
+        title="Do you want to delete this account?"
+        description="This account will be disabled and cannot log in"
+      />
     </section>
   );
 }

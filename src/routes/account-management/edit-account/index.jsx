@@ -9,8 +9,14 @@ function EditAccount() {
   return (
     <section className="flex flex-col overflow-auto">
       <CreateAndEditAccount />
-      <ModalDeleteMember />
-      <ModalCancel />
+      <ModalDeleteMember
+        title="Do you want to delete this account?"
+        description="This account will be disabled and cannot log in"
+      />
+      <ModalCancel
+        title="Do you want to cancel?"
+        description="The action has not been saved"
+      />
     </section>
   );
 }

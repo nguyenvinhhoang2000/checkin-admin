@@ -10,7 +10,7 @@ function UserDropdown() {
 
   const onMenuClick = React.useCallback(async () => {
     await onLogout();
-  }, []);
+  }, [onLogout]);
 
   const menu = React.useMemo(() => {
     const items = [

@@ -87,7 +87,7 @@ function App() {
           element: <CreateAccount />,
         },
         {
-          path: LOCATIONS.EDIT_ACCOUNT.path,
+          path: `${LOCATIONS.EDIT_ACCOUNT.path}/:id`,
           element: <EditAccount />,
         },
 

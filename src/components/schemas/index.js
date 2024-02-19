@@ -18,9 +18,9 @@ export const RULE_MESSAGE = {
   },
 
   BRANCH: {
-    name: "branch",
+    name: ["branch", "address"],
     label: "Branch",
-    placeholder: "Enter branch",
+    placeholder: "Select branch",
   },
 
   ADDRESS: {
@@ -32,7 +32,7 @@ export const RULE_MESSAGE = {
   GENDER: {
     name: "gender",
     label: "Gender",
-    placeholder: "Enter gender",
+    placeholder: "Select gender",
   },
 
   POSITION: {
@@ -79,7 +79,7 @@ export const RULE_MESSAGE = {
 
   PHONE_NUMBER: {
     name: "phoneNumber",
-    label: "Phone Number",
+    label: "Phone",
     placeholder: "Enter phone number",
   },
 
@@ -116,10 +116,10 @@ export const SCHEMAS = {
     message: VALIDATION_MESSAGE.INVALID(RULE_MESSAGE.EMAIL.label),
   },
 
-  RULE_PHONENUMBER: {
+  RULE_PHONE_NUMBER: {
     type: "string",
-    pattern: /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/,
-    message: VALIDATION_MESSAGE.INVALID(RULE_MESSAGE.PHONE_NUMBER),
+    pattern: /^(?:\+84|0)[0-9]{9,}$/,
+    message: VALIDATION_MESSAGE.INVALID(RULE_MESSAGE.PHONE_NUMBER.label),
   },
 
   RULE_MIN: (field, min) => {

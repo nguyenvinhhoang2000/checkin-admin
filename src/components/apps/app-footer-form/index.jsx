@@ -3,7 +3,6 @@ import { Button } from "antd";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-import { BUTTON_TYPES } from "@/constants/button-types";
 import { emptyFn } from "@/utils/empty-types";
 
 function AppFooterForm({
@@ -11,13 +10,11 @@ function AppFooterForm({
   okText,
   cancelText,
   onDelete,
-  onOk,
   onCancel,
   deleteText,
   isLoadingButtonOk,
-  buttonOkType,
-  buttonOkClassNames,
   isDisabledButtonOk,
+  htmlType,
 }) {
   return (
     <div className={classnames(classNames, "flex flex-row justify-end gap-2")}>
@@ -33,17 +30,20 @@ function AppFooterForm({
       )}
       <div className="flex flex-row items-center gap-2">
         {cancelText && (
-          <Button disabled={isLoadingButtonOk} onClick={onCancel}>
+          <Button
+            disabled={isLoadingButtonOk}
+            onClick={onCancel}
+            className="flex items-center justify-center px-[1.875rem] py-[0.4rem] leading-[1.375rem]"
+          >
             {cancelText}
           </Button>
         )}
         <Button
           disabled={isLoadingButtonOk || isDisabledButtonOk}
-          className={buttonOkClassNames}
+          className="flex items-center justify-center px-9 py-[0.4rem] leading-[1.375rem]"
           loading={isLoadingButtonOk}
-          onClick={onOk}
           type="primary"
-          htmlType={buttonOkType}
+          htmlType={htmlType}
         >
           {okText}
         </Button>
@@ -59,13 +59,11 @@ AppFooterForm.propTypes = {
   cancelText: PropTypes.string,
   deleteText: PropTypes.string,
   classNames: PropTypes.string,
-  onOk: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
   isLoadingButtonOk: PropTypes.bool.isRequired,
-  buttonOkType: PropTypes.oneOf(BUTTON_TYPES),
-  buttonOkClassNames: PropTypes.string,
   isDisabledButtonOk: PropTypes.bool,
+  htmlType: PropTypes.string,
 };
 
 AppFooterForm.defaultProps = {
@@ -73,8 +71,7 @@ AppFooterForm.defaultProps = {
   cancelText: "",
   deleteText: "",
   classNames: "",
-  buttonOkType: BUTTON_TYPES[0],
-  buttonOkClassNames: "",
   onDelete: emptyFn,
   isDisabledButtonOk: false,
+  htmlType: "submit",
 };

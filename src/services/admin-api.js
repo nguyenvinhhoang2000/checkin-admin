@@ -12,6 +12,10 @@ const adminApi = {
     return axiosClient.post(ENDPOINT.CREATE_ORGANIZATION, value);
   },
 
+  getOrganizations() {
+    return axiosClient.get(ENDPOINT.GET_ORGANIZATION);
+  },
+
   // MEMBERS
 
   getMembers(status, page, limit) {
@@ -19,46 +23,16 @@ const adminApi = {
   },
 
   // MEMBER DETAIL ACTION
-  createMember({
-    name,
-    branch,
-    email,
-    gender,
-    password,
-    position,
-    phoneNumber,
-    note,
-  }) {
-    return axiosClient.get(ENDPOINT.CREATE_MEMBER, {
-      name,
-      branch,
-      email,
-      gender,
-      password,
-      position,
-      phoneNumber,
-      note,
-    });
+  createMember(data) {
+    return axiosClient.post(ENDPOINT.CREATE_MEMBER, data);
   },
 
   getMember(id) {
     return axiosClient.get(ENDPOINT.GET_MEMBER(id));
   },
 
-  editMember(
-    id,
-    { name, branch, email, gender, password, position, phoneNumber, note },
-  ) {
-    return axiosClient.put(ENDPOINT.EDIT_MEMBER(id), {
-      name,
-      branch,
-      email,
-      gender,
-      password,
-      position,
-      phoneNumber,
-      note,
-    });
+  editMember(id, data) {
+    return axiosClient.put(ENDPOINT.EDIT_MEMBER(id), data);
   },
 
   deleteMember(id) {

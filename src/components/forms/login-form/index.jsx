@@ -2,6 +2,7 @@ import React from "react";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 
+import { BUTTON_TYPE } from "@/constants/button-types";
 import useAuthStore from "@/store/use-auth-store";
 
 import {
@@ -31,7 +32,7 @@ function LoginForm() {
       form={loginForm}
       onFinish={onSubmitForm}
       name="normal_login"
-      className="shadow-dropShadow flex max-w-[29rem] flex-col justify-center rounded-xl bg-white p-[2rem]"
+      className="flex max-w-[29rem] flex-col justify-center rounded-xl bg-white p-[2rem] shadow-dropShadow"
     >
       <div className="mb-[1.5rem]">
         <h2 className="text-character-1 mb-[0.25rem] px-[2.37rem] text-center font-roboto text-3xl font-medium leading-10">
@@ -57,7 +58,7 @@ function LoginForm() {
         <Button
           loading={isLoadingLogin}
           type="primary"
-          htmlType="submit"
+          htmlType={BUTTON_TYPE.SUBMIT}
           className="h-[2.5rem] w-full"
         >
           Sign in

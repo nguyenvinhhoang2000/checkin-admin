@@ -9,6 +9,8 @@ import { Button, ConfigProvider, Form, Input } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
+import { BUTTON_TYPE } from "@/constants/button-types";
+
 import { theme } from "./config";
 
 function SearchBarForm() {
@@ -24,7 +26,7 @@ function SearchBarForm() {
         search: search || "",
       }).toString(),
     });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   const initialValues = React.useMemo(() => {
     return {
@@ -46,7 +48,11 @@ function SearchBarForm() {
             placeholder="Search by name, phone number, email..."
             prefix={
               <Form.Item>
-                <Button type="link" className="p-0" htmlType="submit">
+                <Button
+                  type="link"
+                  className="p-0"
+                  htmlType={BUTTON_TYPE.SUBMIT}
+                >
                   <AppIcon
                     src="/icons/search-icon.svg#id"
                     width={16}

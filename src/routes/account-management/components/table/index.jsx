@@ -74,9 +74,6 @@ function TablerAccountManagement() {
 
         return (
           <div className="flex flex-row gap-[1.25rem]">
-            <Button className="m-0 h-fit p-0" type="text">
-              <AppIcon className="text-black/45" src="/icons/eye-icon.svg#id" />
-            </Button>
             <Button
               onClick={onClickButtonEdit}
               className="m-0 h-fit p-0"

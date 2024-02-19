@@ -2,6 +2,7 @@ import React from "react";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 
+import { BUTTON_TYPE } from "@/constants/button-types";
 import useAuthStore from "@/store/use-auth-store";
 
 import {
@@ -57,7 +58,7 @@ function LoginForm() {
         <Button
           loading={isLoadingLogin}
           type="primary"
-          htmlType="submit"
+          htmlType={BUTTON_TYPE.SUBMIT}
           className="h-[2.5rem] w-full"
         >
           Sign in

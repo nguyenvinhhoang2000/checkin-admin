@@ -1,1 +1,5 @@
-export const BUTTON_TYPES = ["button", "submit", "reset"];
+export const BUTTON_TYPE = {
+  BUTTON: "button",
+  SUBMIT: "submit",
+  RESET: "reset",
+};

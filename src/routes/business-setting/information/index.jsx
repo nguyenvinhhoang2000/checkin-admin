@@ -111,7 +111,7 @@ function Information() {
                   src="/icons/plus-icon.svg#id"
                   width={14}
                   height={14}
-                  className="group-hover:text-primary text-black transition-all"
+                  className="text-black transition-all group-hover:text-primary-1"
                 />
                 <span>Add Branch</span>
               </Button>
@@ -241,7 +241,7 @@ function Information() {
         items={items}
         defaultActiveKey={["1"]}
         bordered={false}
-        className="flex flex-col gap-6 xl:w-full xl:max-w-[51.875rem]"
+        className="flex flex-col gap-6 bg-transparent xl:w-full xl:max-w-[51.875rem]"
       />
 
       <AppFooterForm

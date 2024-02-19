@@ -41,9 +41,6 @@ export default {
           3: "#818181",
         },
       },
-      textColor: {
-        primary: "#FF6D03",
-      },
       boxShadow: {
         dropShadow: "0px 0.625rem 1.25rem 0px rgba(18, 38, 63, 0.03)",
       },

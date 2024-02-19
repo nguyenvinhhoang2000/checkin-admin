@@ -31,7 +31,7 @@ function TabActive() {
       status: value,
     });
     onSetStatus(value);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ConfigProvider theme={theme}>

@@ -20,7 +20,7 @@ function AccountManagement() {
     return () => {
       onResetAccountManagement();
     };
-  }, [onGetDataFirstRender, onResetAccountManagement, searchParams]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="flex flex-col gap-[1.25rem] rounded-xl bg-white p-5 shadow-dropShadow">

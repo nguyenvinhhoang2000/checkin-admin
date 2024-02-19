@@ -23,6 +23,17 @@ function Information() {
     onShowModalCancel();
   };
 
+  const onRenderExpandIcon = React.useCallback((isActive) => {
+    return (
+      <AppIcon
+        src="/icons/arrow-collapse-dropdown.svg#id"
+        width={14}
+        height={14}
+        className={`transition-all ${isActive && "rotate-180"}`}
+      />
+    );
+  }, []);
+
   const items = branches.map((branch) => {
     return {
       key: branch._id,
@@ -242,6 +253,7 @@ function Information() {
         defaultActiveKey={["1"]}
         bordered={false}
         className="flex flex-col gap-6 bg-transparent xl:w-full xl:max-w-[51.875rem]"
+        expandIcon={({ isActive }) => onRenderExpandIcon(isActive)}
       />
 
       <AppFooterForm

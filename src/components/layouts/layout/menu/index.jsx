@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
 import { LOCATIONS } from "@/constants/locations";
+import {
+  findParentMenuKey,
+  findSeletedKeys,
+} from "@/utils/find-parrent-menu-key";
 import onGetMenuItem from "@/utils/get-menu-item";
 
 const items = [
@@ -36,7 +40,10 @@ const items = [
   ),
 
   onGetMenuItem(
-    <Link to={LOCATIONS.ACCOUNT_MANAGEMENT.path}>
+    <Link
+      className="text-inherit hover:text-white"
+      to={LOCATIONS.ACCOUNT_MANAGEMENT.path}
+    >
       {LOCATIONS.ACCOUNT_MANAGEMENT.label}
     </Link>,
     LOCATIONS.ACCOUNT_MANAGEMENT.path,
@@ -69,8 +76,12 @@ const items = [
 ];
 
 function MenuSideBar() {
+  const location = useLocation();
+
   return (
     <Menu
+      defaultSelectedKeys={findSeletedKeys(location.pathname)}
+      defaultOpenKeys={[findParentMenuKey(items, location.pathname)]}
       className="bg-sideBar text-[0.875rem] text-white"
       mode="inline"
       theme="light"

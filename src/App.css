@@ -3,10 +3,11 @@
 }
 
 .ant-collapse-header {
+    flex-direction: row-reverse;
     border-radius: 6px 6px 0 0 !important;
     padding: 16px 24px !important;
-    flex-direction: row-reverse;
     background-color: white;
+
     font-family: Roboto;
     font-size: 16px;
     font-weight: 500;

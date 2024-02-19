@@ -15,15 +15,13 @@ function Information() {
   const branches = useAccountManagementStore().branches;
   const onGetBranches = useAccountManagementStore().onGetBranches;
 
-  console.log(branches);
-
   const [businessSettingInformationForm] = Form.useForm();
 
   const onClickCancelButton = () => {
     onShowModalCancel();
   };
 
-  const onRenderExpandIcon = React.useCallback((isActive) => {
+  const onRenderExpandIcon = React.useCallback(({ isActive }) => {
     return (
       <AppIcon
         src="/icons/arrow-collapse-dropdown.svg#id"
@@ -253,7 +251,7 @@ function Information() {
         defaultActiveKey={["1"]}
         bordered={false}
         className="flex flex-col gap-6 bg-transparent xl:w-full xl:max-w-[51.875rem]"
-        expandIcon={({ isActive }) => onRenderExpandIcon(isActive)}
+        expandIcon={onRenderExpandIcon}
       />
 
       <AppFooterForm

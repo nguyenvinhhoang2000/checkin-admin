@@ -3,17 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { Modal } from "antd";
 import PropTypes from "prop-types";
 
-import { LOCATIONS } from "@/constants/locations";
 import useAccountManagementStore from "@/store/use-account-management-store";
 
-function ModalCancel({ title, description }) {
+function ModalCancel({ title, description, navigatePath }) {
   const isShowModalCancel = useAccountManagementStore().isShowModalCancel;
   const onHideModalCancel = useAccountManagementStore().onHideModalCancel;
 
   const navigate = useNavigate();
 
   const onClickOkButton = () => {
-    navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path);
+    navigate(navigatePath);
     onHideModalCancel();
   };
 
@@ -35,6 +34,7 @@ function ModalCancel({ title, description }) {
 ModalCancel.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  navigatePath: PropTypes.string.isRequired,
 };
 
 export default React.memo(ModalCancel);

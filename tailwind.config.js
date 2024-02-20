@@ -13,11 +13,13 @@ export default {
           y: "0.4rem",
         },
         dropdownOverlay: "0.25rem 0",
+        select: "1rem",
       },
       borderRadius: {
         button: "0.125rem",
         circleNumber: "6.25rem",
         dropdownOverlay: "0.25rem 0",
+        select: "0.125rem",
       },
       colors: {
         danger: "#FF4D4F",
@@ -40,6 +42,9 @@ export default {
           1: "#FFD8BF",
           2: "#FA541C",
           3: "#818181",
+        },
+        character: {
+          title: "#000000D9",
         },
       },
       boxShadow: {

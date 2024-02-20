@@ -106,10 +106,7 @@ function MemberOverviewTable() {
         return (
           <div className="flex gap-3">
             <Avatar
-              style={{
-                backgroundColor: "#fde3cf",
-                color: "#f56a00",
-              }}
+              className="bg-volcano-1 text-volcano-2"
               size={40}
               alt="avatar"
             >

@@ -7,6 +7,8 @@ import AppIcon from "@/components/apps/app-icon";
 import { LOCATIONS } from "@/constants/locations";
 import MEMBER_OVERVIEW_COLUMNS from "@/constants/member-overview-table";
 
+import { scroll } from "./config";
+
 const memberList = [
   {
     name: "Thai Ha",
@@ -169,7 +171,14 @@ function MemberOverviewTable() {
     },
   ];
 
-  return <Table rowKey="_id" dataSource={memberList} columns={columns} />;
+  return (
+    <Table
+      rowKey="_id"
+      dataSource={memberList}
+      {...(memberList.length !== 0 ? { scroll } : {})}
+      columns={columns}
+    />
+  );
 }
 
 export default React.memo(MemberOverviewTable);

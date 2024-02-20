@@ -1,19 +1,41 @@
 import React from "react";
-import { Button, DatePicker } from "antd";
+import { Button, DatePicker, Select } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
 function MemberOverviewHeader() {
   const { RangePicker } = DatePicker;
   return (
-    <div className="flex flex-row items-center justify-between">
-      <div className="text-xl font-medium">Members</div>
-      <div className="flex flex-row items-center gap-[1.5rem]">
-        <div className="flex flex-row items-center gap-6">
+    <div className="flex flex-col items-center justify-between gap-y-6 xl:flex-row">
+      <div className="w-full text-xl font-medium xl:w-fit">Members</div>
+      <div className="flex w-full flex-row items-center justify-between gap-[1.5rem] xl:justify-end">
+        <Select
+          className="flex md:hidden"
+          defaultValue="Today"
+          options={[
+            {
+              value: "Today",
+              label: "Today",
+            },
+            {
+              value: "This month",
+              label: "This month",
+            },
+            {
+              value: "Last month",
+              label: "Last month",
+            },
+            {
+              value: "All time",
+              label: "All time",
+            },
+          ]}
+        />
+        <div className="hidden flex-row items-center gap-6 md:flex">
           <span className="text-primary-1">Today</span>
-          <span>This month</span>
-          <span>Last month</span>
-          <span>All time</span>
+          <span className="whitespace-nowrap">This month</span>
+          <span className="whitespace-nowrap">Last month</span>
+          <span className="whitespace-nowrap">All time</span>
         </div>
         <span>
           <RangePicker
@@ -29,7 +51,7 @@ function MemberOverviewHeader() {
             alt="download"
             className="mb-[2px]"
           />
-          <span>Download</span>
+          <div className="hidden xl:flex">Download</div>
         </Button>
       </div>
     </div>

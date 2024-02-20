@@ -3,6 +3,7 @@ import { Button, DatePicker, Select } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
+import dateFormat from "@/constants/date-format";
 import timeRangeSelection from "@/constants/timeRangeSelection";
 
 function MemberOverviewHeader() {
@@ -24,7 +25,7 @@ function MemberOverviewHeader() {
         </div>
         <span>
           <RangePicker
-            format={["DD/MM/YYYY", "DD/MM/YYYY"]}
+            format={dateFormat}
             className="max-w-[16rem] rounded-sm"
           />
         </span>

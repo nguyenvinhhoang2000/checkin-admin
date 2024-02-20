@@ -1,3 +1,3 @@
-const dateFormat = ["DD/MM/YYYY", "DD/MM/YYYY"];
+const dateFormat = ["DD/MM/YYYY"];
 
 export default dateFormat;

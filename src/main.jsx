@@ -50,6 +50,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             itemColor: fullConfig.theme.colors.secondary[4],
             itemSelectedColor: fullConfig.theme.colors.primary[1],
           },
+          Select: {
+            borderRadius: fullConfig.theme.borderRadius.select,
+            colorIcon: fullConfig.theme.colors.character.title,
+          },
         },
       }}
     >

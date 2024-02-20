@@ -3,6 +3,8 @@ import { Button, DatePicker, Select } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
+import timeRangeSelection from "@/constants/timeRangeSelection";
+
 function MemberOverviewHeader() {
   const { RangePicker } = DatePicker;
   return (
@@ -12,24 +14,7 @@ function MemberOverviewHeader() {
         <Select
           className="flex md:hidden"
           defaultValue="Today"
-          options={[
-            {
-              value: "Today",
-              label: "Today",
-            },
-            {
-              value: "This month",
-              label: "This month",
-            },
-            {
-              value: "Last month",
-              label: "Last month",
-            },
-            {
-              value: "All time",
-              label: "All time",
-            },
-          ]}
+          options={timeRangeSelection}
         />
         <div className="hidden flex-row items-center gap-6 md:flex">
           <span className="text-primary-1">Today</span>

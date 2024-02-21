@@ -6,8 +6,6 @@ import AppIcon from "@/components/apps/app-icon";
 
 import { FILTER_TYPE } from "@/constants/filter-type";
 
-const { RangePicker } = DatePicker;
-
 const USE_TYPE = {
   MEMBER: {
     key: "MEMBER",
@@ -84,7 +82,7 @@ function HeaderTableCheckin() {
           onChange={onFilterByUserType}
           options={OPTIONS}
         />
-        <RangePicker className="w-full rounded-sm lg:w-fit" />
+        <DatePicker.RangePicker className="w-full rounded-sm lg:w-fit" />
         <Button
           onClick={onDownload}
           className="flex h-full w-full flex-row items-center justify-center gap-[0.625rem] px-[0.9375rem] py-[0.4rem] lg:w-fit lg:justify-between"

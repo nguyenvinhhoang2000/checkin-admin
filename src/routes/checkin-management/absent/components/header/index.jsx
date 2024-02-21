@@ -6,10 +6,12 @@ import AppIcon from "@/components/apps/app-icon";
 import dateFormat from "@/constants/date-format";
 import timeRangeSelection from "@/constants/timeRangeSelection";
 
-function MemberOverviewHeader() {
+function AbsentRequestHeader() {
   return (
     <div className="flex flex-col items-center justify-between gap-y-6 xl:flex-row">
-      <div className="w-full text-xl font-medium xl:w-fit">Members</div>
+      <div className="w-full whitespace-nowrap text-xl font-medium xl:w-fit">
+        Absent Request
+      </div>
       <div className="flex w-full flex-row items-center justify-between gap-[1.5rem] xl:justify-end">
         <Select
           className="flex md:hidden"
@@ -17,9 +19,9 @@ function MemberOverviewHeader() {
           options={timeRangeSelection}
         />
         <div className="hidden flex-row items-center gap-6 md:flex">
-          <span className="text-primary-1">Today</span>
-          <span className="whitespace-nowrap">This month</span>
+          <span className="whitespace-nowrap text-primary-1">This month</span>
           <span className="whitespace-nowrap">Last month</span>
+          <span className="whitespace-nowrap">3 month</span>
           <span className="whitespace-nowrap">All time</span>
         </div>
         <span>
@@ -43,4 +45,4 @@ function MemberOverviewHeader() {
   );
 }
 
-export default MemberOverviewHeader;
+export default AbsentRequestHeader;

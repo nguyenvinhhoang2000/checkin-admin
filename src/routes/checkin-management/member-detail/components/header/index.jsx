@@ -1,28 +1,19 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { Button, DatePicker, Select } from "antd";
+import { Button, DatePicker } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
+import dateFormat from "@/constants/date-format";
 import { FILTER_TYPE } from "@/constants/filter-type";
 
 const { RangePicker } = DatePicker;
 
-const USE_TYPE = {
-  MEMBER: {
-    key: "MEMBER",
-    label: "Member",
-  },
-};
-
-const OPTIONS = [{ value: USE_TYPE.MEMBER.key, label: USE_TYPE.MEMBER.label }];
-
-function HeaderTableCheckin() {
+function MemberDetailHeader() {
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = React.useMemo(
     () => ({
       time: searchParams.get("time") || FILTER_TYPE.TODAY,
-      userType: searchParams.get("userType") || USE_TYPE.MEMBER.key,
     }),
     [searchParams],
   );
@@ -37,23 +28,10 @@ function HeaderTableCheckin() {
     [searchParams, setSearchParams],
   );
 
-  const onFilterByUserType = React.useCallback(
-    (userType) => {
-      setSearchParams({
-        ...Object.fromEntries(searchParams),
-        userType,
-      });
-    },
-    [searchParams, setSearchParams],
-  );
-
   const onDownload = React.useCallback(() => {}, []);
-
   return (
     <div className="flex w-full flex-col flex-wrap justify-between gap-5 lg:flex-row">
-      <h4 className="text-xl font-medium text-character-title">
-        Table Check-in
-      </h4>
+      <h4 className="text-xl font-medium text-character-title">Members</h4>
       <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center">
         <div className="flex flex-row gap-6">
           <Button
@@ -78,13 +56,10 @@ function HeaderTableCheckin() {
             <span>Last month</span>
           </Button>
         </div>
-        <Select
-          defaultValue={USE_TYPE.MEMBER.key}
-          className="h-[2.375rem] w-full lg:w-[12.5rem]"
-          onChange={onFilterByUserType}
-          options={OPTIONS}
+        <RangePicker
+          format={dateFormat}
+          className="w-full rounded-sm lg:w-fit"
         />
-        <RangePicker className="w-full rounded-sm lg:w-fit" />
         <Button
           onClick={onDownload}
           className="flex h-full w-full flex-row items-center justify-center gap-[0.625rem] px-[0.9375rem] py-[0.4rem] lg:w-fit lg:justify-between"
@@ -97,4 +72,4 @@ function HeaderTableCheckin() {
   );
 }
 
-export default React.memo(HeaderTableCheckin);
+export default MemberDetailHeader;

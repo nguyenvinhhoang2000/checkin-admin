@@ -24,6 +24,9 @@ export function findSeletedKeys(pathname) {
     case LOCATIONS.CREATE_ACCOUNT.path:
       return LOCATIONS.ACCOUNT_MANAGEMENT.path;
 
+    case LOCATIONS.MEMBER_DETAIL.path:
+      return LOCATIONS.MEMBERS.path;
+
     default:
       return pathname;
   }

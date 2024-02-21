@@ -42,6 +42,7 @@ export const LOCATIONS = {
     label: "Member Detail",
     crumb: "Member Detail",
     path: "/home/check-in-management/members/:id",
+    pathWithId: (id) => `/home/check-in-management/members/${id}`,
     routeActive: true,
   },
 

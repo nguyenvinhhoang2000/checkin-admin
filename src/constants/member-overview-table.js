@@ -31,8 +31,8 @@ const MEMBER_OVERVIEW_COLUMNS = {
   },
   ACTIONS: {
     title: "Actions",
-    dataIndex: "actions",
-    key: "actions",
+    dataIndex: "_id",
+    key: "_id",
   },
 };
 

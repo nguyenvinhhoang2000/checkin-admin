@@ -11,6 +11,7 @@ import { scroll } from "./config";
 
 const memberList = [
   {
+    _id: "1",
     name: "Thai Ha",
     position: "Lead",
     checkIn: {
@@ -24,6 +25,7 @@ const memberList = [
     absent: 0,
   },
   {
+    _id: "2",
     name: "Thai Ha Ha",
     position: "Lead",
     checkIn: {
@@ -37,6 +39,7 @@ const memberList = [
     absent: 0,
   },
   {
+    _id: "3",
     name: "Thai Ha Ha Ha",
     position: "Lead",
     checkIn: {
@@ -50,6 +53,7 @@ const memberList = [
     absent: 0,
   },
   {
+    _id: "4",
     name: "Thai Ha Ha Ha Ha",
     position: "Lead",
     checkIn: {
@@ -63,6 +67,7 @@ const memberList = [
     absent: 0,
   },
   {
+    _id: "5",
     name: "Thai Ha Ha Ha Ha Ha",
     position: "Lead",
     checkIn: {
@@ -76,6 +81,7 @@ const memberList = [
     absent: 0,
   },
   {
+    _id: "6",
     name: "Thai Ha Ha Ha Ha Ha Ha",
     position: "Lead",
     checkIn: {
@@ -148,9 +154,9 @@ function MemberOverviewTable() {
     {
       ...MEMBER_OVERVIEW_COLUMNS.ACTIONS,
       width: "5%",
-      render: () => {
+      render: (id) => {
         const onClickButtonView = () => {
-          navigate(LOCATIONS.HOME.path);
+          navigate(LOCATIONS.MEMBER_DETAIL.pathWithId(id));
         };
 
         return (

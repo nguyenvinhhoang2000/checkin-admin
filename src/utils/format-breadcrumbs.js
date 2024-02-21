@@ -14,7 +14,9 @@ export function formatSlashPathName(pathname) {
 }
 
 export function upperCasePathName(location, item) {
-  return location[item.replace(/-/g, "_").toUpperCase()];
+  return (
+    location[item.replace(/-/g, "_").toUpperCase()] || { label: "", crumb: "" }
+  );
 }
 
 export function activeLink(crumbPath, currenPath) {

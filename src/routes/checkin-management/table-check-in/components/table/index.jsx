@@ -28,7 +28,7 @@ function TablerTableCheckin() {
         return (
           <div className="flex flex-row gap-2">
             <Avatar className="bg-volcano-1 text-volcano-2">{text}</Avatar>
-            <span className=" text-character-title text-sm font-medium">
+            <span className=" text-sm font-medium text-character-title">
               {text}
             </span>
           </div>
@@ -41,7 +41,7 @@ function TablerTableCheckin() {
       render: (text) => {
         return (
           <div className="flex flex-col gap-[0.125rem]">
-            <span className="text-character-title text-sm">{text}</span>
+            <span className="text-sm text-character-title">{text}</span>
             <span className="text-xs text-secondary-2">Check-in Early</span>
           </div>
         );
@@ -53,7 +53,7 @@ function TablerTableCheckin() {
       render: (text) => {
         return (
           <div className="flex flex-col gap-[0.125rem]">
-            <span className="text-character-title text-sm">{text}</span>
+            <span className="text-sm text-character-title">{text}</span>
             <span className="text-xs text-danger">Check-in Early</span>
           </div>
         );

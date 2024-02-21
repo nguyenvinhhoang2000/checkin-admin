@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Button, Table } from "antd";
+import { Table } from "antd";
 
 import MEMBER_DETAIL_COLUMNS from "@/constants/members-detail-table";
 
@@ -81,8 +79,6 @@ const memberList = [
 ];
 
 function MemberDetailTable() {
-  const navigate = useNavigate();
-
   const columns = [
     {
       ...MEMBER_DETAIL_COLUMNS.DATE,

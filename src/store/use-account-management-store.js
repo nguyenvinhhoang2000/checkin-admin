@@ -87,6 +87,14 @@ const useAccountManagementStore = create((set, get) => ({
     set({ isShowModalCancel: false });
   },
 
+  onShowModalAbsentRequest: async () => {
+    set({ isShowModalAbsentRequest: true });
+  },
+
+  onHideModalAbsentRequest: async () => {
+    set({ isShowModalAbsentRequest: false });
+  },
+
   onDeleteMemberAccount: async () => {
     const { onGetListAccount, infoMemberPicked } = get();
 

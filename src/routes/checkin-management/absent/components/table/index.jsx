@@ -1,15 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Avatar, Button, Table } from "antd";
+import { Avatar, Button, Modal, Table } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
 import ABSENT_REQUEST_COLUMNS from "@/constants/absent-request-table";
-import { LOCATIONS } from "@/constants/locations";
+import useAccountManagementStore from "@/store/use-account-management-store";
 
 import { scroll } from "./config";
-
-import "./AbsentRequestTable.css";
 
 const memberList = [
   {
@@ -87,7 +84,14 @@ const memberList = [
 ];
 
 function AbsentRequestTable() {
-  const navigate = useNavigate();
+  const onShowModalAbsentRequest =
+    useAccountManagementStore().onShowModalAbsentRequest;
+  const isShowModalAbsentRequest =
+    useAccountManagementStore().isShowModalAbsentRequest;
+  const onHideModalAbsentRequest =
+    useAccountManagementStore().onHideModalAbsentRequest;
+
+  const [selectedRequest, setSelectedRequest] = React.useState(null);
 
   const columns = [
     {
@@ -142,15 +146,16 @@ function AbsentRequestTable() {
       ...ABSENT_REQUEST_COLUMNS.DESCRIPTION,
       width: "32.69%",
       render: (text) => {
-        return <div className="description">{text}</div>;
+        return <div className="line-clamp-3 whitespace-normal">{text}</div>;
       },
     },
     {
       ...ABSENT_REQUEST_COLUMNS.ACTIONS,
       width: "5.30%",
-      render: () => {
+      render: (_, record) => {
         const onClickButtonView = () => {
-          navigate(LOCATIONS.HOME.path);
+          setSelectedRequest(record);
+          onShowModalAbsentRequest();
         };
 
         return (
@@ -175,12 +180,43 @@ function AbsentRequestTable() {
   ];
 
   return (
-    <Table
-      rowKey="_id"
-      dataSource={memberList}
-      {...(memberList.length !== 0 ? { scroll } : null)}
-      columns={columns}
-    />
+    <>
+      <Table
+        rowKey="_id"
+        dataSource={memberList}
+        {...(memberList.length !== 0 ? { scroll } : null)}
+        columns={columns}
+      />
+      <Modal
+        title={
+          <p className="border-b pb-4 font-medium text-black/[.85]">
+            Absent Request
+          </p>
+        }
+        open={isShowModalAbsentRequest}
+        width={572}
+        footer={<Button onClick={onHideModalAbsentRequest}>Cancel</Button>}
+      >
+        <div className="flex flex-col gap-y-[0.75rem] border-b pb-8 pt-6">
+          <div className="flex justify-between">
+            <span className="font-bold">Member</span>
+            <span>{selectedRequest?.name}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-bold">From</span>
+            <span>{selectedRequest?.durationRequested?.from}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-bold">To</span>
+            <span>{selectedRequest?.durationRequested?.to}</span>
+          </div>
+          <div className="flex flex-col gap-y-2">
+            <span className="font-bold">Description</span>
+            <span>{selectedRequest?.description}</span>
+          </div>
+        </div>
+      </Modal>
+    </>
   );
 }
 

@@ -7,7 +7,6 @@ import dateFormat from "@/constants/date-format";
 import timeRangeSelection from "@/constants/timeRangeSelection";
 
 function MemberOverviewHeader() {
-  const { RangePicker } = DatePicker;
   return (
     <div className="flex flex-col items-center justify-between gap-y-6 xl:flex-row">
       <div className="w-full text-xl font-medium xl:w-fit">Members</div>
@@ -24,7 +23,7 @@ function MemberOverviewHeader() {
           <span className="whitespace-nowrap">All time</span>
         </div>
         <span>
-          <RangePicker
+          <DatePicker.RangePicker
             format={dateFormat}
             className="max-w-[16rem] rounded-sm"
           />

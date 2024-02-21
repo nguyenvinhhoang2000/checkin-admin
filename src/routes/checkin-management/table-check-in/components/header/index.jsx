@@ -6,8 +6,6 @@ import AppIcon from "@/components/apps/app-icon";
 
 import { FILTER_TYPE } from "@/constants/filter-type";
 
-const { RangePicker } = DatePicker;
-
 const USE_TYPE = {
   MEMBER: {
     key: "MEMBER",
@@ -51,7 +49,7 @@ function HeaderTableCheckin() {
 
   return (
     <div className="flex w-full flex-col flex-wrap justify-between gap-5 lg:flex-row">
-      <h4 className="text-character-title text-xl font-medium">
+      <h4 className="text-xl font-medium text-character-title">
         Table Check-in
       </h4>
       <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center">
@@ -59,21 +57,21 @@ function HeaderTableCheckin() {
           <Button
             onClick={onFiletrBy(FILTER_TYPE.TODAY)}
             type="link"
-            className={`text-character-title h-fit border-0 p-0 ${filter.time === FILTER_TYPE.TODAY && "text-primary-1"}`}
+            className={`h-fit border-0 p-0 text-character-title ${filter.time === FILTER_TYPE.TODAY && "text-primary-1"}`}
           >
             <span>Today</span>
           </Button>
           <Button
             onClick={onFiletrBy(FILTER_TYPE.THIS_MONTH)}
             type="link"
-            className={`text-character-title h-fit border-0 p-0 ${filter.time === FILTER_TYPE.THIS_MONTH && "text-primary-1"}`}
+            className={`h-fit border-0 p-0 text-character-title ${filter.time === FILTER_TYPE.THIS_MONTH && "text-primary-1"}`}
           >
             <span>This month</span>
           </Button>
           <Button
             onClick={onFiletrBy(FILTER_TYPE.LAST_MONTH)}
             type="link"
-            className={`text-character-title h-fit border-0 p-0 ${filter.time === FILTER_TYPE.LAST_MONTH && "text-primary-1"}`}
+            className={`h-fit border-0 p-0 text-character-title ${filter.time === FILTER_TYPE.LAST_MONTH && "text-primary-1"}`}
           >
             <span>Last month</span>
           </Button>
@@ -84,7 +82,7 @@ function HeaderTableCheckin() {
           onChange={onFilterByUserType}
           options={OPTIONS}
         />
-        <RangePicker className="w-full rounded-sm lg:w-fit" />
+        <DatePicker.RangePicker className="w-full rounded-sm lg:w-fit" />
         <Button
           onClick={onDownload}
           className="flex h-full w-full flex-row items-center justify-center gap-[0.625rem] px-[0.9375rem] py-[0.4rem] lg:w-fit lg:justify-between"

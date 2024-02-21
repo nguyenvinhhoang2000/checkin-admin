@@ -54,7 +54,7 @@ export const LOCATIONS = {
 
   ABSENT: {
     label: "Absent",
-    crumb: "Absent",
+    crumb: "Absent Request",
     path: "/home/check-in-management/absent",
     routeActive: true,
   },

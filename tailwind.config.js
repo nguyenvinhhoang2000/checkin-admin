@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  safelist: ["rotate-180", "rotate-0"],
+  safelist: ["rotate-180", "rotate-0", "text-primary-1"],
   theme: {
     extend: {
       fontFamily: {

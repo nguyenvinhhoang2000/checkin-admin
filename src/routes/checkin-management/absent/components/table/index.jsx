@@ -93,6 +93,16 @@ function AbsentRequestTable() {
     {
       ...ABSENT_REQUEST_COLUMNS.DURATION_REQUEST,
       width: "13.43%",
+      render: (_, record) => {
+        const { from, to } = record.durationRequested;
+        return (
+          <div>
+            {from}
+            <br />
+            {to}
+          </div>
+        );
+      },
     },
     {
       ...ABSENT_REQUEST_COLUMNS.DATE_REQUEST,

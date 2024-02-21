@@ -1,5 +1,14 @@
 export const FILTER_TYPE = {
-  TODAY: "TODAY",
-  THIS_MONTH: "THIS_MONTH",
-  LAST_MONTH: "LAST_MONTH",
+  TODAY: {
+    key: "TODAY",
+    label: "Today",
+  },
+  THIS_MONTH: {
+    key: "THIS_MONTH",
+    label: "This month",
+  },
+  LAST_MONTH: {
+    key: "LAST_MONTH",
+    label: "Last month",
+  },
 };

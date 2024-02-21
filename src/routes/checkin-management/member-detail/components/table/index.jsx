@@ -141,7 +141,7 @@ function MemberDetailTable() {
     <Table
       rowKey="_id"
       dataSource={memberList}
-      {...(memberList.length !== 0 ? { scroll } : null)}
+      scroll={memberList.length !== 0 ? scroll : null}
       columns={columns}
     />
   );

@@ -263,7 +263,7 @@ function Information() {
       <ModalCancel
         title="Do you want to cancel?"
         description="The action has not been saved"
-        navigatePath={LOCATIONS.ACCOUNT_MANAGEMENT.path}
+        navigatePath={LOCATIONS.HOME.path}
       />
     </Form>
   );

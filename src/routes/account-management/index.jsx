@@ -14,10 +14,13 @@ function AccountManagement() {
 
   const [searchParams] = useSearchParams();
 
-  const accountStatus = searchParams.get("status") || "1";
+  const accountStatus =
+    searchParams.get("status") === "1" || searchParams.get("status") === null
+      ? "active"
+      : "deleted";
 
   React.useEffect(() => {
-    onGetDataFirstRender(accountStatus, searchParams.get("page"));
+    onGetDataFirstRender(searchParams.get("status"), searchParams.get("page"));
 
     return () => {
       onResetAccountManagement();

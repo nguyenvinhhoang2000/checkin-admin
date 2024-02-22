@@ -31,7 +31,7 @@ function CreateAndEditAccount() {
 
   const params = useParams();
 
-  const isActiveAccount = searchParams.get("status") === "1";
+  const isActiveAccount = searchParams.get("status") === "active";
 
   const onClickDeleteButton = () => {
     onShowModalDeleted(infoMemberPicked);

@@ -2,6 +2,8 @@ import React from "react";
 
 import CreateAndEditAccount from "@/components/forms/create-and-edit-account";
 
+import { LOCATIONS } from "@/constants/locations";
+
 import ModalActiveMember from "../components/modal-active-member";
 import ModalCancel from "../components/modal-cancel";
 import ModalDeleteMember from "../components/modal-delete-member";
@@ -21,6 +23,7 @@ function EditAccount() {
       <ModalCancel
         title="Do you want to cancel?"
         description="The action has not been saved"
+        navigatePath={LOCATIONS.ACCOUNT_MANAGEMENT.path}
       />
     </section>
   );

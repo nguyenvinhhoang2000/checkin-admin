@@ -6,6 +6,7 @@ import AppIcon from "@/components/apps/app-icon";
 import CustomizeFormLabel from "@/components/forms/customize-form-label";
 import { RULE_MESSAGE, SCHEMAS } from "@/components/schemas";
 
+import { LOCATIONS } from "@/constants/locations";
 import ModalCancel from "@/routes/account-management/components/modal-cancel";
 import useAccountManagementStore from "@/store/use-account-management-store";
 
@@ -262,6 +263,7 @@ function Information() {
       <ModalCancel
         title="Do you want to cancel?"
         description="The action has not been saved"
+        navigatePath={LOCATIONS.ACCOUNT_MANAGEMENT.path}
       />
     </Form>
   );

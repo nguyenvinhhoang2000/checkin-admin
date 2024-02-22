@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 
 import useAccountManagementStore from "@/store/use-account-management-store";
 
-function ModalCancel({ title, description, navigatePath }) {
+function ModalCancel({ title, description }) {
   const isShowModalCancel = useAccountManagementStore().isShowModalCancel;
   const onHideModalCancel = useAccountManagementStore().onHideModalCancel;
 
   const navigate = useNavigate();
 
   const onClickOkButton = () => {
-    navigate(navigatePath);
+    navigate(-1);
     onHideModalCancel();
   };
 
@@ -34,7 +34,6 @@ function ModalCancel({ title, description, navigatePath }) {
 ModalCancel.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  navigatePath: PropTypes.string.isRequired,
 };
 
 export default React.memo(ModalCancel);

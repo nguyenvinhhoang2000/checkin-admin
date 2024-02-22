@@ -14,8 +14,10 @@ function AccountManagement() {
 
   const [searchParams] = useSearchParams();
 
+  const accountStatus = searchParams.get("status");
+
   React.useEffect(() => {
-    onGetDataFirstRender(searchParams.get("status"), searchParams.get("page"));
+    onGetDataFirstRender(accountStatus, searchParams.get("page"));
 
     return () => {
       onResetAccountManagement();
@@ -25,7 +27,7 @@ function AccountManagement() {
   return (
     <section className="flex flex-col gap-[1.25rem] rounded-xl bg-white p-5 shadow-dropShadow">
       <HeaderAccountManagement />
-      <TablerAccountManagement />
+      <TablerAccountManagement accountStatus={accountStatus} />
       <ModalDeleteMember
         title="Do you want to delete this account?"
         description="This account will be disabled and cannot log in"

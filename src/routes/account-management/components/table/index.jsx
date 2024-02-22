@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, message, Table } from "antd";
+import PropTypes from "prop-types";
 
 import AppIcon from "@/components/apps/app-icon";
 
@@ -10,7 +11,7 @@ import useAccountManagementStore from "@/store/use-account-management-store";
 
 import { paginationConfig, scroll } from "./config";
 
-function TablerAccountManagement() {
+function TablerAccountManagement({ accountStatus }) {
   const listAccount = useAccountManagementStore().listAccount;
   const totalAccount = useAccountManagementStore().totalAccount;
   const pageAccount = useAccountManagementStore().pageAccount;
@@ -69,7 +70,9 @@ function TablerAccountManagement() {
         };
 
         const onClickButtonEdit = () => {
-          navigate(`${LOCATIONS.EDIT_ACCOUNT.path}/${record._id}`);
+          navigate(
+            `${LOCATIONS.EDIT_ACCOUNT.path}/${record._id}?status=${accountStatus}`,
+          );
         };
 
         return (
@@ -132,5 +135,13 @@ function TablerAccountManagement() {
     />
   );
 }
+
+TablerAccountManagement.propTypes = {
+  accountStatus: PropTypes.string,
+};
+
+TablerAccountManagement.defaultProps = {
+  accountStatus: "1",
+};
 
 export default React.memo(TablerAccountManagement);

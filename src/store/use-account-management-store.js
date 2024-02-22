@@ -1,7 +1,6 @@
 import { message } from "antd";
 import { create } from "zustand";
 
-import { LOCATIONS } from "@/constants/locations";
 import adminApi from "@/services/admin-api";
 
 const useAccountManagementStore = create((set, get) => ({
@@ -87,6 +86,14 @@ const useAccountManagementStore = create((set, get) => ({
     set({ isShowModalCancel: false });
   },
 
+  onShowModalActive: async () => {
+    set({ isShowModalActive: true });
+  },
+
+  onHideModalActive: async () => {
+    set({ isShowModalActive: false });
+  },
+
   onShowModalAbsentRequest: async () => {
     set({ isShowModalAbsentRequest: true });
   },
@@ -103,6 +110,18 @@ const useAccountManagementStore = create((set, get) => ({
     set({ isShowModalDeleted: false, infoMemberPicked: null });
 
     message.success("Disabled account successfully");
+
+    await onGetListAccount();
+  },
+
+  onActiveMemberAccount: async () => {
+    const { onGetListAccount, infoMemberPicked } = get();
+
+    await adminApi.activeMember(infoMemberPicked._id || infoMemberPicked);
+
+    set({ isShowModalActive: false, infoMemberPicked: null });
+
+    message.success("Activated account successfully");
 
     await onGetListAccount();
   },
@@ -145,7 +164,7 @@ const useAccountManagementStore = create((set, get) => ({
 
       await onGetListAccount();
 
-      navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path);
+      navigate(-1);
     } catch (error) {
       message.error(error.response.data.errors[0].msg);
     }
@@ -161,7 +180,7 @@ const useAccountManagementStore = create((set, get) => ({
 
       await onGetListAccount();
 
-      navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path);
+      navigate(-1);
     } catch (error) {
       message.error(error.response.data.errors[0].msg);
     }

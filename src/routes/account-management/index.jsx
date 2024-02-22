@@ -14,7 +14,7 @@ function AccountManagement() {
 
   const [searchParams] = useSearchParams();
 
-  const accountStatus = searchParams.get("status");
+  const accountStatus = searchParams.get("status") || "1";
 
   React.useEffect(() => {
     onGetDataFirstRender(accountStatus, searchParams.get("page"));

@@ -1,6 +1,7 @@
 import { message } from "antd";
 import { create } from "zustand";
 
+import { LOCATIONS } from "@/constants/locations";
 import adminApi from "@/services/admin-api";
 
 const useAccountManagementStore = create((set, get) => ({
@@ -164,7 +165,7 @@ const useAccountManagementStore = create((set, get) => ({
 
       await onGetListAccount();
 
-      navigate(-1);
+      navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path);
     } catch (error) {
       message.error(error.response.data.errors[0].msg);
     }
@@ -180,7 +181,7 @@ const useAccountManagementStore = create((set, get) => ({
 
       await onGetListAccount();
 
-      navigate(-1);
+      navigate(LOCATIONS.ACCOUNT_MANAGEMENT.path);
     } catch (error) {
       message.error(error.response.data.errors[0].msg);
     }

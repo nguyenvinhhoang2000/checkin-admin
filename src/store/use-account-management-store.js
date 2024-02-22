@@ -87,6 +87,14 @@ const useAccountManagementStore = create((set, get) => ({
     set({ isShowModalCancel: false });
   },
 
+  onShowModalActive: async () => {
+    set({ isShowModalActive: true });
+  },
+
+  onHideModalActive: async () => {
+    set({ isShowModalActive: false });
+  },
+
   onShowModalAbsentRequest: async () => {
     set({ isShowModalAbsentRequest: true });
   },
@@ -103,6 +111,18 @@ const useAccountManagementStore = create((set, get) => ({
     set({ isShowModalDeleted: false, infoMemberPicked: null });
 
     message.success("Disabled account successfully");
+
+    await onGetListAccount();
+  },
+
+  onActiveMemberAccount: async () => {
+    const { onGetListAccount, infoMemberPicked } = get();
+
+    await adminApi.activeMember(infoMemberPicked._id || infoMemberPicked);
+
+    set({ isShowModalActive: false, infoMemberPicked: null });
+
+    message.success("Activated account successfully");
 
     await onGetListAccount();
   },

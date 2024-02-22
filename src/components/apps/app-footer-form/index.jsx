@@ -10,8 +10,10 @@ function AppFooterForm({
   okText,
   cancelText,
   onDelete,
+  onActive,
   onCancel,
   deleteText,
+  activeText,
   isLoadingButtonOk,
   isDisabledButtonOk,
   htmlType,
@@ -26,6 +28,13 @@ function AppFooterForm({
           onClick={onDelete}
         >
           <span className="underline underline-offset-2">{deleteText}</span>
+        </Button>
+      )}
+      {activeText && (
+        <Button disabled={isLoadingButtonOk} type="text" onClick={onActive}>
+          <span className="text-secondary-2 underline  underline-offset-2">
+            {activeText}
+          </span>
         </Button>
       )}
       <div className="flex flex-row items-center gap-2">
@@ -58,9 +67,11 @@ AppFooterForm.propTypes = {
   okText: PropTypes.string,
   cancelText: PropTypes.string,
   deleteText: PropTypes.string,
+  activeText: PropTypes.string,
   classNames: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
+  onActive: PropTypes.func,
   isLoadingButtonOk: PropTypes.bool.isRequired,
   isDisabledButtonOk: PropTypes.bool,
   htmlType: PropTypes.string,
@@ -70,8 +81,10 @@ AppFooterForm.defaultProps = {
   okText: "Save",
   cancelText: "",
   deleteText: "",
+  activeText: "",
   classNames: "",
   onDelete: emptyFn,
+  onActive: emptyFn,
   isDisabledButtonOk: false,
   htmlType: "submit",
 };

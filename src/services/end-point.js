@@ -21,7 +21,7 @@ const ENDPOINT = {
 
   DELETE_MEMBER: (id) => `/admin/member/${id}`,
 
-  ACTIVE_MEMBER: (id) => `/admin/member/${id}`,
+  ACTIVE_MEMBER: (id) => `/admin/member/${id}/active`,
 };
 
 export default ENDPOINT;

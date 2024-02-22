@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Col, Form, Input, Row, Select, Spin } from "antd";
 
 import AppFooterForm from "@/components/apps/app-footer-form";
@@ -18,23 +18,32 @@ function CreateAndEditAccount() {
   const isLoadingForm = useAccountManagementStore().isLoadingForm;
   const onShowModalDeleted = useAccountManagementStore().onShowModalDeleted;
   const onShowModalCancel = useAccountManagementStore().onShowModalCancel;
+  const onShowModalActive = useAccountManagementStore().onShowModalActive;
   const onEditMemberAccount = useAccountManagementStore().onEditMemberAccount;
   const onCreateMemberAccount =
     useAccountManagementStore().onCreateMemberAccount;
+
+  const [createAndEditForm] = Form.useForm();
+
+  const [searchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
+  const params = useParams();
+
+  const isActiveAccount = searchParams.get("status") === "active";
 
   const onClickDeleteButton = () => {
     onShowModalDeleted(infoMemberPicked);
   };
 
+  const onClickActiveButton = () => {
+    onShowModalActive();
+  };
+
   const onClickCancelButton = () => {
     onShowModalCancel();
   };
-
-  const navigate = useNavigate();
-
-  const [createAndEditForm] = Form.useForm();
-
-  const params = useParams();
 
   React.useEffect(() => {
     if (params.id) {
@@ -231,12 +240,14 @@ function CreateAndEditAccount() {
 
       <AppFooterForm
         cancelText="Cancel"
-        deleteText={params.id ? "Delete" : null}
+        deleteText={params.id && isActiveAccount ? "Delete" : null}
+        activeText={params.id && !isActiveAccount ? "Active" : null}
         classNames={`mt-[6rem] w-full min-h-[3.75rem] flex flex-row ${
           params.id ? "justify-between" : ""
         } bg-white px-5 py-3 rounded-md`}
         onCancel={onClickCancelButton}
         onDelete={onClickDeleteButton}
+        onActive={onClickActiveButton}
       />
     </Form>
   );

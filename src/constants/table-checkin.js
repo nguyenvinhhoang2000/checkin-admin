@@ -1,32 +1,32 @@
 const TABLE_CHECK_IN_COLUMNS = {
   DATE: {
     title: "Date",
-    dataIndex: "date",
+    dataIndex: "createdAt",
     key: "date",
   },
   MEMBER: {
     title: "Member",
-    dataIndex: "member",
+    dataIndex: ["user", "name"],
     key: "member",
   },
   CHECK_IN: {
     title: "Check-in",
-    dataIndex: "check-in",
+    dataIndex: ["checkIn", "date"],
     key: "check-in",
   },
   CHECK_OUT: {
     title: "Check-out",
-    dataIndex: "check-out",
+    dataIndex: ["checkOut", "date"],
     key: "check-out",
   },
   DEVICE: {
     title: "Device",
-    dataIndex: "device",
+    dataIndex: "userAgent",
     key: "device",
   },
   BRANCH: {
     title: "Branch",
-    dataIndex: ["branch", "address"],
+    dataIndex: ["branch", "name"],
     key: ["branch", "_id"],
   },
 };

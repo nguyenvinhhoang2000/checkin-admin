@@ -160,7 +160,7 @@ function TablerTableCheckin() {
       loading={isLoadingTable}
       onChange={onChangePage}
       rowKey="_id"
-      {...(checkInList.length !== 0 ? { scroll } : {})}
+      scroll={checkInList.length !== 0 ? scroll : null}
       pagination={pagination}
       dataSource={checkInList}
       columns={columns}

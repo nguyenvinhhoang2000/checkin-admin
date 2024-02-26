@@ -19,6 +19,7 @@ const OPTIONS = [{ value: USE_TYPE.MEMBER.key, label: USE_TYPE.MEMBER.label }];
 function HeaderTableCheckin() {
   const onGetTableCheckInFirstRender =
     useAccountManagementStore().onGetTableCheckInFirstRender;
+  const onSetDayRangeCheckIn = useAccountManagementStore().onSetDayRangeCheckIn;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = React.useMemo(
@@ -55,27 +56,35 @@ function HeaderTableCheckin() {
     [searchParams, setSearchParams],
   );
 
-  const onFilterCalendar = React.useCallback(
-    (dates) => {
-      const [startDate, endDate] = dates;
-
-      const start = startDate.format("YYYY-MM-DD");
-      const end = endDate.format("YYYY-MM-DD");
-
-      setSearchParams({
+  const onCalendarChange = React.useCallback(
+    (_, [startStr, endStr]) => {
+      const updatedSearchParams = {
         ...Object.fromEntries(searchParams),
-        startDate: start,
-        endDate: end,
-      });
+      };
 
-      onGetTableCheckInFirstRender(
-        searchParams.get("period"),
-        searchParams.get("page"),
-        start,
-        end,
-      );
+      if (!startStr && !endStr) {
+        delete updatedSearchParams.startDate;
+        delete updatedSearchParams.endDate;
+        onSetDayRangeCheckIn();
+      } else {
+        updatedSearchParams.startDate = startStr;
+        updatedSearchParams.endDate = endStr;
+        onGetTableCheckInFirstRender(
+          searchParams.get("period"),
+          searchParams.get("page"),
+          startStr,
+          endStr,
+        );
+      }
+
+      setSearchParams(updatedSearchParams);
     },
-    [onGetTableCheckInFirstRender, searchParams, setSearchParams],
+    [
+      onGetTableCheckInFirstRender,
+      onSetDayRangeCheckIn,
+      searchParams,
+      setSearchParams,
+    ],
   );
 
   const onDownload = React.useCallback(() => {}, []);
@@ -106,7 +115,7 @@ function HeaderTableCheckin() {
         />
         <DatePicker.RangePicker
           className="w-full rounded-sm lg:w-fit"
-          onChange={onFilterCalendar}
+          onCalendarChange={onCalendarChange}
         />
         <Button
           onClick={onDownload}

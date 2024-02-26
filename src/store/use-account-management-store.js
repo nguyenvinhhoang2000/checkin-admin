@@ -242,10 +242,18 @@ const useAccountManagementStore = create((set, get) => ({
       limit: 10,
       pageAccount: 1,
       period: FILTER_TYPE.TODAY.key,
+      startDate: null,
+      endDate: null,
     }),
 
   onSetPageTableCheckIn: async (pageAccount) => {
     set({ pageAccount });
+
+    await get().onGetCheckInList();
+  },
+
+  onSetDayRangeCheckIn: async () => {
+    set({ startDate: null, endDate: null });
 
     await get().onGetCheckInList();
   },

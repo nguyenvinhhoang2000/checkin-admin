@@ -22,6 +22,18 @@ const adminApi = {
     return axiosClient.get(ENDPOINT.GET_MEMBERS(status, page, limit));
   },
 
+  getCheckInMember(period, pageAccount, limit, startDate, endDate) {
+    return axiosClient.get(
+      ENDPOINT.GET_CHECK_IN_MEMBER(
+        period,
+        pageAccount,
+        limit,
+        startDate,
+        endDate,
+      ),
+    );
+  },
+
   // MEMBER DETAIL ACTION
   createMember(data) {
     return axiosClient.post(ENDPOINT.CREATE_MEMBER, data);

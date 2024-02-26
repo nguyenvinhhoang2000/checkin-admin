@@ -19,7 +19,7 @@ function MemberDetailHeader() {
     [searchParams],
   );
 
-  const onFiletrBy = React.useCallback(
+  const onFilterBy = React.useCallback(
     (value) => () => {
       setSearchParams({
         ...Object.fromEntries(searchParams),
@@ -39,7 +39,7 @@ function MemberDetailHeader() {
           {Object.values(FILTER_TYPE).map((item) => (
             <Button
               key={item.key}
-              onClick={onFiletrBy(item.key)}
+              onClick={onFilterBy(item.key)}
               type="link"
               className={`h-fit border-0 p-0 text-character-title ${filter.time === item.key && "text-primary-1"}`}
             >

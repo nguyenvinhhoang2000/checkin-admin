@@ -1,6 +1,7 @@
 import { message } from "antd";
 import { create } from "zustand";
 
+import { FILTER_TYPE } from "@/constants/filter-type";
 import { LOCATIONS } from "@/constants/locations";
 import adminApi from "@/services/admin-api";
 
@@ -11,12 +12,17 @@ const useAccountManagementStore = create((set, get) => ({
   limit: 10,
   pageAccount: 1,
 
+  checkInList: [],
+  period: FILTER_TYPE.TODAY.key,
+  startDate: null,
+  endDate: null,
+
+  branches: [],
+
   isLoadingTable: false,
   isLoadingForm: false,
 
   infoMemberPicked: null,
-
-  branches: [],
 
   onGetListAccount: async () => {
     try {
@@ -38,7 +44,7 @@ const useAccountManagementStore = create((set, get) => ({
     } catch (error) {
       return;
     } finally {
-      set({ isLoadingAbsentTable: false });
+      set({ isLoadingTable: false });
     }
   },
 
@@ -185,6 +191,71 @@ const useAccountManagementStore = create((set, get) => ({
     } catch (error) {
       message.error(error.response.data.errors[0].msg);
     }
+  },
+
+  onGetCheckInList: async () => {
+    try {
+      const { period, limit, pageAccount, startDate, endDate } = get();
+
+      set({ isLoadingTable: true });
+      const {
+        data: {
+          payload: { total, data },
+        },
+      } = await adminApi.getCheckInMember(
+        period,
+        pageAccount,
+        limit,
+        startDate,
+        endDate,
+      );
+
+      set({
+        checkInList: data,
+        totalAccount: total,
+        isLoadingTable: false,
+        pageAccount,
+      });
+    } catch (error) {
+      return;
+    } finally {
+      set({ isLoadingTable: false });
+    }
+  },
+
+  onGetTableCheckInFirstRender: async (periodTime, page, start, end) => {
+    const { period, pageAccount, startDate, endDate, onGetCheckInList } = get();
+    set({
+      period: periodTime || period,
+      pageAccount: page || pageAccount,
+      startDate: start || startDate,
+      endDate: end || endDate,
+    });
+
+    await onGetCheckInList();
+  },
+
+  onResetTableCheckIn: async () =>
+    set({
+      totalAccount: 0,
+      checkInList: [],
+      limit: 10,
+      pageAccount: 1,
+      period: FILTER_TYPE.TODAY.key,
+      startDate: null,
+      endDate: null,
+    }),
+
+  onSetPageTableCheckIn: async (pageAccount) => {
+    set({ pageAccount });
+
+    await get().onGetCheckInList();
+  },
+
+  onSetDayRangeCheckIn: async () => {
+    set({ startDate: null, endDate: null });
+
+    await get().onGetCheckInList();
   },
 }));
 

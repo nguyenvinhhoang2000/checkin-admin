@@ -46,6 +46,10 @@ const adminApi = {
     );
   },
 
+  deleteAbsentRequest(id) {
+    return axiosClient.delete(ENDPOINT.DELETE_ABSENT_REQUEST(id));
+  },
+
   // MEMBER DETAIL ACTION
   createMember(data) {
     return axiosClient.post(ENDPOINT.CREATE_MEMBER, data);

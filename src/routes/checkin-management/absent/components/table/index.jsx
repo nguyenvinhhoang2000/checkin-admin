@@ -1,6 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { Avatar, Button, Modal, Table } from "antd";
+import { Avatar, Button, Table } from "antd";
 
 import AppIcon from "@/components/apps/app-icon";
 
@@ -8,11 +8,15 @@ import ABSENT_REQUEST_COLUMNS from "@/constants/absent-request-table";
 import useAccountManagementStore from "@/store/use-account-management-store";
 import formatDate from "@/utils/formatDateTimeAbsentTable";
 
+import ModalAbsentRequestDetail from "../modal-absent-request-detail";
+import ModalDeleteAbsentRequest from "../modal-delete-absent-request";
+
 import { paginationConfig, scroll } from "./config";
 
 function AbsentRequestTable() {
   const onShowModalAbsentRequest =
     useAccountManagementStore().onShowModalAbsentRequest;
+  const onShowModalDeleted = useAccountManagementStore().onShowModalDeleted;
   const isShowModalAbsentRequest =
     useAccountManagementStore().isShowModalAbsentRequest;
   const onHideModalAbsentRequest =
@@ -124,6 +128,11 @@ function AbsentRequestTable() {
           onShowModalAbsentRequest();
         };
 
+        const onClickButtonDelete = () => {
+          setSelectedRequest(record);
+          onShowModalDeleted();
+        };
+
         return (
           <div className="flex flex-row gap-[1.25rem]">
             <Button
@@ -133,7 +142,11 @@ function AbsentRequestTable() {
             >
               <AppIcon className="text-black/45" src="/icons/eye-icon.svg#id" />
             </Button>
-            <Button className="m-0 h-fit p-0" type="text">
+            <Button
+              onClick={onClickButtonDelete}
+              className="m-0 h-fit p-0"
+              type="text"
+            >
               <AppIcon
                 className="text-black/45"
                 src="/icons/trash-icon.svg#id"
@@ -156,44 +169,16 @@ function AbsentRequestTable() {
         scroll={absentRequests.length !== 0 ? scroll : null}
         columns={columns}
       />
-      <Modal
-        title={
-          <p className="border-b pb-4 font-medium text-black/[.85]">
-            Absent Request
-          </p>
-        }
-        open={isShowModalAbsentRequest}
-        width={572}
-        footer={<Button onClick={onHideModalAbsentRequest}>Cancel</Button>}
-        closeIcon={
-          <AppIcon
-            className="text-black/45"
-            width={16}
-            height={16}
-            onClick={onHideModalAbsentRequest}
-            src="/icons/close.svg#id"
-          />
-        }
-      >
-        <div className="flex flex-col gap-y-[0.75rem] border-b pb-8 pt-6">
-          <div className="flex justify-between">
-            <span className="font-bold">Member</span>
-            <span>{selectedRequest?.user.name}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-bold">From</span>
-            <span>{formatDate(selectedRequest?.fromAt)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-bold">To</span>
-            <span>{formatDate(selectedRequest?.toAt)}</span>
-          </div>
-          <div className="flex flex-col gap-y-2">
-            <span className="font-bold">Description</span>
-            <span>{selectedRequest?.description}</span>
-          </div>
-        </div>
-      </Modal>
+      <ModalAbsentRequestDetail
+        isShowModalAbsentRequest={isShowModalAbsentRequest}
+        onHideModalAbsentRequest={onHideModalAbsentRequest}
+        selectedRequest={selectedRequest}
+      />
+      <ModalDeleteAbsentRequest
+        _id={selectedRequest?._id}
+        title="Do you want to delete this absent request?"
+        description="This absent request can not be recovered."
+      />
     </>
   );
 }

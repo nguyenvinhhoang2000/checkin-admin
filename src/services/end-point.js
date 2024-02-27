@@ -35,6 +35,8 @@ const ENDPOINT = {
     return `/admin/absent-requests?${params}`;
   },
 
+  DELETE_ABSENT_REQUEST: (id) => `/admin/absent-requests/${id}`,
+
   /// MEMBER DETAIL ACTION
 
   CREATE_MEMBER: "/admin/member/create",

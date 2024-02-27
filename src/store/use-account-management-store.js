@@ -330,6 +330,18 @@ const useAccountManagementStore = create((set, get) => ({
 
     await get().onGetAbsentRequests();
   },
+
+  onDeleteAbsentRequest: async (_id) => {
+    const { onGetAbsentRequests } = get();
+
+    await adminApi.deleteAbsentRequest(_id);
+
+    set({ isShowModalDeleted: false });
+
+    message.success("Deleted absent request successfully");
+
+    await onGetAbsentRequests();
+  },
 }));
 
 export default useAccountManagementStore;

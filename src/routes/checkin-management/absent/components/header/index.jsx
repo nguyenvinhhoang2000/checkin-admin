@@ -7,6 +7,8 @@ import AppIcon from "@/components/apps/app-icon";
 import timeRangeSelection from "@/constants/timeRangeSelection";
 import useAccountManagementStore from "@/store/use-account-management-store";
 
+import ButtonTimeRangeAbsent from "../button-time-range";
+
 function AbsentRequestHeader() {
   const onGetTableAbsentFirstRender =
     useAccountManagementStore().onGetTableAbsentFirstRender;
@@ -26,7 +28,7 @@ function AbsentRequestHeader() {
   );
 
   const onFilterBy = React.useCallback(
-    (value) => () => {
+    (value) => {
       setSearchParams({
         ...Object.fromEntries(searchParams),
         period: value,
@@ -124,14 +126,12 @@ function AbsentRequestHeader() {
         </Select>
         <div className="hidden flex-row gap-6 md:flex">
           {Object.values(timeRangeSelection).map((item) => (
-            <Button
+            <ButtonTimeRangeAbsent
               key={item.key}
-              onClick={onFilterBy(item.key)}
-              type="link"
-              className={`h-fit border-0 p-0 text-character-title ${filter.period === item.key && "text-primary-1"}`}
-            >
-              <span>{item.label}</span>
-            </Button>
+              item={item}
+              onFilterBy={onFilterBy}
+              period={filter.period}
+            />
           ))}
         </div>
         <span>

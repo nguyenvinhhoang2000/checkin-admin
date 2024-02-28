@@ -112,9 +112,7 @@ function AbsentRequestHeader() {
       </div>
       <div className="flex w-full flex-row items-center justify-between gap-[1.5rem] xl:justify-end">
         <Select
-          defaultValue={
-            searchParams.get("period") || timeRangeSelection.THIS_MONTH.key
-          }
+          defaultValue={filter.period || timeRangeSelection.THIS_MONTH.key}
           onChange={handleChangeSelectTimeRange}
           className="flex md:hidden"
         >

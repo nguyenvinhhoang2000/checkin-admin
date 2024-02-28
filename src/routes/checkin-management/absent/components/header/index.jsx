@@ -18,6 +18,9 @@ function AbsentRequestHeader() {
   const filter = React.useMemo(
     () => ({
       period: searchParams.get("period") || timeRangeSelection.THIS_MONTH.key,
+      page: searchParams.get("page") || 1,
+      startDate: searchParams.get("startDate"),
+      endDate: searchParams.get("endDate"),
     }),
     [searchParams],
   );
@@ -30,27 +33,44 @@ function AbsentRequestHeader() {
       });
       onGetTableAbsentFirstRender(
         value,
-        searchParams.get("page"),
-        searchParams.get("startDate"),
-        searchParams.get("endDate"),
+        filter.page,
+        filter.startDate,
+        filter.endDate,
       );
     },
-    [onGetTableAbsentFirstRender, searchParams, setSearchParams],
+    [
+      filter.endDate,
+      filter.page,
+      filter.startDate,
+      onGetTableAbsentFirstRender,
+      searchParams,
+      setSearchParams,
+    ],
   );
 
-  const handleChangeSelectTimeRange = (value) => {
-    setSearchParams({
-      ...Object.fromEntries(searchParams),
-      period: value,
-    });
+  const handleChangeSelectTimeRange = React.useCallback(
+    (value) => {
+      setSearchParams({
+        ...Object.fromEntries(searchParams),
+        period: value,
+      });
 
-    onGetTableAbsentFirstRender(
-      value,
-      searchParams.get("page"),
-      searchParams.get("startDate"),
-      searchParams.get("endDate"),
-    );
-  };
+      onGetTableAbsentFirstRender(
+        value,
+        filter.page,
+        filter.startDate,
+        filter.endDate,
+      );
+    },
+    [
+      filter.endDate,
+      filter.page,
+      filter.startDate,
+      onGetTableAbsentFirstRender,
+      searchParams,
+      setSearchParams,
+    ],
+  );
 
   const onCalendarChange = React.useCallback(
     (_, [startStr, endStr]) => {
@@ -66,8 +86,8 @@ function AbsentRequestHeader() {
         updatedSearchParams.startDate = startStr;
         updatedSearchParams.endDate = endStr;
         onGetTableAbsentFirstRender(
-          searchParams.get("period"),
-          searchParams.get("page"),
+          filter.period,
+          filter.page,
           startStr,
           endStr,
         );
@@ -76,6 +96,8 @@ function AbsentRequestHeader() {
       setSearchParams(updatedSearchParams);
     },
     [
+      filter.page,
+      filter.period,
       onGetTableAbsentFirstRender,
       onSetDayRangeAbsentRequests,
       searchParams,

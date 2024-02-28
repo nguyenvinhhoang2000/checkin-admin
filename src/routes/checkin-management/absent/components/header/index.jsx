@@ -50,7 +50,7 @@ function AbsentRequestHeader() {
     ],
   );
 
-  const handleChangeSelectTimeRange = React.useCallback(
+  const onChangeSelectTimeRange = React.useCallback(
     (value) => {
       setSearchParams({
         ...Object.fromEntries(searchParams),
@@ -115,7 +115,7 @@ function AbsentRequestHeader() {
       <div className="flex w-full flex-row items-center justify-between gap-[1.5rem] xl:justify-end">
         <Select
           defaultValue={filter.period || timeRangeSelection.THIS_MONTH.key}
-          onChange={handleChangeSelectTimeRange}
+          onChange={onChangeSelectTimeRange}
           className="flex md:hidden"
         >
           {Object.values(timeRangeSelection).map((option) => (

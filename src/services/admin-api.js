@@ -34,6 +34,22 @@ const adminApi = {
     );
   },
 
+  getAbsentRequests(period, pageAccount, limit, startDate, endDate) {
+    return axiosClient.get(
+      ENDPOINT.GET_ABSENT_REQUESTS(
+        period,
+        pageAccount,
+        limit,
+        startDate,
+        endDate,
+      ),
+    );
+  },
+
+  deleteAbsentRequest(id) {
+    return axiosClient.delete(ENDPOINT.DELETE_ABSENT_REQUEST(id));
+  },
+
   // MEMBER DETAIL ACTION
   createMember(data) {
     return axiosClient.post(ENDPOINT.CREATE_MEMBER, data);

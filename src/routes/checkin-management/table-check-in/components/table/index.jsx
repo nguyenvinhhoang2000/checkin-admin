@@ -34,9 +34,19 @@ function TablerTableCheckin() {
       ...TABLE_CHECK_IN_COLUMNS.MEMBER,
       width: "16.6%",
       render: (text) => {
+        const initials = text
+          .split(" ")
+          .map((name) => name[0])
+          .join("");
         return (
           <div className="flex flex-row items-center gap-2">
-            <Avatar className="bg-volcano-1 text-volcano-2">{text}</Avatar>
+            <Avatar
+              className="bg-volcano-1 text-volcano-2"
+              size={24}
+              alt="avatar"
+            >
+              {initials}
+            </Avatar>
             <span className=" text-sm font-medium text-character-title">
               {text}
             </span>

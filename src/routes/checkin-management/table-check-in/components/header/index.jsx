@@ -22,6 +22,7 @@ function HeaderTableCheckin() {
   const onSetDayRangeCheckIn = useAccountManagementStore().onSetDayRangeCheckIn;
 
   const [searchParams, setSearchParams] = useSearchParams();
+
   const filter = React.useMemo(
     () => ({
       period: searchParams.get("period") || FILTER_TYPE.TODAY.key,

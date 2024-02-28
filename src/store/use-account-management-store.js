@@ -3,6 +3,7 @@ import { create } from "zustand";
 
 import { FILTER_TYPE } from "@/constants/filter-type";
 import { LOCATIONS } from "@/constants/locations";
+import timeRangeSelection from "@/constants/timeRangeSelection";
 import adminApi from "@/services/admin-api";
 
 const useAccountManagementStore = create((set, get) => ({
@@ -11,12 +12,13 @@ const useAccountManagementStore = create((set, get) => ({
   listAccount: [],
   limit: 10,
   pageAccount: 1,
-
-  checkInList: [],
   period: FILTER_TYPE.TODAY.key,
+  periodAbsent: timeRangeSelection.THIS_MONTH.key,
   startDate: null,
   endDate: null,
 
+  checkInList: [],
+  absentRequests: [],
   branches: [],
 
   isLoadingTable: false,
@@ -256,6 +258,89 @@ const useAccountManagementStore = create((set, get) => ({
     set({ startDate: null, endDate: null });
 
     await get().onGetCheckInList();
+  },
+
+  onGetAbsentRequests: async () => {
+    try {
+      const { periodAbsent, limit, pageAccount, startDate, endDate } = get();
+
+      set({ isLoadingTable: true });
+      const {
+        data: {
+          payload: { total, data },
+        },
+      } = await adminApi.getAbsentRequests(
+        periodAbsent,
+        pageAccount,
+        limit,
+        startDate,
+        endDate,
+      );
+
+      set({
+        absentRequests: data,
+        totalAccount: total,
+        isLoadingTable: false,
+        pageAccount,
+      });
+    } catch (error) {
+      return;
+    } finally {
+      set({ isLoadingTable: false });
+    }
+  },
+
+  onGetTableAbsentFirstRender: async (periodTime, page, start, end) => {
+    const {
+      periodAbsent,
+      pageAccount,
+      startDate,
+      endDate,
+      onGetAbsentRequests,
+    } = get();
+    set({
+      periodAbsent: periodTime || periodAbsent,
+      pageAccount: page || pageAccount,
+      startDate: start || startDate,
+      endDate: end || endDate,
+    });
+
+    await onGetAbsentRequests();
+  },
+
+  onResetAbsentRequests: async () =>
+    set({
+      totalAccount: 0,
+      absentRequests: [],
+      limit: 10,
+      pageAccount: 1,
+      periodAbsent: timeRangeSelection.THIS_MONTH.key,
+      startDate: null,
+      endDate: null,
+    }),
+
+  onSetPageTableAbsent: async (pageAccount) => {
+    set({ pageAccount });
+
+    await get().onGetAbsentRequests();
+  },
+
+  onSetDayRangeAbsentRequests: async () => {
+    set({ startDate: null, endDate: null });
+
+    await get().onGetAbsentRequests();
+  },
+
+  onDeleteAbsentRequest: async (_id) => {
+    const { onGetAbsentRequests } = get();
+
+    await adminApi.deleteAbsentRequest(_id);
+
+    set({ isShowModalDeleted: false });
+
+    message.success("Deleted absent request successfully");
+
+    await onGetAbsentRequests();
   },
 }));
 

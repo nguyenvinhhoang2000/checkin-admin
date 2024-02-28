@@ -1,23 +1,23 @@
 const ABSENT_REQUEST_COLUMNS = {
   NAME: {
     title: "Name",
-    dataIndex: "name",
+    dataIndex: ["user", "name"],
     key: "name",
   },
   TYPE_ABSENT: {
     title: "Type Absent",
-    dataIndex: "typeAbsent",
-    key: "typeAbsent",
+    dataIndex: "absentType",
+    key: "absentType",
   },
   DATE_REQUEST: {
     title: "Date Request",
-    dataIndex: "dateRequested",
-    key: "dateRequested",
+    dataIndex: "createdAt",
+    key: "createdAt",
   },
   DURATION_REQUEST: {
     title: "From - To",
-    dataIndex: ["durationRequested", "from"],
-    key: ["durationRequested", "from"],
+    dataIndex: "fromAt",
+    key: "fromAt",
   },
   DESCRIPTION: {
     title: "Description",

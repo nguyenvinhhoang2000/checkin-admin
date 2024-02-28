@@ -23,6 +23,20 @@ const ENDPOINT = {
     return `/admin/working-history?${params}`;
   },
 
+  GET_ABSENT_REQUESTS: (period, page, limit, startDate, endDate) => {
+    let params = `limit=${limit}&page=${page}&period=${period}`;
+    if (startDate) {
+      params += `&startDate=${startDate}`;
+    }
+    if (endDate) {
+      params += `&endDate=${endDate}`;
+    }
+
+    return `/admin/absent-requests?${params}`;
+  },
+
+  DELETE_ABSENT_REQUEST: (id) => `/admin/absent-requests/${id}`,
+
   /// MEMBER DETAIL ACTION
 
   CREATE_MEMBER: "/admin/member/create",

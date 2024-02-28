@@ -11,7 +11,7 @@ const ENDPOINT = {
   GET_MEMBERS: (status, page, limit) =>
     `/admin/member?status=${status}&page=${page}&limit=${limit}`,
 
-  GET_CHECK_IN_MEMBER: (period, page, limit, startDate, endDate) => {
+  GET_CHECK_IN_MEMBER: ({ period, page, limit, startDate, endDate }) => {
     let params = `limit=${limit}&page=${page}&period=${period}`;
     if (startDate) {
       params += `&startDate=${startDate}`;
@@ -23,7 +23,7 @@ const ENDPOINT = {
     return `/admin/working-history?${params}`;
   },
 
-  GET_ABSENT_REQUESTS: (period, page, limit, startDate, endDate) => {
+  GET_ABSENT_REQUESTS: ({ period, page, limit, startDate, endDate }) => {
     let params = `limit=${limit}&page=${page}&period=${period}`;
     if (startDate) {
       params += `&startDate=${startDate}`;

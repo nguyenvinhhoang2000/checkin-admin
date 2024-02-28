@@ -38,12 +38,19 @@ function AbsentRequestHeader() {
     [onGetTableAbsentFirstRender, searchParams, setSearchParams],
   );
 
-  const handleChangeSelectTimeRange = React.useCallback(
-    (value) => {
-      onFilterBy(value)();
-    },
-    [onFilterBy],
-  );
+  const handleChangeSelectTimeRange = (value) => {
+    setSearchParams({
+      ...Object.fromEntries(searchParams),
+      period: value,
+    });
+
+    onGetTableAbsentFirstRender(
+      value,
+      searchParams.get("page"),
+      searchParams.get("startDate"),
+      searchParams.get("endDate"),
+    );
+  };
 
   const onCalendarChange = React.useCallback(
     (_, [startStr, endStr]) => {

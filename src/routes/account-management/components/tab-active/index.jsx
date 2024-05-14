@@ -13,7 +13,7 @@ function TabActive() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const initialValue = React.useMemo(() => {
-    return searchParams.get("status") || "1";
+    return searchParams.get("status") || "ACTIVE";
   }, [searchParams]);
 
   const items = React.useMemo(() => {

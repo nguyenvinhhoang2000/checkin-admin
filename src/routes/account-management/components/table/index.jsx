@@ -34,11 +34,11 @@ function TablerAccountManagement({ accountStatus }) {
       render: (text) => {
         const onClickClipboard = () => {
           navigator.clipboard.writeText(text);
-          message.success("Copy to clipboard");
+          message.success("Sao chép thành công");
         };
         return (
           <div>
-            <span>{text} </span>
+            <span>{text}</span>
             <Button
               type="link"
               className="!h-fit !w-fit p-0"

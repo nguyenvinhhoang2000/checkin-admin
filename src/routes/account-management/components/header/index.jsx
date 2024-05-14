@@ -32,7 +32,7 @@ function HeaderAccountManagement() {
             height={14}
             className="text-white"
           />
-          <span>Create Account</span>
+          <span>Tạo tài khoản</span>
         </Button>
       </div>
     </div>

@@ -1,14 +1,14 @@
 export const GENDER_TYPES = [
   {
     value: 1,
-    label: "Male",
+    label: "Nam",
   },
   {
     value: 2,
-    label: "Female",
+    label: "Nữ",
   },
   {
     value: 3,
-    label: "Other",
+    label: "Khác",
   },
 ];

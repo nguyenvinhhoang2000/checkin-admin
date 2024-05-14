@@ -105,6 +105,7 @@ function App() {
   ]);
   const onInitialize = React.useCallback(async () => {
     const token = cookie.load(COOKIES_KEYS.TOKEN);
+
     if (token) {
       /** Get user info
        * @api {get} /client/user Get user info

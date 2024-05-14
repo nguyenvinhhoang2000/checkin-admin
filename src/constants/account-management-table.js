@@ -1,6 +1,6 @@
 const ACCOUNT_MANAGEMENT_COLUMNS = {
   NAME: {
-    title: "Name",
+    title: "Tên",
     dataIndex: "name",
     key: "name",
   },
@@ -9,13 +9,13 @@ const ACCOUNT_MANAGEMENT_COLUMNS = {
     dataIndex: "email",
     key: "email",
   },
-  BRANCH: {
-    title: "Branch",
-    dataIndex: ["branch", "address"],
-    key: ["branch", "_id"],
+  POSITION: {
+    title: "Vị trí",
+    dataIndex: "position",
+    key: "position",
   },
   ACTIONS: {
-    title: "Actions",
+    title: "Thao tác",
     dataIndex: "actions",
     key: "actions",
   },

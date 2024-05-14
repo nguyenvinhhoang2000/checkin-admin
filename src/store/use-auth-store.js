@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { create } from "zustand";
 
 import adminApi from "@/services/admin-api";

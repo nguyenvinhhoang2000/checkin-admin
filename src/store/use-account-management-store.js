@@ -7,7 +7,7 @@ import timeRangeSelection from "@/constants/timeRangeSelection";
 import adminApi from "@/services/admin-api";
 
 const useAccountManagementStore = create((set, get) => ({
-  statusAccount: 1,
+  statusAccount: "ACTIVE",
   totalAccount: 0,
   listAccount: [],
   limit: 10,
@@ -19,12 +19,43 @@ const useAccountManagementStore = create((set, get) => ({
 
   checkInList: [],
   absentRequests: [],
-  branches: [],
 
   isLoadingTable: false,
   isLoadingForm: false,
 
   infoMemberPicked: null,
+
+  infoBusiness: {},
+
+  onGetInfoBusiness: async (data) => {
+    try {
+      set({ isLoadingTable: true });
+
+      const {
+        data: { payload },
+      } = await adminApi.getOrganizations(data);
+
+      set({ infoBusiness: payload });
+    } catch (error) {
+      return;
+    } finally {
+      set({ isLoadingTable: false });
+    }
+  },
+
+  onUpdateInfoBusiness: async (data) => {
+    try {
+      set({ isLoadingTable: true });
+
+      await adminApi.createOrganization(data);
+
+      message.success("Cập nhật thông tin doanh nghiệp thành công");
+    } catch (error) {
+      return;
+    } finally {
+      set({ isLoadingTable: false });
+    }
+  },
 
   onGetListAccount: async () => {
     try {
@@ -72,7 +103,7 @@ const useAccountManagementStore = create((set, get) => ({
 
   onResetAccountManagement: async () =>
     set({
-      statusAccount: 1,
+      statusAccount: "ACTIVE",
       totalAccount: 0,
       listAccount: [],
       limit: 10,
@@ -118,7 +149,7 @@ const useAccountManagementStore = create((set, get) => ({
 
     set({ isShowModalDeleted: false, infoMemberPicked: null });
 
-    message.success("Disabled account successfully");
+    message.success("Dừng thành viên thành công");
 
     await onGetListAccount();
   },
@@ -130,7 +161,7 @@ const useAccountManagementStore = create((set, get) => ({
 
     set({ isShowModalActive: false, infoMemberPicked: null });
 
-    message.success("Activated account successfully");
+    message.success("Kích hoạt thành viên thành công");
 
     await onGetListAccount();
   },
@@ -154,22 +185,13 @@ const useAccountManagementStore = create((set, get) => ({
     set({ infoMemberPicked: null });
   },
 
-  onGetBranches: async () => {
-    try {
-      const { data } = await adminApi.getOrganizations();
-      set({ branches: data.payload });
-    } catch (error) {
-      console.error("Error fetching branches:", error);
-    }
-  },
-
   onEditMemberAccount: async (id, data, navigate) => {
     try {
       const { onGetListAccount } = get();
 
       await adminApi.editMember(id, data);
 
-      message.success("Edit saved successfully");
+      message.success("Chỉnh sửa thành viên thành công");
 
       await onGetListAccount();
 
@@ -185,7 +207,7 @@ const useAccountManagementStore = create((set, get) => ({
 
       await adminApi.createMember(data);
 
-      message.success("Account created successfully");
+      message.success("Tạo tài khoản thành công");
 
       await onGetListAccount();
 

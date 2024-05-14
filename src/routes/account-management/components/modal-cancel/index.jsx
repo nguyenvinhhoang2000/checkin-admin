@@ -23,8 +23,8 @@ function ModalCancel({ title, description, navigatePath }) {
       onCancel={onHideModalCancel}
       onOk={onClickOkButton}
       open={isShowModalCancel}
-      okText="Yes"
-      cancelText="No"
+      okText="Đồng ý"
+      cancelText="Quay lại"
     >
       {description}
     </Modal>

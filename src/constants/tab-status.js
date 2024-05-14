@@ -1,10 +1,10 @@
 export const TAB_STATUS = [
   {
-    value: 1,
-    label: "Active",
+    value: "ACTIVE",
+    label: "Đang hoạt động",
   },
   {
-    value: 2,
-    label: "Deleted",
+    value: "DELETED",
+    label: "Dừng hoạt động",
   },
 ];

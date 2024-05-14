@@ -13,22 +13,22 @@ const rulesEmail = [
 
 const rulesPassword = [
   SCHEMAS.RULE_REQUIRED_SELECT(LOGIN_FORM.PASSWORD.label),
-  SCHEMAS.RULE_MIN("Password", 6),
-  SCHEMAS.RULE_MAX("Password", 12),
+  SCHEMAS.RULE_MIN("Mật khẩu", 6),
+  SCHEMAS.RULE_MAX("Mật khẩu", 12),
 ];
 
 const errorLoginFailMessage = [
   {
     name: "email",
-    errors: ["Email is incorrect"],
+    errors: ["Email không đúng"],
   },
   {
     name: "password",
-    errors: ["Password is incorrect"],
+    errors: ["Mật khẩu không đúng"],
   },
 ];
 
-const loadingLoginMessage = "Login";
+const loadingLoginMessage = "Đăng nhập";
 
 const errorCode = { UNAUTHORIZED: 40100 };
 

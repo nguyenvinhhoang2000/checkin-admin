@@ -45,7 +45,7 @@ function SearchBarForm() {
           <Input
             className="rounded-[3.5625rem]"
             title="input search"
-            placeholder="Search by name, phone number, email..."
+            placeholder="Tìm kiếm bằng tên, email, số điện thoại"
             prefix={
               <Form.Item>
                 <Button

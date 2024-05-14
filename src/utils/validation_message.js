@@ -1,16 +1,16 @@
 export const VALIDATION_MESSAGE = {
   ENTER: (type, field) => {
-    return `Please ${type} ${field}`;
+    return `Vui lòng ${type} ${field}`;
   },
 
   INVALID: (field) => {
-    return `The input is not valid ${field}!`;
+    return `${field} không hợp lệ!`;
   },
 
   MIN: (field, min) => {
-    return `${field} must be at least ${min} characters`;
+    return `${field} tối thiểu ${min} ký tự`;
   },
   MAX: (field, max) => {
-    return `${field} cannot exceed more than ${max} characters`;
+    return `${field} không vượt quá ${max} ký tự`;
   },
 };

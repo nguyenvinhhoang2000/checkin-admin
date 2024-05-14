@@ -8,10 +8,10 @@ const API_STATUS = {
   UNAUTHORIZED: 401,
 };
 
-const DAY_EXPIRED = 24 * 60 * 60 * 1000;
+// const DAY_EXPIRED = 24 * 60 * 60 * 1000;
 
 const config = {
-  baseURL: `${import.meta.env.VITE_API_URL}v1.0`,
+  baseURL: `${import.meta.env.VITE_API_URL}`,
   validateStatus: (status) => status >= 200 && status < 400,
   timeout: 60000,
 };
@@ -21,10 +21,11 @@ const axiosClient = axios.create(config);
 const createAuthToken = (token) => `Bearer ${token}`;
 
 export function setAppAccessToken(token) {
+  console.log("setAppAccessToken", token);
   cookie.save(COOKIES_KEYS.TOKEN, token, {
     path: LOCATIONS.LOGIN,
     // EX: Set time of cookie in 1 day
-    expires: new Date(Date.now() + DAY_EXPIRED),
+    // expires: new Date(Date.now() + DAY_EXPIRED),
   });
 
   axiosClient.defaults.headers.Authorization = createAuthToken(token);

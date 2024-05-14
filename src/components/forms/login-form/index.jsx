@@ -36,22 +36,22 @@ function LoginForm() {
     >
       <div className="mb-[1.5rem]">
         <h2 className="text-character-1 mb-[0.25rem] px-[2.37rem] text-center font-roboto text-3xl font-medium leading-10">
-          Welcome Back
+          Chào mừng trở lại
         </h2>
         <p className="text-character-2 font-roboto text-sm font-normal leading-[1.375rem] sm:px-[2.37rem]">
-          Enter the account provided to access the dashboard
+          Vui lòng sử dụng tài khoản được cấp để đăng nhập
         </p>
       </div>
       <Form.Item name="email" rules={rulesEmail}>
         <Input
           prefix={<MailOutlined className="text-primary-0 my-[0.4375rem]" />}
-          placeholder="Enter your Email"
+          placeholder="Nhập email"
         />
       </Form.Item>
       <Form.Item name="password" rules={rulesPassword} hasFeedback>
         <Input.Password
           prefix={<LockOutlined className="text-primary-0 my-[0.5rem]" />}
-          placeholder="Enter your Password"
+          placeholder="Nhập mật khẩu"
         />
       </Form.Item>
       <Form.Item className="mb-0">
@@ -61,7 +61,7 @@ function LoginForm() {
           htmlType={BUTTON_TYPE.SUBMIT}
           className="h-[2.5rem] w-full"
         >
-          Sign in
+          Đăng nhập
         </Button>
       </Form.Item>
     </Form>

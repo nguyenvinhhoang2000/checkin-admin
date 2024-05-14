@@ -11,8 +11,8 @@ function CreateAccount() {
     <section className="flex h-full flex-col overflow-auto">
       <CreateAndEditAccount />
       <ModalCancel
-        title="Do you want to cancel?"
-        description="The action has not been saved"
+        title="Bạn có muốn hủy bỏ?"
+        description="Các thay đổi của bạn có thể không được lưu"
         navigatePath={LOCATIONS.ACCOUNT_MANAGEMENT.path}
       />
     </section>

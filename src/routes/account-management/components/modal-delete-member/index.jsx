@@ -28,7 +28,8 @@ function ModalDeleteMember({ title, description }) {
       onCancel={onHideModalDeleted}
       onOk={onClickOkButton}
       open={isShowModalDeleted}
-      okText="Confirm"
+      okText="Xác nhận"
+      cancelText="Hủy bỏ"
     >
       {description}
     </Modal>

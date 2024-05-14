@@ -13,16 +13,16 @@ function EditAccount() {
     <section className="flex flex-col overflow-auto">
       <CreateAndEditAccount />
       <ModalDeleteMember
-        title="Do you want to delete this account?"
-        description="This account will be disabled and cannot log in"
+        title="Bạn có muốn dừng tài khoản này không?"
+        description="Tài khoản này sẽ bị vô hiệu hóa và không thể đăng nhập"
       />
       <ModalActiveMember
-        title="Do you want to activate this account?"
-        description="This account will be enabled and can log in"
+        title="Bạn có muốn kích hoạt tài khoản này?"
+        description="Tài khoản này sẽ có thể đăng nhập trở lại"
       />
       <ModalCancel
-        title="Do you want to cancel?"
-        description="The action has not been saved"
+        title="Bạn có muốn hủy bỏ không?"
+        description="Thao tác của bạn có thể sẽ không được lưu"
         navigatePath={LOCATIONS.ACCOUNT_MANAGEMENT.path}
       />
     </section>

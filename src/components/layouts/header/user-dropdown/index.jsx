@@ -25,7 +25,7 @@ function UserDropdown() {
               src="/icons/logout-icon.svg#id"
               alt="Edit user"
             />
-            <span className="text-danger">Log-out</span>
+            <span className="text-danger">Đăng xuất</span>
           </div>
         ),
       },
@@ -53,10 +53,10 @@ function UserDropdown() {
           shape="icon"
           className="bg-volcano-1 text-volcano-2"
         >
-          T
+          VH
         </Avatar>
         <span className="font-roboto text-[0.875rem] font-normal leading-[1.375rem] text-black/85">
-          Vinh Thai
+          Vĩnh Hoàng
         </span>
         <AppIcon
           width={12}

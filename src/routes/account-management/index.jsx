@@ -15,9 +15,10 @@ function AccountManagement() {
   const [searchParams] = useSearchParams();
 
   const accountStatus =
-    searchParams.get("status") === "1" || searchParams.get("status") === null
-      ? "active"
-      : "deleted";
+    searchParams.get("status") === "ACTIVE" ||
+    searchParams.get("status") === null
+      ? "ACTIVE"
+      : "DELETED";
 
   React.useEffect(() => {
     onGetDataFirstRender(searchParams.get("status"), searchParams.get("page"));
@@ -32,8 +33,8 @@ function AccountManagement() {
       <HeaderAccountManagement />
       <TablerAccountManagement accountStatus={accountStatus} />
       <ModalDeleteMember
-        title="Do you want to delete this account?"
-        description="This account will be disabled and cannot log in"
+        title="Bạn có muốn dừng tài khoản này không?"
+        description="Tài khoản này sẽ bị vô hiệu hóa và không thể đăng nhập"
       />
     </section>
   );

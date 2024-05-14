@@ -78,7 +78,7 @@ AppFooterForm.propTypes = {
 };
 
 AppFooterForm.defaultProps = {
-  okText: "Save",
+  okText: "Lưu",
   cancelText: "",
   deleteText: "",
   activeText: "",

@@ -9,8 +9,8 @@ export const LOCATIONS = {
 
   // HOME PAGE
   HOME: {
-    label: "Home",
-    crumb: "Home",
+    label: "Trang chủ",
+    crumb: "Trang chủ",
     path: "/home",
     routeActive: true,
   },
@@ -25,52 +25,52 @@ export const LOCATIONS = {
 
   // CHECK_IN MANAGEMENT PAGE
   CHECK_IN_MANAGEMENT: {
-    label: "Check-in Management",
-    crumb: "Check-in Management",
+    label: "Quản lý check-in",
+    crumb: "Quản lý check-in",
     path: "/home/check-in-management",
     routeActive: false,
   },
 
   MEMBERS: {
-    label: "Member Overview",
-    crumb: "Members",
+    label: "Danh sách thành viên",
+    crumb: "Danh sách thành viên",
     path: "/home/check-in-management/members",
     routeActive: true,
   },
 
   MEMBER_DETAIL: {
-    label: "Member Detail",
-    crumb: "Member Detail",
+    label: "Chi tiết thành viên",
+    crumb: "Chi tiết thành viên",
     path: "/home/check-in-management/members/:id",
     pathWithId: (id) => `/home/check-in-management/members/${id}`,
     routeActive: true,
   },
 
   TABLE_CHECK_IN: {
-    label: "Table Check-in",
-    crumb: "Table Check-in",
+    label: "Danh sách check-in",
+    crumb: "Danh sách check-in",
     path: "/home/check-in-management/table-check-in",
     routeActive: true,
   },
 
   ABSENT: {
-    label: "Absent",
-    crumb: "Absent Request",
+    label: "Vắng mặt",
+    crumb: "Yêu cầu vắng mặt",
     path: "/home/check-in-management/absent",
     routeActive: true,
   },
 
   // ACCOUNT MANAGEMENT
   ACCOUNT_MANAGEMENT: {
-    label: "Account Management",
-    crumb: "Account Management",
+    label: "Quản lý tài khoản",
+    crumb: "Quản lý tài khoản",
     path: "/home/account-management",
     routeActive: true,
   },
 
   CREATE_ACCOUNT: {
-    label: "Create Account",
-    crumb: "Create Account",
+    label: "Tạo tài khoản",
+    crumb: "Tạo tài khoản",
     path: "/home/account-management/create-account",
     routeActive: true,
   },
@@ -84,15 +84,15 @@ export const LOCATIONS = {
 
   // BUSINESS SETTING
   BUSINESS_SETTING: {
-    label: "Business Setting",
-    crumb: "Business Setting",
+    label: "Cài đặt",
+    crumb: "Cài đặt",
     path: "/home/business-setting",
     routeActive: false,
   },
 
   INFORMATION: {
-    label: "Information",
-    crumb: "Information",
+    label: "Thông tin",
+    crumb: "Thông tin",
     path: "/home/business-setting/information",
     routeActive: true,
   },

@@ -1,15 +1,15 @@
 const ENDPOINT = {
   // USER
-  LOGIN: "/admin/auth/login",
+  LOGIN: "/auth/login",
 
   // ORGANIZATION
-  CREATE_ORGANIZATION: "/admin/organizations",
-  GET_ORGANIZATION: "/admin/organizations",
+  CREATE_ORGANIZATION: "organizations",
+  GET_ORGANIZATION: "organizations",
 
   // MEMBERS
 
   GET_MEMBERS: (status, page, limit) =>
-    `/admin/member?status=${status}&page=${page}&limit=${limit}`,
+    `member?status=${status}&page=${page}&limit=${limit}`,
 
   GET_CHECK_IN_MEMBER: (period, page, limit, startDate, endDate) => {
     let params = `limit=${limit}&page=${page}&period=${period}`;
@@ -39,15 +39,15 @@ const ENDPOINT = {
 
   /// MEMBER DETAIL ACTION
 
-  CREATE_MEMBER: "/admin/member/create",
+  CREATE_MEMBER: "auth/create-member",
 
-  GET_MEMBER: (id) => `/admin/member/${id}`,
+  GET_MEMBER: (id) => `member/${id}`,
 
-  EDIT_MEMBER: (id) => `/admin/member/${id}`,
+  EDIT_MEMBER: (id) => `member/${id}`,
 
-  DELETE_MEMBER: (id) => `/admin/member/${id}`,
+  DELETE_MEMBER: (id) => `member/${id}`,
 
-  ACTIVE_MEMBER: (id) => `/admin/member/${id}/active`,
+  ACTIVE_MEMBER: (id) => `member/${id}/active`,
 };
 
 export default ENDPOINT;

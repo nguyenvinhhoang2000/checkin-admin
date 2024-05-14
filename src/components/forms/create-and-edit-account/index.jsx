@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Col, Form, Input, Row, Select, Spin } from "antd";
@@ -12,9 +13,7 @@ import useAccountManagementStore from "@/store/use-account-management-store";
 function CreateAndEditAccount() {
   const onGetMemberDetail = useAccountManagementStore().onGetMemberDetail;
   const onClearMemberDetail = useAccountManagementStore().onClearMemberDetail;
-  const onGetBranches = useAccountManagementStore().onGetBranches;
   const infoMemberPicked = useAccountManagementStore().infoMemberPicked;
-  const branches = useAccountManagementStore().branches;
   const isLoadingForm = useAccountManagementStore().isLoadingForm;
   const onShowModalDeleted = useAccountManagementStore().onShowModalDeleted;
   const onShowModalCancel = useAccountManagementStore().onShowModalCancel;
@@ -31,7 +30,7 @@ function CreateAndEditAccount() {
 
   const params = useParams();
 
-  const isActiveAccount = searchParams.get("status") === "active";
+  const isActiveAccount = searchParams.get("status") === "ACTIVE";
 
   const onClickDeleteButton = () => {
     onShowModalDeleted(infoMemberPicked);
@@ -56,10 +55,6 @@ function CreateAndEditAccount() {
   }, []);
 
   React.useEffect(() => {
-    onGetBranches();
-  }, [onGetBranches]);
-
-  React.useEffect(() => {
     if (params.id) {
       createAndEditForm.setFieldsValue({
         ...infoMemberPicked,
@@ -72,34 +67,13 @@ function CreateAndEditAccount() {
     };
   }, [createAndEditForm, infoMemberPicked, params.id]);
 
-  const findBranchIdByAddress = (branchAddress) => {
-    const matchingBranch = branches
-      .filter((branch) => branch.address === branchAddress)
-      .map((branch) => branch._id);
-
-    return matchingBranch.length > 0 ? matchingBranch[0] : null;
-  };
-
   const onSubmit = () => {
     const data = createAndEditForm.getFieldsValue();
 
-    if (data.phoneNumber && data.phoneNumber.startsWith("0")) {
-      data.phoneNumber = `+84${data.phoneNumber.slice(1)}`;
-    }
-
-    const branchId = findBranchIdByAddress(data.branch.address);
-
-    if (branchId) {
-      const editedData = {
-        ...data,
-        branch: branchId,
-      };
-
-      if (params.id) {
-        onEditMemberAccount(params.id, editedData, navigate);
-      } else {
-        onCreateMemberAccount(editedData, navigate);
-      }
+    if (params.id) {
+      onEditMemberAccount(params.id, data, navigate);
+    } else {
+      onCreateMemberAccount(data, navigate);
     }
   };
 
@@ -125,19 +99,14 @@ function CreateAndEditAccount() {
             </Col>
             <Col xs={24} xl={12}>
               <Form.Item
-                name={RULE_MESSAGE.BRANCH.name}
-                label={RULE_MESSAGE.BRANCH.label}
-                rules={[
-                  SCHEMAS.RULE_REQUIRED_SELECT(RULE_MESSAGE.BRANCH.label),
-                ]}
+                name={RULE_MESSAGE.PHONE_NUMBER.name}
+                label={RULE_MESSAGE.PHONE_NUMBER.label}
+                rules={[SCHEMAS.RULE_PHONE_NUMBER]}
               >
-                <Select placeholder={RULE_MESSAGE.BRANCH.placeholder}>
-                  {branches.map((item) => (
-                    <Select.Option key={item._id} value={item.address}>
-                      {item.address}
-                    </Select.Option>
-                  ))}
-                </Select>
+                <Input
+                  placeholder={RULE_MESSAGE.PHONE_NUMBER.placeholder}
+                  allowClear
+                />
               </Form.Item>
             </Col>
           </Row>
@@ -208,20 +177,6 @@ function CreateAndEditAccount() {
               </Form.Item>
             </Col>
           </Row>
-          <Row gutter={24}>
-            <Col span={24}>
-              <Form.Item
-                name={RULE_MESSAGE.PHONE_NUMBER.name}
-                label={RULE_MESSAGE.PHONE_NUMBER.label}
-                rules={[SCHEMAS.RULE_PHONE_NUMBER]}
-              >
-                <Input
-                  placeholder={RULE_MESSAGE.PHONE_NUMBER.placeholder}
-                  allowClear
-                />
-              </Form.Item>
-            </Col>
-          </Row>
           <Form.Item
             name={RULE_MESSAGE.NOTE.name}
             label={RULE_MESSAGE.NOTE.label}
@@ -239,9 +194,9 @@ function CreateAndEditAccount() {
       </Spin>
 
       <AppFooterForm
-        cancelText="Cancel"
-        deleteText={params.id && isActiveAccount ? "Delete" : null}
-        activeText={params.id && !isActiveAccount ? "Active" : null}
+        cancelText="Hủy"
+        deleteText={params.id && isActiveAccount ? "Dừng hoạt động" : null}
+        activeText={params.id && !isActiveAccount ? "Kích hoạt" : null}
         classNames={`mt-[6rem] w-full min-h-[3.75rem] flex flex-row ${
           params.id ? "justify-between" : ""
         } bg-white px-5 py-3 rounded-md`}

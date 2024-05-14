@@ -1,20 +1,20 @@
 import { VALIDATION_MESSAGE } from "@/utils/validation_message";
 
 export const INPUT_TYPES = {
-  ENTER: "enter",
-  SELECT: "select",
+  ENTER: "Nhập",
+  SELECT: "Chọn",
 };
 export const RULE_MESSAGE = {
   NAME: {
     name: "name",
-    label: "Name",
-    placeholder: "Enter name",
+    label: "Tên",
+    placeholder: "Nhập tên",
   },
 
   EMAIL: {
     name: "email",
     label: "Email",
-    placeholder: "Enter email",
+    placeholder: "Nhập email",
   },
 
   BRANCH: {
@@ -25,80 +25,80 @@ export const RULE_MESSAGE = {
 
   BRANCH_ADDRESS: {
     name: ["branch", "name"],
-    label: "Address",
-    placeholder: "Enter Address",
+    label: "Địa chỉ chi nhánh",
+    placeholder: "Nhập địa chỉ chi nhánh",
   },
 
   ADDRESS: {
     name: "address",
-    label: "Address",
-    placeholder: "Enter Address",
+    label: "Địa chỉ",
+    placeholder: "Nhập địa chỉ",
   },
 
   GENDER: {
     name: "gender",
-    label: "Gender",
-    placeholder: "Select gender",
+    label: "Giới tính",
+    placeholder: "Chọn giới tính",
   },
 
   POSITION: {
     name: "position",
-    label: "Position",
-    placeholder: "Enter position",
+    label: "Vị trí",
+    placeholder: "Nhập vị trí",
   },
 
   WORK_TIME: {
     name: "workTime",
-    label: "Work Time",
-    placeholder: "Enter work time",
+    label: "Thời gian làm việc",
+    placeholder: "Nhập thời gian làm việc",
   },
 
   WORK_TIME_START: {
     name: "workTimeStart",
-    label: "Work time start",
-    placeholder: "Enter work time start",
+    label: "Thời gian bắt đầu làm việc",
+    placeholder: "Nhập thời gian bắt đầu làm việc",
   },
 
   WORK_TIME_END: {
     name: "workTimeEnd",
-    label: "Work time end",
-    placeholder: "Enter work time end",
+    label: "Thời gian kết thúc làm việc",
+    placeholder: "Nhập thời gian kết thúc làm việc",
   },
 
   NUMBER_OF_WORKING_DAYS: {
     name: "numberOfWorkingDays",
-    label: "Number of working days in a month",
-    placeholder: "Enter number of working days",
+    label: "Số ngày làm việc trong một tháng",
+    placeholder: "Nhập số ngày làm việc trong một tháng",
   },
 
   IPS: {
     name: "ips",
     label: "IPs",
-    placeholder: "Enter IPs",
+    placeholder: "Nhập IPs",
   },
 
   BUSINESS_NAME: {
     name: "businessName",
-    label: "Business Name",
-    placeholder: "Enter business name",
+    label: "Tên doanh nghiệp",
+    placeholder: "Nhập tên doanh nghiệp",
   },
 
   PHONE_NUMBER: {
     name: "phoneNumber",
-    label: "Phone",
-    placeholder: "Enter phone number",
+    label: "Số điện thoại",
+    placeholder: "Nhập số điện thoại",
   },
 
   PASSWORD: {
     name: "password",
-    label: "Password",
-    placeholder: "Enter password",
+    label: "Mật khẩu",
+    placeholder: "Nhập mật khẩu",
   },
 
   NOTE: {
     name: "note",
-    label: "Note",
-    placeholder: "Enter your note",
+    label: "Ghi chú",
+    placeholder: "Nhập ghi chú",
   },
 };
 
